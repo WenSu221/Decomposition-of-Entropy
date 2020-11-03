@@ -43,8 +43,8 @@ CALdagfunc <-function(Mx1,Y){
 
 ### Data fitting # ----
 
-A1 <- read.table("Data/SWE.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A2 <- read.table("Data/DNK.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A1 <- read.table("Data/GBRTENW.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A2 <- read.table("Data/FRATNP.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 
 Y1 <- 1840
 Y2 <- 2018
@@ -97,4 +97,4 @@ measure <- log(CAL1/CAL2)
 
 right <- (dispersion - measure)*entropyavg
 left <- entropydiff
-round(right-left, 4)
+round(right-left, 5)
