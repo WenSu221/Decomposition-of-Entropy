@@ -1,6 +1,6 @@
 #### entropy of CAL cross-national decomposition ####
 
-### CAL function # ----
+### CAL function ####
 
 CALfunc <-function(Mx1,Y){
   CALlx1<-c()
@@ -20,7 +20,7 @@ CALfunc <-function(Mx1,Y){
 }
 
 
-### CAL dagger function # ----
+### CAL dagger function ####
 
 CALdagfunc <-function(Mx1,Y){
   CALdaglx1<-c()
@@ -41,7 +41,7 @@ CALdagfunc <-function(Mx1,Y){
 }
 
 
-### Data fitting # ----
+### Data fitting ####
 
 A1 <- read.table("Data/SWE.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 A2 <- read.table("Data/SWE.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
@@ -56,7 +56,7 @@ qx1<-matrix(1-A1$qx,111)
 qx2<-matrix(1-A2$qx,111)
 
 
-## CAL # ----
+## CAL ####
 
 CAL1 <- c()
 for (i in seq(1952,2017,5)){
@@ -68,7 +68,7 @@ for (i in seq(1952,2017,5)){
   CAL2 <- c(CAL2, CALfunc(qx2,i))
 }
 
-## CAL dagger # ----
+## CAL dagger ####
 
 qx1 <- ifelse(qx1==0,1,qx1)
 qx2 <- ifelse(qx2==0,1,qx2)
@@ -86,12 +86,12 @@ for (i in seq(1952,2017,5)){
 CALdagger1 <- CALdagger1*-1
 CALdagger2 <- CALdagger2*-1
 
-## entropy # ----
+## entropy ####
 
 entropyCAL1 <- CALdagger1/CAL1
 entropyCAL2 <- CALdagger2/CAL2
 
-## decomp # ----
+## decomp ####
 
 entropyavg <- (entropyCAL1+entropyCAL2)/2
 entropydiff <- entropyCAL1-entropyCAL2
