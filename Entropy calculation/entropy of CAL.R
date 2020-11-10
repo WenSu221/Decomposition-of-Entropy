@@ -43,8 +43,8 @@ CALdagfunc <-function(Mx1,Y){
 
 ### Data fitting ####
 
-A1 <- read.table("Data/SWE.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A2 <- read.table("Data/SWE.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A1 <- read.table("Data/SWE.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A2 <- read.table("Data/GBRTENW.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 
 Y1 <- 1840
 Y2 <- 2018
@@ -105,3 +105,4 @@ round(right-left, 5)
 
 inequality <- dispersion*-1/(measure+dispersion*-1)
 longevity <- measure/(measure+dispersion*-1)
+all <- inequality+longevity
