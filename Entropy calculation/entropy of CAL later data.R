@@ -44,10 +44,10 @@ CALdagfunc <-function(Mx1,Y){
 ### Data fitting ####
 
 A1 <- read.table("Data/SWE.bltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A2 <- read.table("Data/DNK.bltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A2 <- read.table("Data/NLD.bltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 
-Y1 <- 1840
-Y2 <- 2018
+Y1 <- 1880
+Y2 <- 2017
 
 A1<-A1[(A1$Year>Y1)&(A1$Year<(Y2+1)),]
 A2<-A2[(A2$Year>Y1)&(A2$Year<(Y2+1)),]
@@ -59,12 +59,12 @@ qx2<-matrix(1-A2$qx,111)
 ## CAL ####
 
 CAL1 <- c()
-for (i in seq(1952,2017,5)){
+for (i in seq(1992,2017,5)){
   CAL1 <- c(CAL1, CALfunc(qx1,i))
 }
 
 CAL2 <- c()
-for (i in seq(1952,2017,5)){
+for (i in seq(1992,2017,5)){
   CAL2 <- c(CAL2, CALfunc(qx2,i))
 }
 
@@ -74,12 +74,12 @@ qx1 <- ifelse(qx1==0,1,qx1)
 qx2 <- ifelse(qx2==0,1,qx2)
 
 CALdagger1 <- c()
-for (i in seq(1952,2017,5)){
+for (i in seq(1992,2017,5)){
   CALdagger1 <- c(CALdagger1, CALdagfunc(qx1,i))
 }
 
 CALdagger2 <- c()
-for (i in seq(1952,2017,5)){
+for (i in seq(1992,2017,5)){
   CALdagger2 <- c(CALdagger2, CALdagfunc(qx2,i))
 }
 

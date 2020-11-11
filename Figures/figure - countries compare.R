@@ -249,7 +249,7 @@ entropyCAL9 <- CALdagger9/CAL9
 
 Years <- seq(1957,2017,5)
 Years2 <- seq(1992,2017,5)
-windows(8,5)
+windows(10,8)
 plot(c(1957,2017),rev(c(0.12,0.35)),col = 0, xlab = "Years",ylab = "entropy of CAL (log scale)", log = "y")
 lines(Years,entropyCAL1,col = 1,lty=1,lwd=1.5)
 lines(Years,entropyCAL2,col = 2,lty=5,lwd=1.5)
@@ -261,7 +261,10 @@ lines(Years2,entropyCAL7,col = 7,lty=6,lwd=1.5)
 lines(Years2,entropyCAL8,col = 8,lty=6,lwd=1.5)
 lines(Years2,entropyCAL9,col = 9,lty=6,lwd=1.5)
 title("comparison of entropy of CAL across five countries, total 1957-2017")
-legend("topright",c("Sweden","Denmark","France","England and Wales","Norway","Finland","Italy","Scotland","Netherland"),col = c(1,2,3,4,5,6,7,8,9),lty = c(1,5,5,5,5,6,6,6,6))
+legend("topright",c("Sweden","Denmark","France","England and Wales",
+                    "Norway","Finland","Italy","Scotland","Netherland"),
+       col = c(1,2,3,4,5,6,7,8,9),lty = c(1,5,5,5,5,6,6,6,6),
+       box.col = 0)
 
 
 ### SWEDEN as the benchmark # ----
