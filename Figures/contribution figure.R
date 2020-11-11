@@ -9,16 +9,21 @@
 
 library(RColorBrewer)
 
-coul <- brewer.pal(3,"Set1")
+coul <- brewer.pal(4,"Set1")
 
 years <- seq(1952,2017,5)
 
-longevity <- longevity*100
-inequality <- inequality*100
+longevity <- longevity
+inequality <- inequality
 decomp <- rbind(longevity,inequality)
-rownames(decomp) <- c("logevity component", "lifespan inequality component")
+rownames(decomp) <- c("longevity component", "lifespan inequality component")
 colnames(decomp) <- c(seq(1952,2017,5))
 
+perlabel <- as.character(round(decomp[1,],1))
+decomp <- decomp*100
 windows(8,5)
-barplot(decomp,col = coul,border = "white",xlab="Year",ylab = "percentage(%)",legend.text = TRUE,args.legend = list(bg="white"))
-title("Decomposition of entropy of CAL between Sweden and England & Wales, male 1952-2017", cex=1)
+barplot(decomp,col = coul,border = "white",
+        xlab="Year",ylab = "percentage(%)",
+        legend.text = TRUE,args.legend = list(bg="white"),
+        main = "Decomposition of entropy of CAL between Sweden and Denmark, both 1952-2017",
+        sub = "source: Author's calculation based on HMD data")
