@@ -43,8 +43,8 @@ CALdagfunc <-function(Mx1,Y){
 
 ### Data fitting ####
 
-A1 <- read.table("Data/SWE.bltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A2 <- read.table("Data/DNK.bltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A1 <- read.table("Data/SWE.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A2 <- read.table("Data/GBRTENW.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 
 Y1 <- 1840
 Y2 <- 2018
@@ -94,14 +94,14 @@ entropyCAL2 <- CALdagger2/CAL2
 ## decomp ####
 
 entropyavg <- (entropyCAL1+entropyCAL2)/2
-entropydiff <- entropyCAL1-entropyCAL2
+entropydiff <- entropyCAL2-entropyCAL1
 
 dispersion <- log(CALdagger2/CALdagger1)
 measure <- log(CAL2/CAL1)
 
 right <- (dispersion - measure)*entropyavg
 left <- entropydiff
-round(right-left, 5)
+round(abs(right)-abs(left), 5)
 
 inequality <- dispersion*entropyavg
 longevity <- measure*entropyavg*-1
