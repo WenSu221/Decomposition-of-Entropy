@@ -88,15 +88,15 @@ CALdagfunc2 <-function(Mx1,Y){
 
 ### Data fitting ####
 
-A1 <- read.table("Data/SWE.bltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A2 <- read.table("Data/DNK.bltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A3 <- read.table("Data/FRATNP.bltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A4 <- read.table("Data/GBRTENW.bltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A5 <- read.table("Data/NOR.bltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A6 <- read.table("Data/FIN.bltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A7 <- read.table("Data/ITA.bltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A8 <- read.table("Data/GBRSCO.bltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A9 <- read.table("Data/NLD.bltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A1 <- read.table("Data/SWE.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A2 <- read.table("Data/DNK.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A3 <- read.table("Data/FRATNP.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A4 <- read.table("Data/GBRTENW.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A5 <- read.table("Data/NOR.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A6 <- read.table("Data/FIN.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A7 <- read.table("Data/ITA.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A8 <- read.table("Data/GBRSCO.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A9 <- read.table("Data/NLD.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 
 Y1 <- 1845
 Y2 <- 2017
@@ -260,30 +260,30 @@ lines(Years2,entropyCAL6,type = "b",col = 6,lty=6,lwd=1.5)
 lines(Years2,entropyCAL7,type = "b",col = 7,lty=6,lwd=1.5)
 lines(Years2,entropyCAL8,type = "b",col = 8,lty=6,lwd=1.5)
 lines(Years2,entropyCAL9,type = "b",col = 9,lty=6,lwd=1.5)
-title("comparison of entropy of CAL across countries, total 1957-2017")
+title("comparison of entropy of CAL across countries, female 1957-2017")
 legend("topright",c("Sweden","Denmark","France","England and Wales",
                     "Norway","Finland","Italy","Scotland","Netherland"),
        col = c(1,2,3,4,5,6,7,8,9),lty = c(1,5,5,5,5,6,6,6,6),
        box.col = 0)
 
 
-### SWEDEN as the benchmark # ----
-
-diffDNK <- allH$DNK - allH$SWE
-diffFRA <- allH$FRA - allH$SWE
-diffGBR <- allH$GBR - allH$SWE
-diffNOR <- allH$NOR - allH$SWE
-
-### R graphics
-diffH <- cbind(diffDNK,diffFRA,diffGBR,diffNOR)
-diffH <- cbind(rep(allH$Years),diffH)
-Years <- allH$Years
-
-windows(8,5)
-plot(Years,seq(0,0.1,length.out = 13),col = 0,ylab="differences from Sweden level of entropy of CAL")
-lines(Years,diffDNK,col = 2,lty=2,lwd=1.5)
-lines(Years,diffFRA,col = 3,lty=3,lwd=1.5)
-lines(Years,diffGBR,col = 4,lty=4,lwd=1.5)
-lines(Years,diffNOR,col = 6,lty=6,lwd=1.5)
-legend("topright",c("Denmark","France","England and Wales","Norway"),col = c(2,3,4,6),lty = c(2,3,4,6))
-title("Entropy of CAL compared to Sweden level, female 1957-2017")
+# ### SWEDEN as the benchmark # ----
+# 
+# diffDNK <- allH$DNK - allH$SWE
+# diffFRA <- allH$FRA - allH$SWE
+# diffGBR <- allH$GBR - allH$SWE
+# diffNOR <- allH$NOR - allH$SWE
+# 
+# ### R graphics
+# diffH <- cbind(diffDNK,diffFRA,diffGBR,diffNOR)
+# diffH <- cbind(rep(allH$Years),diffH)
+# Years <- allH$Years
+# 
+# windows(8,5)
+# plot(Years,seq(0,0.1,length.out = 13),col = 0,ylab="differences from Sweden level of entropy of CAL")
+# lines(Years,diffDNK,col = 2,lty=2,lwd=1.5)
+# lines(Years,diffFRA,col = 3,lty=3,lwd=1.5)
+# lines(Years,diffGBR,col = 4,lty=4,lwd=1.5)
+# lines(Years,diffNOR,col = 6,lty=6,lwd=1.5)
+# legend("topright",c("Denmark","France","England and Wales","Norway"),col = c(2,3,4,6),lty = c(2,3,4,6))
+# title("Entropy of CAL compared to Sweden level, female 1957-2017")
