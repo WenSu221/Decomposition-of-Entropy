@@ -1,14 +1,7 @@
-#### Figure - entropy across time ####
+#### The comparision of different measures ####
 
-#### beautiful figues1 ####
 
-library(RColorBrewer)
-windows(8,5)
-display.brewer.all()
-cols<-brewer.pal(n=9,name = "Paired")
-
-### CAL function ####
-
+#### CAL functions ####
 CALfunc <-function(Mx1,Y){
   CALlx1<-c()
   YM<-Y-Y1
@@ -25,8 +18,6 @@ CALfunc <-function(Mx1,Y){
   CAL<-sum(c(1,CALlx1))+.5
   return(CAL)
 }
-
-## one with less data ####
 
 CALfunc2 <-function(Mx1,Y){
   CALlx1<-c()
@@ -65,8 +56,6 @@ CALdagfunc <-function(Mx1,Y){
   return(CALdagger)
 }
 
-## one with less data ####
-
 CALdagfunc2 <-function(Mx1,Y){
   CALdaglx1<-c()
   YM<-Y-Y3
@@ -84,7 +73,6 @@ CALdagfunc2 <-function(Mx1,Y){
   CALdagger<-sum(CALdaglx1)
   return(CALdagger)
 }
-
 
 ### Data fitting ####
 
@@ -247,43 +235,148 @@ entropyCAL7 <- CALdagger7/CAL7
 entropyCAL8 <- CALdagger8/CAL8
 entropyCAL9 <- CALdagger9/CAL9
 
-Years <- seq(1957,2017,5)
-Years2 <- seq(1992,2017,5)
-windows(10,8)
-plot(c(1957,2017),rev(c(0.12,0.35)),col = 0, xlab = "Years",ylab = "entropy of CAL (log scale)", log = "y")
-lines(Years,entropyCAL1,type = "b",col = 1,pch=16,lty=1,lwd=1.5)
-lines(Years,entropyCAL2,type = "b",col = 2,pch=2,lty=5,lwd=1.5)
-lines(Years,entropyCAL3,type = "b",col = 3,pch=3,lty=5,lwd=1.5)
-lines(Years,entropyCAL4,type = "b",col = 4,lty=5,lwd=1.5)
-lines(Years,entropyCAL5,type = "b",col = 5,pch=2,lty=5,lwd=1.5)
-lines(Years2,entropyCAL6,type = "b",col = 6,pch=3,lty=6,lwd=1.5)
-lines(Years2,entropyCAL7,type = "b",col = 7,lty=6,lwd=1.5)
-lines(Years2,entropyCAL8,type = "b",col = 8,lty=6,lwd=1.5)
-lines(Years2,entropyCAL9,type = "b",col = 9,lty=6,lwd=1.5)
-title("comparison of entropy of CAL across countries, male 1957-2017")
-legend("topright",c("Sweden","Denmark","France","England and Wales",
-                    "Norway","Finland","Italy","Scotland","Netherland"),
-       col = c(1,2,3,4,5,6,7,8,9),lty = c(1,5,5,5,5,6,6,6,6),
-       box.col = 0)
+
+#### e0 functions ####
+
+LSV <- function(dt,Y){
+  Ydt<-subset(dt, Year==Y)
+  age_length_equal <- all.equal(length(Ydt$age),length(Ydt$dx),length(Ydt$lx),length(Ydt$ex),length(Ydt$ax))
+  stopifnot(age_length_equal)
+  n <- c(diff(Ydt$age),1)
+  explusone <- c(Ydt$ex[-1],Ydt$ex[length(Ydt$age)])
+  ex_average <- Ydt$ex + Ydt$ax / n * (explusone - Ydt$ex)
+  A<-rev(cumsum(rev(Ydt$dx * ex_average))) / Ydt$lx
+  return(A[1])
+}
 
 
-# ### SWEDEN as the benchmark # ----
-# 
-# diffDNK <- allH$DNK - allH$SWE
-# diffFRA <- allH$FRA - allH$SWE
-# diffGBR <- allH$GBR - allH$SWE
-# diffNOR <- allH$NOR - allH$SWE
-# 
-# ### R graphics
-# diffH <- cbind(diffDNK,diffFRA,diffGBR,diffNOR)
-# diffH <- cbind(rep(allH$Years),diffH)
-# Years <- allH$Years
-# 
-# windows(8,5)
-# plot(Years,seq(0,0.1,length.out = 13),col = 0,ylab="differences from Sweden level of entropy of CAL")
-# lines(Years,diffDNK,col = 2,lty=2,lwd=1.5)
-# lines(Years,diffFRA,col = 3,lty=3,lwd=1.5)
-# lines(Years,diffGBR,col = 4,lty=4,lwd=1.5)
-# lines(Years,diffNOR,col = 6,lty=6,lwd=1.5)
-# legend("topright",c("Denmark","France","England and Wales","Norway"),col = c(2,3,4,6),lty = c(2,3,4,6))
-# title("Entropy of CAL compared to Sweden level, female 1957-2017")
+### e dagger function ####
+
+LE <- function(dt, Y1, Y2){
+  
+  for (i in Y1:Y2){
+    e<-subset(A1,Year==i)
+    ei<-e[1,10]
+    e0<-c(e0,ei)
+  }
+  return(e0)
+}
+
+e0<-c()
+
+### data fitting ####
+
+A1 <- read.table("Data/SWE.bltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A2 <- read.table("Data/DNK.bltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A3 <- read.table("Data/FRATNP.bltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A4 <- read.table("Data/GBRTENW.bltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A5 <- read.table("Data/NOR.bltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A6 <- read.table("Data/FIN.bltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A7 <- read.table("Data/ITA.bltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A8 <- read.table("Data/GBRSCO.bltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A9 <- read.table("Data/NLD.bltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+
+
+## e ####
+
+e01<-LE(A1,1846,2017)
+e02<-LE(A2,1846,2017)
+e03<-LE(A3,1846,2017)
+e04<-LE(A4,1846,2017)
+e05<-LE(A5,1846,2017)
+e06<-LE(A6,1881,2017)
+e07<-LE(A7,1881,2017)
+e08<-LE(A8,1881,2017)
+e09<-LE(A9,1881,2017)
+
+## e dagger # ----
+edagger1 <- c()
+for (i in seq(1846,2017,1)){
+  edagger1 <- c(edagger1, LSV(A1,i))
+}
+
+edagger2 <- c()
+for (i in seq(1846,2017,1)){
+  edagger2 <- c(edagger2, LSV(A2,i))
+}
+
+edagger3 <- c()
+for (i in seq(1846,2017,1)){
+  edagger3 <- c(edagger3, LSV(A3,i))
+}
+
+edagger4 <- c()
+for (i in seq(1846,2017,1)){
+  edagger4 <- c(edagger4, LSV(A4,i))
+}
+
+edagger5 <- c()
+for (i in seq(1846,2017,1)){
+  edagger5 <- c(edagger5, LSV(A5,i))
+}
+
+edagger6 <- c()
+for (i in seq(1881,2017,1)){
+  edagger6 <- c(edagger6, LSV(A6,i))
+}
+
+edagger7 <- c()
+for (i in seq(1881,2017,1)){
+  edagger7 <- c(edagger7, LSV(A7,i))
+}
+
+edagger8 <- c()
+for (i in seq(1881,2017,1)){
+  edagger8 <- c(edagger8, LSV(A8,i))
+}
+
+edagger9 <- c()
+for (i in seq(1881,2017,1)){
+  edagger9 <- c(edagger9, LSV(A9,i))
+}
+
+entropye01 <- edagger1/e01
+entropye02 <- edagger2/e02
+entropye03 <- edagger3/e03
+entropye04 <- edagger4/e04
+entropye05 <- edagger5/e05
+entropye06 <- edagger6/e06
+entropye07 <- edagger7/e07
+entropye08 <- edagger8/e08
+entropye09 <- edagger9/e09
+
+
+#### ec0 entropy ####
+
+
+
+### Plot ####
+
+windows(8,5)
+years1 <- c(1846:2017)
+years1.5 <- c(1881:2017)
+years2 <- c(seq(1957,2017,5))
+years3 <- c(seq(1992,2017,5))
+years4 <- c(1906:1927)
+plot(range(years1),c(0,1),xlab = "Years",ylab = "Entropy index", col=0)
+lines(years2,entropyCAL1,col="blue",lty = 1)
+lines(years2,entropyCAL2,col="blue",lty = 1)
+lines(years2,entropyCAL3,col="blue",lty = 1)
+lines(years2,entropyCAL4,col="blue",lty = 1)
+lines(years2,entropyCAL5,col="blue",lty = 1)
+lines(years3,entropyCAL6,col="blue",lty = 1)
+lines(years3,entropyCAL7,col="blue",lty = 1)
+lines(years3,entropyCAL8,col="blue",lty = 1)
+lines(years3,entropyCAL9,col="blue",lty = 1)
+lines(years1,entropye01,col="red", lty = 2)
+lines(years1,entropye02,col="red", lty = 2)
+lines(years1,entropye03,col="red", lty = 2)
+lines(years1,entropye04,col="red", lty = 2)
+lines(years1,entropye05,col="red", lty = 2)
+lines(years1.5,entropye06,col="red", lty = 2)
+lines(years1.5,entropye07,col="red", lty = 2)
+lines(years1.5,entropye08,col="red", lty = 2)
+lines(years1.5,entropye09,col="red", lty = 2)
+lines(years4,entropycSWE,col="black",lty = 4)
+title("Entropy Compariosn between three measures - France, total 1841-2017")
+legend("topright",c("entropy of CAL","entropy of period e0","cohort e0 entropy"),col = c("blue", "red", "black"),lty = c(1,2,4),box.lty = 0)
