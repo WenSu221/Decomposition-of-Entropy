@@ -355,10 +355,16 @@ source("Entropy calculation/entropy of ec0.R")
 
 #### average ####
 
-eavg <- rbind(entropye01[36:172],entropye02[36:172],entropye03[36:172],
+eavg1 <- rbind(entropye01[1:35],entropye02[1:35],entropye03[1:35],
+               entropye04[1:35],entropye05[1:35])
+eavg1 <- colMeans(eavg1[,1:35])
+
+eavg2 <- rbind(entropye01[36:172],entropye02[36:172],entropye03[36:172],
               entropye04[36:172],entropye05[36:172],
               entropye06,entropye07,entropye08,entropye09)
-eavg <- colMeans(eavg[,1:137])
+eavg2 <- colMeans(eavg2[,1:137])
+
+eavg <- c(eavg1,eavg2)
 
 cavg <- rbind(entropyc1,entropyc2,entropyc3,entropyc4,
               entropyc5,entropyc6,entropyc7,entropyc8,
@@ -366,52 +372,63 @@ cavg <- rbind(entropyc1,entropyc2,entropyc3,entropyc4,
 cavg[7,22] <- 0
 cavg <- colMeans(cavg[,1:22])
 
-CALavg <- rbind(entropyCAL1[8:13],entropyCAL2[8:13],entropyCAL3[8:13],
+CALavg1 <- rbind(entropyCAL1[1:7],entropyCAL2[1:7],entropyCAL3[1:7],
+                 entropyCAL4[1:7],entropyCAL5[1:7])
+CALavg1 <- colMeans(CALavg1[,1:7])
+
+CALavg2 <- rbind(entropyCAL1[8:13],entropyCAL2[8:13],entropyCAL3[8:13],
                 entropyCAL4[8:13],entropyCAL5[8:13],
                 entropyCAL6,entropyCAL7,entropyCAL8,entropyCAL9)
-CALavg <- colMeans(CALavg[,1:6])
+CALavg2 <- colMeans(CALavg2[,1:6])
+
+CALavg <- c(CALavg1,CALavg2)
 
 
 ### Plot ####
 
-windows(8,5)
+windows(12,8)
 years1 <- c(1846:2017)
+years1.25 <- c(1848:1880)
 years1.5 <- c(1881:2017)
 years2 <- c(seq(1957,2017,5))
 years3 <- c(seq(1992,2017,5))
 years4 <- c(1906:1927)
 plot(range(years1),c(0,1),xlab = "Years",ylab = "Entropy index", col=0)
-lines(years2,entropyCAL1,col=cols[8],lty = 1)
-lines(years2,entropyCAL2,col=cols[8],lty = 1)
-lines(years2,entropyCAL3,col=cols[8],lty = 1)
-lines(years2,entropyCAL4,col=cols[8],lty = 1)
-lines(years2,entropyCAL5,col=cols[8],lty = 1)
-lines(years3,entropyCAL6,col=cols[8],lty = 1)
-lines(years3,entropyCAL7,col=cols[8],lty = 1)
-lines(years3,entropyCAL8,col=cols[8],lty = 1)
-lines(years3,entropyCAL9,col=cols[8],lty = 1)
-lines(years3,CALavg,col="blue",lty = 1)
-lines(years1,entropye01,col=cols[9], lty = 2)
-lines(years1,entropye02,col=cols[9], lty = 2)
-lines(years1,entropye03,col=cols[9], lty = 2)
-lines(years1,entropye04,col=cols[9], lty = 2)
-lines(years1,entropye05,col=cols[9], lty = 2)
-lines(years1.5,entropye06,col=cols[9], lty = 2)
-lines(years1.5,entropye07,col=cols[9], lty = 2)
-lines(years1.5,entropye08,col=cols[9], lty = 2)
-lines(years1.5,entropye09,col=cols[9], lty = 2)
-lines(years1.5,eavg,col="red", lty = 2)
-lines(years4,entropyc1,col=cols[11],lty = 4)
-lines(years4,entropyc2,col=cols[11],lty = 4)
-lines(years4,entropyc3,col=cols[11],lty = 4)
-lines(years4,entropyc4,col=cols[11],lty = 4)
-lines(years4,entropyc5,col=cols[11],lty = 4)
-lines(years4,entropyc6,col=cols[11],lty = 4)
-lines(years4,entropyc7,col=cols[11],lty = 4)
-lines(years4,entropyc8,col=cols[11],lty = 4)
-lines(years4,entropyc9,col=cols[11],lty = 4)
-lines(years4,cavg,col="Black",lty = 4)
+lines(years2,entropyCAL1,col=cols[8],lty = 2)
+lines(years2,entropyCAL2,col=cols[8],lty = 2)
+lines(years2,entropyCAL3,col=cols[8],lty = 2)
+lines(years2,entropyCAL4,col=cols[8],lty = 2)
+lines(years2,entropyCAL5,col=cols[8],lty = 2)
+lines(years3,entropyCAL6,col=cols[8],lty = 2)
+lines(years3,entropyCAL7,col=cols[8],lty = 2)
+lines(years3,entropyCAL8,col=cols[8],lty = 2)
+lines(years3,entropyCAL9,col=cols[8],lty = 2)
+lines(years2,CALavg,col="red",lty = 1,lwd = 2)
+lines(years1,entropye01,col=cols[7], lty = 2)
+lines(years1,entropye02,col=cols[7], lty = 2)
+lines(years1,entropye03,col=cols[7], lty = 2)
+lines(years1,entropye04,col=cols[7], lty = 2)
+lines(years1,entropye05,col=cols[7], lty = 2)
+lines(years1.5,entropye06,col=cols[7], lty = 2)
+lines(years1.5,entropye07,col=cols[7], lty = 2)
+lines(years1.5,entropye08,col=cols[7], lty = 2)
+lines(years1.5,entropye09,col=cols[7], lty = 2)
+lines(years1,eavg,col="blue", lty = 1, lwd = 1.5)
+lines(years4,entropyc1,col=cols[5],lty = 2)
+lines(years4,entropyc2,col=cols[5],lty = 2)
+lines(years4,entropyc3,col=cols[5],lty = 2)
+lines(years4,entropyc4,col=cols[5],lty = 2)
+lines(years4,entropyc5,col=cols[5],lty = 2)
+lines(years4,entropyc6,col=cols[5],lty = 2)
+lines(years4,entropyc7,col=cols[5],lty = 2)
+lines(years4,entropyc8,col=cols[5],lty = 2)
+lines(years4,entropyc9,col=cols[5],lty = 2)
+lines(years4,cavg,col="purple",lty = 1, lwd = 2)
 title("Entropy Compariosn between three measures - total 1841-2017")
-legend("topright",c("entropy of CAL","entropy of period e0","cohort e0 entropy"),
-       col = c("blue", "red", cols[11]),lty = c(1,2,4),box.lty = 0)
+legend("topright"
+       ,c("average entropy of CAL","average entropy of period e0",
+          "average cohort e0 entropy","entropy of CAL",
+          "entropy of period e0","cohort e0 entropy"),
+       col = c("red", "blue","purple",cols[8],cols[7],cols[5]),
+       lty = c(1,1,1,2,2,2),box.lty = 0)
 

@@ -4,7 +4,7 @@
 
 library(RColorBrewer)
 windows(8,5)
-display.brewer.all()
+# display.brewer.all()
 cols<-brewer.pal(n=9,name = "Paired")
 
 ### CAL function ####
@@ -249,7 +249,7 @@ entropyCAL9 <- CALdagger9/CAL9
 
 Years <- seq(1957,2017,5)
 Years2 <- seq(1992,2017,5)
-windows(10,8)
+windows(12,8)
 plot(c(1957,2017),rev(c(0.12,0.35)),col = 0, xlab = "Years",ylab = "entropy of CAL (log scale)", log = "y")
 lines(Years,entropyCAL1,type = "b",col = 1,pch=16,lty=1,lwd=1.5)
 lines(Years,entropyCAL2,type = "b",col = 2,pch=2,lty=5,lwd=1.5)
