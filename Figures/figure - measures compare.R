@@ -348,7 +348,7 @@ entropye09 <- edagger9/e09
 
 #### ec0 entropy ####
 
-
+source("Entropy calculation/entropy of ec0.R")
 
 ### Plot ####
 
@@ -377,6 +377,15 @@ lines(years1.5,entropye06,col="red", lty = 2)
 lines(years1.5,entropye07,col="red", lty = 2)
 lines(years1.5,entropye08,col="red", lty = 2)
 lines(years1.5,entropye09,col="red", lty = 2)
-lines(years4,entropycSWE,col="black",lty = 4)
-title("Entropy Compariosn between three measures - France, total 1841-2017")
-legend("topright",c("entropy of CAL","entropy of period e0","cohort e0 entropy"),col = c("blue", "red", "black"),lty = c(1,2,4),box.lty = 0)
+lines(years4,entropyc1,col="black",lty = 4)
+lines(years4,entropyc2,col="black",lty = 4)
+lines(years4,entropyc3,col="black",lty = 4)
+lines(years4,entropyc4,col="black",lty = 4)
+lines(years4,entropyc5,col="black",lty = 4)
+lines(years4,entropyc6,col="black",lty = 4)
+lines(years4,entropyc7,col="black",lty = 4)
+lines(years4,entropyc8,col="black",lty = 4)
+lines(years4,entropyc9,col="black",lty = 4)
+title("Entropy Compariosn between three measures - total 1841-2017")
+legend("topright",c("entropy of CAL","entropy of period e0","cohort e0 entropy"),
+       col = c("blue", "red", "black"),lty = c(1,2,4),box.lty = 0)

@@ -4,20 +4,28 @@
 
 
 ### Data # ----
-A1 <- read.table("Data/SWE.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A2 <- read.table("Data/DNK.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A3 <- read.table("Data/FRA.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A4 <- read.table("Data/GBR.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A5 <- read.table("Data/ISL.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A1 <- read.table("Data/SWE.bltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A2 <- read.table("Data/DNK.bltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A3 <- read.table("Data/FRATNP.bltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A4 <- read.table("Data/GBRTENW.bltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A5 <- read.table("Data/NOR.bltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A6 <- read.table("Data/FIN.bltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A7 <- read.table("Data/ITA.bltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A8 <- read.table("Data/GBRSCO.bltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A9 <- read.table("Data/NLD.bltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 
 Y1 <- 1905
 Y2 <- 1927
 
-A5<-A5[(A5$Year>Y1)&(A5$Year<(Y2+1)),]
-A4<-A4[(A4$Year>Y1)&(A4$Year<(Y2+1)),]
-A3<-A3[(A3$Year>Y1)&(A3$Year<(Y2+1)),]
-A2<-A2[(A2$Year>Y1)&(A2$Year<(Y2+1)),]
 A1<-A1[(A1$Year>Y1)&(A1$Year<(Y2+1)),]
+A2<-A2[(A2$Year>Y1)&(A2$Year<(Y2+1)),]
+A3<-A3[(A3$Year>Y1)&(A3$Year<(Y2+1)),]
+A4<-A4[(A4$Year>Y1)&(A4$Year<(Y2+1)),]
+A5<-A5[(A5$Year>Y1)&(A5$Year<(Y2+1)),]
+A6<-A6[(A6$Year>Y1)&(A6$Year<(Y2+1)),]
+A7<-A7[(A7$Year>Y1)&(A7$Year<(Y2+1)),]
+A8<-A8[(A8$Year>Y1)&(A8$Year<(Y2+1)),]
+A9<-A9[(A9$Year>Y1)&(A9$Year<(Y2+1)),]
 
 ### e dagger # ----
 
@@ -49,62 +57,97 @@ LE <- function(dt, Y1, Y2){
 
 
 ### Data time! # ----
-ec0SWE<-LE(A1,1906,1927)
-ec0SWE <- as.numeric(ec0SWE)
-ec0DNK<-LE(A2,1906,1927)
-ec0DNK <- as.numeric(ec0DNK)
-ec0FRA<-LE(A3,1906,1927)
-ec0FRA <- as.numeric(ec0FRA)
-ec0GBR<-LE(A4,1906,1927)
-ec0GBR <- as.numeric(ec0GBR)
-ec0ISL<-LE(A5,1906,1927)
-ec0ISL <- as.numeric(ec0ISL)
+ec01<-LE(A1,1906,1927)
+ec01 <- as.numeric(ec01)
+ec02<-LE(A2,1906,1927)
+ec02 <- as.numeric(ec02)
+ec03<-LE(A3,1906,1927)
+ec03 <- as.numeric(ec03)
+ec04<-LE(A4,1906,1927)
+ec04 <- as.numeric(ec04)
+ec05<-LE(A5,1906,1927)
+ec05 <- as.numeric(ec05)
+ec06<-LE(A6,1906,1927)
+ec06 <- as.numeric(ec06)
+ec07<-LE(A7,1906,1927)
+ec07 <- as.numeric(ec07)
+ec08<-LE(A8,1906,1927)
+ec08 <- as.numeric(ec08)
+ec09<-LE(A9,1906,1927)
+ec09 <- as.numeric(ec09)
 
-# SWE
+
 A1 <- as.data.frame(sapply(A1, as.numeric))
 A1[is.na(A1)]<-0
-edSWE <- c()
+ed1 <- c()
 for (i in 1906:1927){
-  edSWE <- c(edSWE, LSV(A1,i))
+  ed1 <- c(ed1, LSV(A1,i))
 }
 
-#DNK
 A2 <- as.data.frame(sapply(A2, as.numeric))
 A2[is.na(A2)]<-0
-edDNK <- c()
+ed2 <- c()
 for (i in 1906:1927){
-  edDNK <- c(edDNK, LSV(A2,i))
+  ed2 <- c(ed2, LSV(A2,i))
 }
 
-#FRA
 A3 <- as.data.frame(sapply(A3, as.numeric))
 A3[is.na(A3)]<-0
-edFRA <- c()
+ed3 <- c()
 for (i in 1906:1927){
-  edFRA <- c(edFRA, LSV(A3,i))
+  ed3 <- c(ed3, LSV(A3,i))
 }
 
-#GBR
 A4 <- as.data.frame(sapply(A4, as.numeric))
 A4[is.na(A4)]<-0
-edGBR <- c()
+ed4 <- c()
 for (i in 1906:1927){
-  edGBR <- c(edGBR, LSV(A4,i))
+  ed4 <- c(ed4, LSV(A4,i))
 }
 
-#ISL
 A5 <- as.data.frame(sapply(A5, as.numeric))
 A5[is.na(A5)]<-0
-edISL <- c()
+ed5 <- c()
 for (i in 1906:1927){
-  edISL <- c(edISL, LSV(A5,i))
+  ed5 <- c(ed5, LSV(A5,i))
 }
 
+A6 <- as.data.frame(sapply(A6, as.numeric))
+A6[is.na(A6)]<-0
+ed6 <- c()
+for (i in 1906:1927){
+  ed6 <- c(ed6, LSV(A6,i))
+}
+
+A7 <- as.data.frame(sapply(A7, as.numeric))
+A7[is.na(A7)]<-0
+ed7 <- c()
+for (i in 1906:1927){
+  ed7 <- c(ed7, LSV(A7,i))
+}
+
+A8 <- as.data.frame(sapply(A8, as.numeric))
+A8[is.na(A8)]<-0
+ed8 <- c()
+for (i in 1906:1927){
+  ed8 <- c(ed8, LSV(A8,i))
+}
+
+A9 <- as.data.frame(sapply(A9, as.numeric))
+A9[is.na(A9)]<-0
+ed9 <- c()
+for (i in 1906:1927){
+  ed9 <- c(ed9, LSV(A9,i))
+}
 
 ### H # ----
 
-entropycSWE <- edSWE/ec0SWE
-entropycDNK <- edDNK/ec0DNK
-entropycFRA <- edFRA/ec0FRA
-entropycGBR <- edGBR/ec0GBR
-entropycISL <- edISL/ec0ISL
+entropyc1 <- ed1/ec01
+entropyc2 <- ed2/ec02
+entropyc3 <- ed3/ec03
+entropyc4 <- ed4/ec04
+entropyc5 <- ed5/ec05
+entropyc6 <- ed6/ec06
+entropyc7 <- ed7/ec07
+entropyc8 <- ed8/ec08
+entropyc9 <- ed9/ec09
