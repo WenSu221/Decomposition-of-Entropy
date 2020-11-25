@@ -1,7 +1,8 @@
 #### The comparision of different measures ####
 
 library(RColorBrewer)
-cols <- brewer.pal(n=13,name="Set3")
+cols <- brewer.pal(n=12,name="Set3")
+cols2 <- brewer.pal(n=4,name="Paired")
 
 #### CAL functions ####
 CALfunc <-function(Mx1,Y){
@@ -372,9 +373,9 @@ cavg <- rbind(entropyc1,entropyc2,entropyc3,entropyc4,
 cavg[7,22] <- 0
 cavg <- colMeans(cavg[,1:22])
 
-CALavg1 <- rbind(entropyCAL1[1:7],entropyCAL2[1:7],entropyCAL3[1:7],
-                 entropyCAL4[1:7],entropyCAL5[1:7])
-CALavg1 <- colMeans(CALavg1[,1:7])
+CALavg1 <- rbind(entropyCAL1[1:8],entropyCAL2[1:8],entropyCAL3[1:8],
+                 entropyCAL4[1:8],entropyCAL5[1:8])
+CALavg1 <- colMeans(CALavg1[,1:8])
 
 CALavg2 <- rbind(entropyCAL1[8:13],entropyCAL2[8:13],entropyCAL3[8:13],
                 entropyCAL4[8:13],entropyCAL5[8:13],
@@ -388,9 +389,9 @@ CALavg <- c(CALavg1,CALavg2)
 
 windows(12,8)
 years1 <- c(1846:2017)
-years1.25 <- c(1848:1880)
 years1.5 <- c(1881:2017)
 years2 <- c(seq(1957,2017,5))
+years2.5 <- c(seq(1957,1992,5))
 years3 <- c(seq(1992,2017,5))
 years4 <- c(1906:1927)
 plot(range(years1),c(0,1),xlab = "Years",ylab = "Entropy index", col=0)
@@ -403,7 +404,8 @@ lines(years3,entropyCAL6,col=cols[8],lty = 2)
 lines(years3,entropyCAL7,col=cols[8],lty = 2)
 lines(years3,entropyCAL8,col=cols[8],lty = 2)
 lines(years3,entropyCAL9,col=cols[8],lty = 2)
-lines(years2,CALavg,col="red",lty = 1,lwd = 2)
+lines(years3,CALavg2,col="red",lty = 1,lwd = 2)
+lines(years2.5,CALavg1,col="red",lty = 1, lwd = 2)
 lines(years1,entropye01,col=cols[7], lty = 2)
 lines(years1,entropye02,col=cols[7], lty = 2)
 lines(years1,entropye03,col=cols[7], lty = 2)
@@ -413,22 +415,22 @@ lines(years1.5,entropye06,col=cols[7], lty = 2)
 lines(years1.5,entropye07,col=cols[7], lty = 2)
 lines(years1.5,entropye08,col=cols[7], lty = 2)
 lines(years1.5,entropye09,col=cols[7], lty = 2)
-lines(years1,eavg,col="blue", lty = 1, lwd = 1.5)
-lines(years4,entropyc1,col=cols[5],lty = 2)
-lines(years4,entropyc2,col=cols[5],lty = 2)
-lines(years4,entropyc3,col=cols[5],lty = 2)
-lines(years4,entropyc4,col=cols[5],lty = 2)
-lines(years4,entropyc5,col=cols[5],lty = 2)
-lines(years4,entropyc6,col=cols[5],lty = 2)
-lines(years4,entropyc7,col=cols[5],lty = 2)
-lines(years4,entropyc8,col=cols[5],lty = 2)
-lines(years4,entropyc9,col=cols[5],lty = 2)
+lines(years1,eavg,col=cols2[4], lty = 1, lwd = 2)
+lines(years4,entropyc1,col=cols[10],lty = 2)
+lines(years4,entropyc2,col=cols[10],lty = 2)
+lines(years4,entropyc3,col=cols[10],lty = 2)
+lines(years4,entropyc4,col=cols[10],lty = 2)
+lines(years4,entropyc5,col=cols[10],lty = 2)
+lines(years4,entropyc6,col=cols[10],lty = 2)
+lines(years4,entropyc7,col=cols[10],lty = 2)
+lines(years4,entropyc8,col=cols[10],lty = 2)
+lines(years4,entropyc9,col=cols[10],lty = 2)
 lines(years4,cavg,col="purple",lty = 1, lwd = 2)
 title("Entropy Compariosn between three measures - total 1841-2017")
 legend("topright"
        ,c("average entropy of CAL","average entropy of period e0",
           "average cohort e0 entropy","entropy of CAL",
           "entropy of period e0","cohort e0 entropy"),
-       col = c("red", "blue","purple",cols[8],cols[7],cols[5]),
+       col = c("red", "green","purple",cols[8],cols[7],cols[10]),
        lty = c(1,1,1,2,2,2),box.lty = 0)
 
