@@ -91,7 +91,7 @@ A9 <- read.table("Data/NLD.bltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 
 Y1 <- 1845
 Y2 <- 2017
-Y3 <- 1880
+Y3 <- 1877
 
 A1<-A1[(A1$Year>Y1)&(A1$Year<(Y2+1)),]
 A2<-A2[(A2$Year>Y1)&(A2$Year<(Y2+1)),]
@@ -116,47 +116,47 @@ qx9<-matrix(1-A9$qx,111)
 ## CAL ####
 
 CAL1 <- c()
-for (i in seq(1957,2017,5)){
+for (i in seq(1957,2017,4)){
   CAL1 <- c(CAL1, CALfunc(qx1,i))
 }
 
 CAL2 <- c()
-for (i in seq(1957,2017,5)){
+for (i in seq(1957,2017,4)){
   CAL2 <- c(CAL2, CALfunc(qx2,i))
 }
 
 CAL3 <- c()
-for (i in seq(1957,2017,5)){
+for (i in seq(1957,2017,4)){
   CAL3 <- c(CAL3, CALfunc(qx3,i))
 }
 
 CAL4 <- c()
-for (i in seq(1957,2017,5)){
+for (i in seq(1957,2017,4)){
   CAL4 <- c(CAL4, CALfunc(qx4,i))
 }
 
 CAL5 <- c()
-for (i in seq(1957,2017,5)){
+for (i in seq(1957,2017,4)){
   CAL5 <- c(CAL5, CALfunc(qx5,i))
 }
 
 CAL6 <- c()
-for (i in seq(1992,2017,5)){
+for (i in seq(1989,2017,4)){
   CAL6 <- c(CAL6, CALfunc2(qx6,i))
 }
 
 CAL7 <- c()
-for (i in seq(1992,2017,5)){
+for (i in seq(1989,2017,4)){
   CAL7 <- c(CAL7, CALfunc2(qx7,i))
 }
 
 CAL8 <- c()
-for (i in seq(1992,2017,5)){
+for (i in seq(1989,2017,4)){
   CAL8 <- c(CAL8, CALfunc2(qx8,i))
 }
 
 CAL9 <- c()
-for (i in seq(1992,2017,5)){
+for (i in seq(1989,2017,4)){
   CAL9 <- c(CAL9, CALfunc2(qx9,i))
 }
 ## CAL dagger ####
@@ -172,47 +172,47 @@ qx8 <- ifelse(qx8==0,1,qx8)
 qx9 <- ifelse(qx9==0,1,qx9)
 
 CALdagger1 <- c()
-for (i in seq(1957,2017,5)){
+for (i in seq(1957,2017,4)){
   CALdagger1 <- c(CALdagger1, CALdagfunc(qx1,i))
 }
 
 CALdagger2 <- c()
-for (i in seq(1957,2017,5)){
+for (i in seq(1957,2017,4)){
   CALdagger2 <- c(CALdagger2, CALdagfunc(qx2,i))
 }
 
 CALdagger3 <- c()
-for (i in seq(1957,2017,5)){
+for (i in seq(1957,2017,4)){
   CALdagger3 <- c(CALdagger3, CALdagfunc(qx3,i))
 }
 
 CALdagger4 <- c()
-for (i in seq(1957,2017,5)){
+for (i in seq(1957,2017,4)){
   CALdagger4 <- c(CALdagger4, CALdagfunc(qx4,i))
 }
 
 CALdagger5 <- c()
-for (i in seq(1957,2017,5)){
+for (i in seq(1957,2017,4)){
   CALdagger5 <- c(CALdagger5, CALdagfunc(qx5,i))
 }
 
 CALdagger6 <- c()
-for (i in seq(1992,2017,5)){
+for (i in seq(1989,2017,4)){
   CALdagger6 <- c(CALdagger6, CALdagfunc2(qx6,i))
 }
 
 CALdagger7 <- c()
-for (i in seq(1992,2017,5)){
+for (i in seq(1989,2017,4)){
   CALdagger7 <- c(CALdagger7, CALdagfunc2(qx7,i))
 }
 
 CALdagger8 <- c()
-for (i in seq(1992,2017,5)){
+for (i in seq(1989,2017,4)){
   CALdagger8 <- c(CALdagger8, CALdagfunc2(qx8,i))
 }
 
 CALdagger9 <- c()
-for (i in seq(1992,2017,5)){
+for (i in seq(1989,2017,4)){
   CALdagger9 <- c(CALdagger9, CALdagfunc2(qx9,i))
 }
 
@@ -287,10 +287,10 @@ e02<-LE(A2,1846,2017)
 e03<-LE(A3,1846,2017)
 e04<-LE(A4,1846,2017)
 e05<-LE(A5,1846,2017)
-e06<-LE(A6,1881,2017)
-e07<-LE(A7,1881,2017)
-e08<-LE(A8,1881,2017)
-e09<-LE(A9,1881,2017)
+e06<-LE(A6,1878,2017)
+e07<-LE(A7,1878,2017)
+e08<-LE(A8,1878,2017)
+e09<-LE(A9,1878,2017)
 
 ## e dagger # ----
 edagger1 <- c()
@@ -319,22 +319,22 @@ for (i in seq(1846,2017,1)){
 }
 
 edagger6 <- c()
-for (i in seq(1881,2017,1)){
+for (i in seq(1878,2017,1)){
   edagger6 <- c(edagger6, LSV(A6,i))
 }
 
 edagger7 <- c()
-for (i in seq(1881,2017,1)){
+for (i in seq(1878,2017,1)){
   edagger7 <- c(edagger7, LSV(A7,i))
 }
 
 edagger8 <- c()
-for (i in seq(1881,2017,1)){
+for (i in seq(1878,2017,1)){
   edagger8 <- c(edagger8, LSV(A8,i))
 }
 
 edagger9 <- c()
-for (i in seq(1881,2017,1)){
+for (i in seq(1878,2017,1)){
   edagger9 <- c(edagger9, LSV(A9,i))
 }
 
@@ -356,31 +356,31 @@ source("Entropy calculation/entropy of ec0.R")
 
 #### average ####
 
-eavg1 <- rbind(entropye01[1:35],entropye02[1:35],entropye03[1:35],
-               entropye04[1:35],entropye05[1:35])
-eavg1 <- colMeans(eavg1[,1:35])
+eavg1 <- rbind(entropye01[1:32],entropye02[1:32],entropye03[1:32],
+               entropye04[1:32],entropye05[1:32])
+eavg1 <- colMeans(eavg1[,1:32])
 
-eavg2 <- rbind(entropye01[36:172],entropye02[36:172],entropye03[36:172],
-              entropye04[36:172],entropye05[36:172],
+eavg2 <- rbind(entropye01[33:172],entropye02[33:172],entropye03[33:172],
+              entropye04[33:172],entropye05[33:172],
               entropye06,entropye07,entropye08,entropye09)
-eavg2 <- colMeans(eavg2[,1:137])
+eavg2 <- colMeans(eavg2[,1:140])
 
 eavg <- c(eavg1,eavg2)
 
 cavg <- rbind(entropyc1,entropyc2,entropyc3,entropyc4,
               entropyc5,entropyc6,entropyc7,entropyc8,
               entropyc9)
-cavg[7,22] <- 0
-cavg <- colMeans(cavg[,1:22])
+
+cavg <- colMeans(na.exclude(cavg[,1:22]))
 
 CALavg1 <- rbind(entropyCAL1[1:8],entropyCAL2[1:8],entropyCAL3[1:8],
                  entropyCAL4[1:8],entropyCAL5[1:8])
 CALavg1 <- colMeans(CALavg1[,1:8])
 
-CALavg2 <- rbind(entropyCAL1[8:13],entropyCAL2[8:13],entropyCAL3[8:13],
-                entropyCAL4[8:13],entropyCAL5[8:13],
+CALavg2 <- rbind(entropyCAL1[9:16],entropyCAL2[9:16],entropyCAL3[9:16],
+                entropyCAL4[9:16],entropyCAL5[9:16],
                 entropyCAL6,entropyCAL7,entropyCAL8,entropyCAL9)
-CALavg2 <- colMeans(CALavg2[,1:6])
+CALavg2 <- colMeans(CALavg2[,1:8])
 
 CALavg <- c(CALavg1,CALavg2)
 
@@ -389,10 +389,10 @@ CALavg <- c(CALavg1,CALavg2)
 
 windows(12,8)
 years1 <- c(1846:2017)
-years1.5 <- c(1881:2017)
-years2 <- c(seq(1957,2017,5))
-years2.5 <- c(seq(1957,1992,5))
-years3 <- c(seq(1992,2017,5))
+years1.5 <- c(1878:2017)
+years2 <- c(seq(1957,2017,4))
+years2.5 <- c(seq(1957,1989,4))
+years3 <- c(seq(1989,2017,4))
 years4 <- c(1906:1927)
 plot(range(years1),c(0,1),xlab = "Years",ylab = "Entropy index", col=0)
 lines(years2,entropyCAL1,col=cols[8],lty = 2)
