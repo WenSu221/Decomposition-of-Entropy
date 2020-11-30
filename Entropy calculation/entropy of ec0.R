@@ -14,8 +14,8 @@ A7 <- read.table("Data/ITA.bltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 A8 <- read.table("Data/GBRSCO.bltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 A9 <- read.table("Data/NLD.bltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 
-Y1 <- 1905
-Y2 <- 1927
+Y1 <- 1877
+Y2 <- 1926
 
 A1<-A1[(A1$Year>Y1)&(A1$Year<(Y2+1)),]
 A2<-A2[(A2$Year>Y1)&(A2$Year<(Y2+1)),]
@@ -57,86 +57,86 @@ LE <- function(dt, Y1, Y2){
 
 
 ### Data time! # ----
-ec01<-LE(A1,1906,1927)
+ec01<-LE(A1,1878,1926)
 ec01 <- as.numeric(ec01)
-ec02<-LE(A2,1906,1927)
+ec02<-LE(A2,1878,1926)
 ec02 <- as.numeric(ec02)
-ec03<-LE(A3,1906,1927)
+ec03<-LE(A3,1878,1926)
 ec03 <- as.numeric(ec03)
-ec04<-LE(A4,1906,1927)
+ec04<-LE(A4,1878,1926)
 ec04 <- as.numeric(ec04)
-ec05<-LE(A5,1906,1927)
+ec05<-LE(A5,1878,1926)
 ec05 <- as.numeric(ec05)
-ec06<-LE(A6,1906,1927)
+ec06<-LE(A6,1878,1926)
 ec06 <- as.numeric(ec06)
-ec07<-LE(A7,1906,1927)
+ec07<-LE(A7,1878,1926)
 ec07 <- as.numeric(ec07)
-ec08<-LE(A8,1906,1927)
+ec08<-LE(A8,1878,1926)
 ec08 <- as.numeric(ec08)
-ec09<-LE(A9,1906,1927)
+ec09<-LE(A9,1878,1926)
 ec09 <- as.numeric(ec09)
 
 
 A1 <- as.data.frame(sapply(A1, as.numeric))
 A1[is.na(A1)]<-0
 ed1 <- c()
-for (i in 1906:1927){
+for (i in 1878:1926){
   ed1 <- c(ed1, LSV(A1,i))
 }
 
 A2 <- as.data.frame(sapply(A2, as.numeric))
 A2[is.na(A2)]<-0
 ed2 <- c()
-for (i in 1906:1927){
+for (i in 1878:1926){
   ed2 <- c(ed2, LSV(A2,i))
 }
 
 A3 <- as.data.frame(sapply(A3, as.numeric))
 A3[is.na(A3)]<-0
 ed3 <- c()
-for (i in 1906:1927){
+for (i in 1878:1926){
   ed3 <- c(ed3, LSV(A3,i))
 }
 
 A4 <- as.data.frame(sapply(A4, as.numeric))
 A4[is.na(A4)]<-0
 ed4 <- c()
-for (i in 1906:1927){
+for (i in 1878:1926){
   ed4 <- c(ed4, LSV(A4,i))
 }
 
 A5 <- as.data.frame(sapply(A5, as.numeric))
 A5[is.na(A5)]<-0
 ed5 <- c()
-for (i in 1906:1927){
+for (i in 1878:1926){
   ed5 <- c(ed5, LSV(A5,i))
 }
 
 A6 <- as.data.frame(sapply(A6, as.numeric))
 A6[is.na(A6)]<-0
 ed6 <- c()
-for (i in 1906:1927){
+for (i in 1878:1926){
   ed6 <- c(ed6, LSV(A6,i))
 }
 
 A7 <- as.data.frame(sapply(A7, as.numeric))
 A7[is.na(A7)]<-0
 ed7 <- c()
-for (i in 1906:1927){
+for (i in 1878:1926){
   ed7 <- c(ed7, LSV(A7,i))
 }
 
 A8 <- as.data.frame(sapply(A8, as.numeric))
 A8[is.na(A8)]<-0
 ed8 <- c()
-for (i in 1906:1927){
+for (i in 1878:1926){
   ed8 <- c(ed8, LSV(A8,i))
 }
 
 A9 <- as.data.frame(sapply(A9, as.numeric))
 A9[is.na(A9)]<-0
 ed9 <- c()
-for (i in 1906:1927){
+for (i in 1878:1926){
   ed9 <- c(ed9, LSV(A9,i))
 }
 

@@ -371,7 +371,7 @@ cavg <- rbind(entropyc1,entropyc2,entropyc3,entropyc4,
               entropyc5,entropyc6,entropyc7,entropyc8,
               entropyc9)
 
-cavg <- colMeans(na.exclude(cavg[,1:22]))
+cavg <- colMeans(cavg[,1:49])
 
 CALavg1 <- rbind(entropyCAL1[1:8],entropyCAL2[1:8],entropyCAL3[1:8],
                  entropyCAL4[1:8],entropyCAL5[1:8])
@@ -393,7 +393,7 @@ years1.5 <- c(1878:2017)
 years2 <- c(seq(1957,2017,4))
 years2.5 <- c(seq(1957,1989,4))
 years3 <- c(seq(1989,2017,4))
-years4 <- c(1906:1927)
+years4 <- c(1878:1926)
 plot(range(years1),c(0,1),xlab = "Years",ylab = "Entropy index", col=0)
 lines(years2,entropyCAL1,col=cols[8],lty = 2)
 lines(years2,entropyCAL2,col=cols[8],lty = 2)
@@ -433,4 +433,3 @@ legend("topright"
           "entropy of period e0","cohort e0 entropy"),
        col = c("red", "green","purple",cols[8],cols[7],cols[10]),
        lty = c(1,1,1,2,2,2),box.lty = 0)
-
