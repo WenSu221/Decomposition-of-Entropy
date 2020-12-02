@@ -56,14 +56,14 @@ colnames(decomp) <- c(seq(1991,2015,4))
 decomp1 <- decomp2 <- decomp
 decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
-myrange <- c(min(total),0)*1.5
+myrange <- c(min(total),0.0001)*1.5
 
 windows(11,9)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
              legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
-             main = "Decomposition of entropy of CAL between Denmark and average level,both 1992-2017",
+             main = "Decomposition of entropy of CAL between Denmark and average level,both 1991-2015",
              sub = "source: Author's calculation based on HMD data")
 
 b <- barplot(decomp2,col = coul,border = "white",add = T,
@@ -71,4 +71,4 @@ b <- barplot(decomp2,col = coul,border = "white",add = T,
 
 lines(b,total,lwd=1.5)
 points(b,total,pch=16)
-mtext("average entropy level", side = 2,adj = 0.35)
+mtext("average entropy level", side = 2,adj = 0.9)
