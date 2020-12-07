@@ -91,7 +91,7 @@ entropydiffavg_original <- entropydiff[1:7]*exp(1)^(2*entropydiffavg_relative)
 entropyavgavg_relative <- log(entropyavg[2:8]/entropyavg[1:7])/4
 entropyavgavg_original <- entropyavg[1:7]*exp(1)^(2*entropyavgavg_relative)
 
-
+#longevity and variation components
 cvariation_relative <- log(variation[2:8]/variation[1:7])/4
 cvariation_original <- variation[1:7]*exp(1)^(2*cvariation_relative)
 cvariation_derivative <- cvariation_relative*cvariation_original

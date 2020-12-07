@@ -1,4 +1,4 @@
-#### Netherland and Average ####
+#### Scotland and Average ####
 
 ### decomp ####
 
@@ -6,11 +6,11 @@ source("Figures/average of CAL 1989-2017.R")
 
 ## decomp ####
 
-entropyavg <- (entropyCAL9+CALentropyavg)/2
-entropydiff <- entropyCAL9-CALentropyavg
+entropyavg <- (entropyCAL8+CALentropyavg)/2
+entropydiff <- entropyCAL8-CALentropyavg
 
-dispersion <- log(CALdagger9/CALdaggeravg)
-measure <- log(CAL9/CALavg)
+dispersion <- log(CALdagger8/CALdaggeravg)
+measure <- log(CAL8/CALavg)
 
 ## validation ####
 right <- (dispersion - measure)*entropyavg
@@ -42,15 +42,15 @@ windows(11,9)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
-             legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
-             main = "Decomposition of entropy of CAL between Netherlands and average level,both 1989-2017",
+             legend.text = TRUE,args.legend = list(x="topright",bg="white",box.col=0),
+             main = "Decomposition of entropy of CAL between Scotland and average level,both 1989-2017",
              sub = "source: Author's calculation based on HMD data")
 
 b <- barplot(decomp2,col = coul,border = "white",add = T)
 
 lines(b,total,lwd=1.5)
 points(b,total,pch=16)
-mtext("average level", side = 2,adj = 1.0)
+mtext("average level", side = 2,adj = 0)
 
 ### decomp in changes ####
 
@@ -59,12 +59,12 @@ source("Figures/average of CAL 1989-2017.R")
 
 ## decomp of contributions ####
 
-entropydiff <- entropyCAL9-CALentropyavg
+entropydiff <- entropyCAL8-CALentropyavg
 
-entropyavg <- (entropyCAL9+CALentropyavg)/2
+entropyavg <- (entropyCAL8+CALentropyavg)/2
 
-dispersion <- log(CALdagger9/CALdaggeravg)
-measure <- log(CAL9/CALavg)
+dispersion <- log(CALdagger8/CALdaggeravg)
+measure <- log(CAL8/CALavg)
 
 variation <- dispersion*entropyavg
 longevity <- (measure*entropyavg)*-1
@@ -91,7 +91,7 @@ entropydiffavg_original <- entropydiff[1:7]*exp(1)^(2*entropydiffavg_relative)
 entropyavgavg_relative <- log(entropyavg[2:8]/entropyavg[1:7])/4
 entropyavgavg_original <- entropyavg[1:7]*exp(1)^(2*entropyavgavg_relative)
 
-
+#longevity and variation components
 cvariation_relative <- log(variation[2:8]/variation[1:7])/4
 cvariation_original <- variation[1:7]*exp(1)^(2*cvariation_relative)
 cvariation_derivative <- cvariation_relative*cvariation_original
@@ -124,14 +124,14 @@ colnames(decomp) <- c(seq(1991,2015,4))
 decomp1 <- decomp2 <- decomp
 decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
-myrange <- range(range(total),0)*1.2
+myrange <- range(range(total),0.00005)*1.2
 
 windows(11,9)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
-             legend.text = TRUE,args.legend = list(x="topright",bg="white",box.col=0),
-             main = "Decomposition of entropy of CAL between Netherlands and average level,both 1991-2015",
+             legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
+             main = "Decomposition of entropy of CAL between Scotland and average level,both 1991-2015",
              sub = "source: Author's calculation based on HMD data")
 
 b <- barplot(decomp2,col = coul,border = "white",add = T,
@@ -139,4 +139,4 @@ b <- barplot(decomp2,col = coul,border = "white",add = T,
 
 lines(b,total,lwd=1.5)
 points(b,total,pch=16)
-mtext("average level", side = 2,adj = 0)
+mtext("average level", side = 2,adj = 0.6)
