@@ -1,4 +1,4 @@
-#### Sweden and Average ####
+#### GBR and AVG ####
 
 ### decomp ####
 
@@ -6,11 +6,11 @@ source("Figures/average of CAL 1989-2017.R")
 
 ## decomp ####
 
-entropyavg <- (entropyCAL1+CALentropyavg)/2
-entropydiff <- entropyCAL1-CALentropyavg
+entropyavg <- (entropyCAL4+CALentropyavg)/2
+entropydiff <- entropyCAL4-CALentropyavg
 
-dispersion <- log(CALdagger1/CALdaggeravg)
-measure <- log(CAL1/CALavg)
+dispersion <- log(CALdagger4/CALdaggeravg)
+measure <- log(CAL4/CALavg)
 
 ## validation ####
 right <- (dispersion - measure)*entropyavg
@@ -59,12 +59,12 @@ source("Figures/average of CAL 1989-2017.R")
 
 ## decomp of contributions ####
 
-entropydiff <- entropyCAL1-CALentropyavg
+entropydiff <- entropyCAL4-CALentropyavg
 
-entropyavg <- (entropyCAL1+CALentropyavg)/2
+entropyavg <- (entropyCAL4+CALentropyavg)/2
 
-dispersion <- log(CALdagger1/CALdaggeravg)
-measure <- log(CAL1/CALavg)
+dispersion <- log(CALdagger4/CALdaggeravg)
+measure <- log(CAL4/CALavg)
 
 variation <- dispersion*entropyavg
 longevity <- (measure*entropyavg)*-1
