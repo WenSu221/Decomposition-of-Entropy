@@ -36,9 +36,9 @@ colnames(decomp) <- c(seq(1989,2017,4))
 decomp1 <- decomp2 <- decomp
 decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
-myrange <- range(range(total),0)*1.2
+myrange <- c(-0.025,0.035)
 
-windows(11,9)
+windows(12,9)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
@@ -50,7 +50,7 @@ b <- barplot(decomp2,col = coul,border = "white",add = T)
 
 lines(b,total,lwd=1.5)
 points(b,total,pch=16)
-mtext("average level", side = 2,adj = 0)
+mtext("average level", side = 2,adj = 0.4)
 
 ### decomp in changes ####
 
@@ -122,9 +122,9 @@ colnames(decomp) <- c(seq(1991,2015,4))
 decomp1 <- decomp2 <- decomp
 decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
-myrange <- range(range(total),0)*1.2
+myrange <- c(-0.0004,0.0002)
 
-windows(11,9)
+windows(12,9)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
@@ -137,4 +137,4 @@ b <- barplot(decomp2,col = coul,border = "white",add = T,
 
 lines(b,total,lwd=1.5)
 points(b,total,pch=16)
-mtext("average level", side = 2,adj = 0.6)
+mtext("average level", side = 2,adj = 0.7)
