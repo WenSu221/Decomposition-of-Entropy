@@ -1,4 +1,4 @@
-#### entropy comparison with same longevity####
+#### entropy as a standardized measure of inequality in mortality####
 
 library(dplyr)
 library(MortalityLaws)
