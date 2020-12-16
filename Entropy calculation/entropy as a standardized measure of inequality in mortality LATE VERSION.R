@@ -54,4 +54,4 @@ for (x in 1950:2017){
   table_final <- rbind(table_final,table_test)
 }
 
-table(table_final$names)
+output1 <- table(table_final$names)
