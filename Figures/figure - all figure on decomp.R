@@ -1130,7 +1130,7 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.0004,0.0002)
 
-windows(11,9)
+windows(12,9)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
@@ -1187,7 +1187,7 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.025,0.035)
 
-windows(11,9)
+windows(12,9)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
@@ -1275,7 +1275,7 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.0004,0.0002)
 
-windows(11,9)
+windows(12,9)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
