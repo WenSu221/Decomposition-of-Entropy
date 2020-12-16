@@ -3,7 +3,7 @@
 library(dplyr)
 
 ### get mortality data from HMD ####
-# by Pascariu
+# by M. Pascariu
 library(MortalityLaws)
 data <- ReadHMD("LT_m",NULL,"1x1","u6897805@anu.edu.au","jYHy!m!6i5Ae6!8")
 
@@ -45,11 +45,13 @@ for (x in 1950:2017){
   average <- cbind(ezero_mean,edagger_mean,entropy_mean,year)
     
   table <- cbind(ezero,edagger,entropy,time)
-  row.names(table) <- names
   table <- as.data.frame(table)
+  table <- cbind(names,table)
     
   table_test <- subset(table,table$edagger<average[,2])
   table_test <- subset(table_test,table_test$entropy>average[,3])
     
   table_final <- rbind(table_final,table_test)
 }
+
+table(table_final$names)
