@@ -55,3 +55,14 @@ for (x in 1950:2017){
 }
 
 output1 <- table(table_final$names)
+
+countries <- c("AUT","BEL","CZE","DEUTE","DEUTW","EST","FIN","FRATNP",
+               "HUN","LTU","LVA","NZL_MA","PRT","RUS","SVK","SVN")
+
+
+for (i in countries){
+  countrycode <- i
+  countryyears <- subset(table_final,names == countrycode)
+  countryyears <- countryyears$time
+  print(c(countrycode,countryyears))
+}

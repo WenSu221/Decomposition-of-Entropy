@@ -44,7 +44,7 @@ b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
              legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
-             main = "Decomposition of entropy of CAL between Sweden and average level,both 1989-2017",
+             main = "Sweden,female 1989-2017",
              sub = "source: Author's calculation based on HMD data")
 
 b <- barplot(decomp2,col = coul,border = "white",add = T)
@@ -133,7 +133,7 @@ b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
              legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
-             main = "Decomposition of entropy of CAL between Sweden and average level,both 1991-2015",
+             main = "Sweden,female 1991-2015",
              sub = "source: Author's calculation based on HMD data")
 
 b <- barplot(decomp2,col = coul,border = "white",add = T,
