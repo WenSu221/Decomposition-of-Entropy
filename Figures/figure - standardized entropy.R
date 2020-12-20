@@ -21,7 +21,8 @@ LSV <- function(Ydt){
 
 dta <- data[["data"]]
 
-table_final <- c()
+table_final1 <- c()
+table_final2 <- c()
 average_final <- c()
 
 for (x in 1950:2017){
@@ -50,35 +51,60 @@ for (x in 1950:2017){
   table <- as.data.frame(table)
   table <- cbind(names,table)
   
-  table_test <- subset(table,table$edagger<average[,2])
-  table_test <- subset(table_test,table_test$entropy>average[,3])
+  table_test1 <- subset(table,table$edagger<average[,2])
+  table_test1 <- subset(table_test1,table_test1$entropy>average[,3])
   
-  table_final <- rbind(table_final,table_test)
+  table_final1 <- rbind(table_final1,table_test1)
+  
+  table_test2 <- subset(table,table$edagger>average[,2])
+  table_test2 <- subset(table_test2,table_test2$entropy<average[,3])
+  
+  table_final2 <- rbind(table_final2,table_test2)
+  
   average_final <- rbind(average_final,average)
 }
 
+### The Outliers ####
+
+outliers1 <- subset(table_final1, table_final1$entropy > 0.215)
+outliers1 <- subset(outliers, time > 1960)
+
+outliers2 <- subset(table_final1, table_final1$edagger < 10.4)
+outliers2 <- subset(outliers2, time > 2000)
+
+### Plot ####
+
 myrange1 <- range(average_final[,3])
-myrange2 <- range(table_final$edagger)
-myyears1 <- c(1950,2017)
-myyears1_con <- c(1950:2017)
+myrange2 <- range(c(range(table_final1$edagger),
+                    range(table_final2$edagger)))
+myyears <- c(1950,2017)
+myyears_con <- c(1950:2017)
 
 windows(10,8)
 par(mfrow = c(1,2))
 
-plot(myyears1,myrange1,col=0,xlab = "year",ylab = "entropy")
+plot(myyears,myrange1,col=0,xlab = "year",ylab = "entropy")
 legend(1948,0.15, c("average level of entropy",
-                    "countries with lower lifespan variation"),
-       col=c("black","red"),pch=16,box.lty=0)
-points(myyears1_con,average_final[,3])
-points(table_final$time,table_final$entropy,col="red")
-points(1960,0.2384799,col = "blue",pch = 19)
+                    "countries with pseudo-lower lifespan variation ",
+                    "countries with pseudo-higher lifespan variation"),
+       col=c("black","red","blue"),pch=16,box.lty=0)
+lines(myyears_con,average_final[,3],lwd = 2)
+points(table_final1$time,table_final1$entropy,col="red")
+points(table_final2$time,table_final2$entropy,col="blue")
+points(outliers1$time,outliers1$entropy, pch = 15, cex = 1.5,
+       col = "purple")
+points(outliers2$time,outliers2$entropy, pch = 17, cex = 1.5,
+       col = "green")
 
-
-plot(myyears1,myrange2,col=0,xlab = "year",ylab = "lifespan variation")
-legend(1948,11,c("average level of entropy", 
-                 "country with higer entropy"),
-       col = c("black","red"),pch = 16,box.lty = 0)
-points(myyears1_con,average_final[,2])
-points(table_final$time,table_final$edagger,col = "red")
-points(1960,13.92245,col = "blue",pch = 19)
-
+plot(myyears,myrange2,col=0,xlab = "year",ylab = "lifespan variation")
+legend(1948,10.5,c("average level of entropy",
+                 "countries with pseudo-lower lifespan variation ",
+                 "countries with pseudo-higher lifespan variation"),
+       col = c("black","red","blue"),pch = 16,box.lty = 0)
+lines(myyears_con,average_final[,2],lwd = 2)
+points(table_final1$time,table_final1$edagger,col = "red")
+points(table_final2$time,table_final2$edagger,col = "blue")
+points(outliers1$time,outliers1$edagger, pch = 15, cex = 1.5,
+       col = "purple")
+points(outliers2$time,outliers2$edagger, pch = 17, cex = 1.5,
+       col = "green")
