@@ -84,10 +84,12 @@ windows(10,8)
 par(mfrow = c(1,2))
 
 plot(myyears,myrange1,col=0,xlab = "year",ylab = "entropy")
-legend(1948,0.15, c("average level of entropy",
-                    "countries with pseudo-lower lifespan variation ",
-                    "countries with pseudo-higher lifespan variation"),
-       col=c("black","red","blue"),pch=16,box.lty=0)
+legend(1948,0.158, c("average level of entropy",
+                    "countries with pseudo-lower inequality in mortality ",
+                    "countries with pseudo-higher inequality in mortality",
+                    "outliers in countries with pseudo-lower inequality in mortality",
+                    "outliers in countries with pseudo-higher inequality in mortality"),
+       col=c("black","red","blue","purple","green"),pch=16,box.lty=0)
 lines(myyears_con,average_final[,3],lwd = 2)
 points(table_final1$time,table_final1$entropy,col="red")
 points(table_final2$time,table_final2$entropy,col="blue")
@@ -97,10 +99,12 @@ points(outliers2$time,outliers2$entropy, pch = 17, cex = 1.5,
        col = "green")
 
 plot(myyears,myrange2,col=0,xlab = "year",ylab = "lifespan variation")
-legend(1948,10.5,c("average level of entropy",
-                 "countries with pseudo-lower lifespan variation ",
-                 "countries with pseudo-higher lifespan variation"),
-       col = c("black","red","blue"),pch = 16,box.lty = 0)
+legend(1948,10.8,c("average level of entropy",
+                 "countries with pseudo-lower inequality in mortality",
+                 "countries with pseudo-higher inequality in mortality",
+                 "outliers in countries with pseudo-lower inequality in mortality",
+                 "outliers in countries with pseudo-higher inequality in mortality"),
+       col = c("black","red","blue","purple","green"),pch = 16,box.lty = 0)
 lines(myyears_con,average_final[,2],lwd = 2)
 points(table_final1$time,table_final1$edagger,col = "red")
 points(table_final2$time,table_final2$edagger,col = "blue")
