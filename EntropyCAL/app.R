@@ -8,14 +8,20 @@
 #
 
 
-
+library(dplyr)
 library(shiny)
 
-# Define UI for application that draws a histogram
+# load data ####
+entropyCAL <- read.csv("Output/entropyCALtable.csv")
+entropye0 <- read.csv("Output/entropye0table.csv")
+entropyec0 <- read.csv("Output/entropyctable.csv")
+
+# Define UI ####
 ui <- fluidPage(
 
     # Application title
-    titlePanel("Old Faithful Geyser Data"),
+    titlePanel("Comparison between period and cohort life table entropy, 
+               and entropy in CAL perspective"),
 
     # Sidebar with a slider input for number of bins 
     sidebarLayout(
@@ -34,7 +40,7 @@ ui <- fluidPage(
     )
 )
 
-# Define server logic required to draw a histogram
+# Define server logic ####
 server <- function(input, output) {
 
     output$distPlot <- renderPlot({

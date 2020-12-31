@@ -116,27 +116,27 @@ qx9<-matrix(1-A9$qx,111)
 ## CAL ####
 
 CAL1 <- c()
-for (i in seq(1957,2017,4)){
+for (i in seq(1989,2017,4)){
   CAL1 <- c(CAL1, CALfunc(qx1,i))
 }
 
 CAL2 <- c()
-for (i in seq(1957,2017,4)){
+for (i in seq(1989,2017,4)){
   CAL2 <- c(CAL2, CALfunc(qx2,i))
 }
 
 CAL3 <- c()
-for (i in seq(1957,2017,4)){
+for (i in seq(1989,2017,4)){
   CAL3 <- c(CAL3, CALfunc(qx3,i))
 }
 
 CAL4 <- c()
-for (i in seq(1957,2017,4)){
+for (i in seq(1989,2017,4)){
   CAL4 <- c(CAL4, CALfunc(qx4,i))
 }
 
 CAL5 <- c()
-for (i in seq(1957,2017,4)){
+for (i in seq(1989,2017,4)){
   CAL5 <- c(CAL5, CALfunc(qx5,i))
 }
 
@@ -172,27 +172,27 @@ qx8 <- ifelse(qx8==0,1,qx8)
 qx9 <- ifelse(qx9==0,1,qx9)
 
 CALdagger1 <- c()
-for (i in seq(1957,2017,4)){
+for (i in seq(1989,2017,4)){
   CALdagger1 <- c(CALdagger1, CALdagfunc(qx1,i))
 }
 
 CALdagger2 <- c()
-for (i in seq(1957,2017,4)){
+for (i in seq(1989,2017,4)){
   CALdagger2 <- c(CALdagger2, CALdagfunc(qx2,i))
 }
 
 CALdagger3 <- c()
-for (i in seq(1957,2017,4)){
+for (i in seq(1989,2017,4)){
   CALdagger3 <- c(CALdagger3, CALdagfunc(qx3,i))
 }
 
 CALdagger4 <- c()
-for (i in seq(1957,2017,4)){
+for (i in seq(1989,2017,4)){
   CALdagger4 <- c(CALdagger4, CALdagfunc(qx4,i))
 }
 
 CALdagger5 <- c()
-for (i in seq(1957,2017,4)){
+for (i in seq(1989,2017,4)){
   CALdagger5 <- c(CALdagger5, CALdagfunc(qx5,i))
 }
 
@@ -238,6 +238,13 @@ entropyCAL7 <- CALdagger7/CAL7
 entropyCAL8 <- CALdagger8/CAL8
 entropyCAL9 <- CALdagger9/CAL9
 
+entropyCALtable <- cbind(entropyCAL1,entropyCAL2,entropyCAL3,entropyCAL4,
+                         entropyCAL5,entropyCAL6,entropyCAL7,entropyCAL8,
+                         entropyCAL9)
+colnames(entropyCALtable) <- c("SWE","DNK","FRATNP","GBRTENW","NOR",
+                                "FIN","ITA","GBRSCO","NLD")
+row.names(entropyCALtable) <- c(seq(1989,2017,4))
+write.csv(entropyCALtable,file = "Output/entropyCALtable.csv")
 
 #### e0 functions ####
 
@@ -282,11 +289,11 @@ A9 <- read.table("Data/NLD.bltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 
 ## e ####
 
-e01<-LE(A1,1846,2017)
-e02<-LE(A2,1846,2017)
-e03<-LE(A3,1846,2017)
-e04<-LE(A4,1846,2017)
-e05<-LE(A5,1846,2017)
+e01<-LE(A1,1878,2017)
+e02<-LE(A2,1878,2017)
+e03<-LE(A3,1878,2017)
+e04<-LE(A4,1878,2017)
+e05<-LE(A5,1878,2017)
 e06<-LE(A6,1878,2017)
 e07<-LE(A7,1878,2017)
 e08<-LE(A8,1878,2017)
@@ -294,27 +301,27 @@ e09<-LE(A9,1878,2017)
 
 ## e dagger # ----
 edagger1 <- c()
-for (i in seq(1846,2017,1)){
+for (i in seq(1878,2017,1)){
   edagger1 <- c(edagger1, LSV(A1,i))
 }
 
 edagger2 <- c()
-for (i in seq(1846,2017,1)){
+for (i in seq(1878,2017,1)){
   edagger2 <- c(edagger2, LSV(A2,i))
 }
 
 edagger3 <- c()
-for (i in seq(1846,2017,1)){
+for (i in seq(1878,2017,1)){
   edagger3 <- c(edagger3, LSV(A3,i))
 }
 
 edagger4 <- c()
-for (i in seq(1846,2017,1)){
+for (i in seq(1878,2017,1)){
   edagger4 <- c(edagger4, LSV(A4,i))
 }
 
 edagger5 <- c()
-for (i in seq(1846,2017,1)){
+for (i in seq(1878,2017,1)){
   edagger5 <- c(edagger5, LSV(A5,i))
 }
 
@@ -348,6 +355,13 @@ entropye07 <- edagger7/e07
 entropye08 <- edagger8/e08
 entropye09 <- edagger9/e09
 
+entropye0table <- cbind(entropye01,entropye02,entropye03,entropye04,
+                       entropye05,entropye06,entropye07,entropye08,
+                       entropye09)
+colnames(entropye0table) <- c("SWE","DNK","FRATNP","GBRTENW","NOR",
+                              "FIN","ITA","GBRSCO","NLD")
+row.names(entropye0table) <- c(1878:2017)
+write.csv(entropye0table, file = "Output/entropye0table.CSV")
 
 #### ec0 entropy ####
 

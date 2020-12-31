@@ -151,3 +151,11 @@ entropyc6 <- ed6/ec06
 entropyc7 <- ed7/ec07
 entropyc8 <- ed8/ec08
 entropyc9 <- ed9/ec09
+
+entropyctable <- cbind(entropyc1,entropyc2,entropyc3,
+                       entropyc4,entropyc5,entropyc6,
+                       entropyc7,entropyc8,entropyc9)
+colnames(entropyctable) <- c("SWE","DNK","FRATNP","GBRTENW","NOR",
+                              "FIN","ITA","GBRSCO","NLD")
+row.names(entropyctable) <- c(1878:1926)
+write.csv(entropyctable, file = "Output/entropyctable.CSV")

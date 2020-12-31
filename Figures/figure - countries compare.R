@@ -300,17 +300,27 @@ Years2 <- seq(1989,2017,4)
 
 plot(c(1992,2017),c(-0.025,0.04),col = 0,
      xlab = "Years",
-     ylab="differences from average level of entropy of CAL, 1992-2017")
-lines(Years2,diff1,col = 2,lty=1,lwd=1.5)
-lines(Years2,diff2,col = 3,lty=1,lwd=1.5)
-lines(Years2,diff3,col = 4,lty=1,lwd=1.5)
-lines(Years2,diff4,col = 5,lty=1,lwd=1.5)
-lines(Years2,diff5,col = 6,lty=1,lwd=1.5)
-lines(Years2,diff6,col = 7,lty=1,lwd=1.5)
-lines(Years2,diff7,col = 8,lty=1,lwd=1.5)
-lines(Years2,diff8,col = 9,lty=1,lwd=1.5)
-lines(Years2,diff9,col = 10,lty=1,lwd=1.5)
-lines(Years2,rep(0,times=8),col = 1, lty = 2, lwd = 1)
+     ylab="differences from average level of entropy of CAL,1992-2017")
+lines(Years2,diff1,type = "b",col = 2,lty=1,lwd=1.5,
+      cex = 1,pch = 20)
+lines(Years2,diff2,type = "b",col = 3,lty=1,lwd=1.5,
+      cex = 1,pch = 20)
+lines(Years2,diff3,type = "b",col = 4,lty=1,lwd=1.5,
+      cex = 1,pch = 20)
+lines(Years2,diff4,type = "b",col = 5,lty=1,lwd=1.5,
+      cex = 1,pch = 20)
+lines(Years2,diff5,type = "b",col = 6,lty=1,lwd=1.5,
+      cex = 1,pch = 20)
+lines(Years2,diff6,type = "b",col = 7,lty=1,lwd=1.5,
+      cex = 1,pch = 20)
+lines(Years2,diff7,type = "b",col = 8,lty=1,lwd=1.5,
+      cex = 1,pch = 20)
+lines(Years2,diff8,type = "b",col = 9,lty=1,lwd=1.5,
+      cex = 1,pch = 20)
+lines(Years2,diff9,type = "b",col = 10,lty=1,lwd=1.5,
+      cex = 1,pch = 20)
+lines(Years2,rep(0,times=8),col = 1, lty = 2, lwd = 1,
+      cex = 1,pch = 20)
 legend("topright",c("Sweden","Denmark","France",
                     "England and Wales","Norway",
                     "Finland","Italy","Scotland","Netherland"),
