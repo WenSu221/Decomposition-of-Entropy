@@ -12,46 +12,33 @@ library(dplyr)
 library(shiny)
 
 # load data ####
-entropyCAL <- read.csv("Output/entropyCALtable.csv")
-entropye0 <- read.csv("Output/entropye0table.csv")
-entropyec0 <- read.csv("Output/entropyctable.csv")
+entropyCAL <- read.csv("entropyCALtable.csv")
+entropye0 <- read.csv("entropye0table.csv")
+entropyec0 <- read.csv("entropyctable.csv")
 
 # Define UI ####
 ui <- fluidPage(
-
-    # Application title
     titlePanel("Comparison between period and cohort life table entropy, 
                and entropy in CAL perspective"),
-
-    # Sidebar with a slider input for number of bins 
     sidebarLayout(
         sidebarPanel(
-            sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 50,
-                        value = 30)
+            selectInput(inputId = "country",
+                label = "country in reference",
+                choices = c("SWE","DNK","FRATNP","GBRTENW","NOR",
+                            "FIN","ITA","GBRSCO","NLD")),
         ),
-
-        # Show a plot of the generated distribution
         mainPanel(
-           plotOutput("distPlot")
+            plotOutput("plot")
         )
     )
 )
 
-# Define server logic ####
-server <- function(input, output) {
-
-    output$distPlot <- renderPlot({
-        # generate bins based on input$bins from ui.R
-        x    <- faithful[, 2]
-        bins <- seq(min(x), max(x), length.out = input$bins + 1)
-
-        # draw the histogram with the specified number of bins
-        hist(x, breaks = bins, col = 'darkgray', border = 'white')
-    })
-}
+server <- function(input,output,session){
+    output$plot <- renderPlot(
+        plot(c(1878,2017),c(0,1),xlab = "Years",ylab = "Entropy index", col=0)
+        
+        )
+    }
 
 # Run the application 
 shinyApp(ui = ui, server = server)

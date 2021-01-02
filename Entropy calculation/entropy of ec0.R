@@ -4,15 +4,15 @@
 
 
 ### Data # ----
-A1 <- read.table("Data/SWE.bltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A2 <- read.table("Data/DNK.bltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A3 <- read.table("Data/FRATNP.bltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A4 <- read.table("Data/GBRTENW.bltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A5 <- read.table("Data/NOR.bltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A6 <- read.table("Data/FIN.bltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A7 <- read.table("Data/ITA.bltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A8 <- read.table("Data/GBRSCO.bltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A9 <- read.table("Data/NLD.bltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A1 <- read.table("Data/SWE.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A2 <- read.table("Data/DNK.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A3 <- read.table("Data/FRATNP.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A4 <- read.table("Data/GBRTENW.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A5 <- read.table("Data/NOR.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A6 <- read.table("Data/FIN.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A7 <- read.table("Data/ITA.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A8 <- read.table("Data/GBRSCO.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A9 <- read.table("Data/NLD.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 
 Y1 <- 1877
 Y2 <- 1926
