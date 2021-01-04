@@ -17,7 +17,7 @@ CALdaggernames <- list(CALdagger1,CALdagger2,CALdagger3,CALdagger4,CALdagger5,
                     CALdagger6,CALdagger7,CALdagger8,CALdagger9)
 
 windows(12,9,rescale = "fit")
-par(mfrow=c(3,6))
+par(mfrow=c(3,3))
 
 for(i in 1:9){
   entropyCAL <- unlist(entropynames[i])
@@ -50,9 +50,7 @@ for(i in 1:9){
   b <- barplot(decomp1,col = coul,border = "white",
                ylim = myrange,
                xlab="Year",ylab = "relative disparities",
-               legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
-               main = names[i],
-               sub = "source: Author's calculation based on HMD data")
+               main = names[i])
   
   b <- barplot(decomp2,col = coul,border = "white",add = T)
   

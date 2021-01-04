@@ -3,11 +3,11 @@
 
 ### Sweden ####
 
-### decomp ####
+### decomp ###
 
 rm(list=ls())
 source("Figures/average of CAL 1989-2017.R")
-## decomp ####
+## decomp ###
 
 entropyavg <- (entropyCAL1+CALentropyavg)/2
 entropydiff <- entropyCAL1-CALentropyavg
@@ -15,16 +15,16 @@ entropydiff <- entropyCAL1-CALentropyavg
 dispersion <- log(CALdagger1/CALdaggeravg)
 measure <- log(CAL1/CALavg)
 
-## validation ####
+## validation ###
 right <- (dispersion - measure)*entropyavg
 left <- entropydiff
 round(right-left, 5)
 
-## decomposition ####
+## decomposition ###
 variation <- dispersion*entropyavg
 longevity <- (measure*entropyavg)*-1
 
-## figures ####
+## figures ###
 
 library(RColorBrewer)
 coul <- brewer.pal(5,"Set1")
@@ -47,8 +47,7 @@ b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
              legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
-             main = "Sweden, male 1989-2017",
-             sub = "source: Author's calculation based on HMD data")
+             main = "Sweden, male 1989-2017")
 
 b <- barplot(decomp2,col = coul,border = "white",add = T)
 
@@ -56,7 +55,7 @@ lines(b,total,lwd=1.5)
 points(b,total,pch=16)
 mtext("average level", side = 2,adj = 0.4)
 
-### decomp in changes ####
+### decomp in changes ###
 
 rm(list = ls())
 source("Figures/average of CAL 1989-2017.R")
@@ -75,7 +74,7 @@ longevity <- (measure*entropyavg)*-1
 
 equation1 <- entropydiff - (variation-longevity)
 
-## decomp of changes in contributions ####
+## decomp of changes in contributions ###
 
 #change in entropy differences
 centropydiff_relative <- log(entropydiff[2:8]/entropydiff[1:7])/4
@@ -106,11 +105,11 @@ clongevity_derivative <- clongevity_original*clongevity_relative
 
 equation2 <- centropydiff_derivative - (centropyavg_derivative*entropydiffavg_original+entropyavgavg_original*(cvariation_derivative+clongevity_derivative))
 
-## validation ####
+## validation ###
 round(equation1,5)
 round(equation2,5)
 
-## figures ####
+## figures ###
 
 library(RColorBrewer)
 coul <- brewer.pal(5,"Set1")
@@ -136,8 +135,7 @@ b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
              legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
-             main = "Sweden, male 1991-2015",
-             sub = "source: Author's calculation based on HMD data")
+             main = "Sweden, male 1991-2015")
 
 b <- barplot(decomp2,col = coul,border = "white",add = T,
              ylim = myrange)
@@ -149,12 +147,12 @@ mtext("average level", side = 2,adj = 0.7)
 
 ### Denmark ####
 
-### decomp ####
+### decomp ###
 
 rm(list=ls())
 source("Figures/average of CAL 1989-2017.R")
 
-## decomp ####
+## decomp ###
 
 entropyavg <- (entropyCAL2+CALentropyavg)/2
 entropydiff <- entropyCAL2-CALentropyavg
@@ -162,16 +160,16 @@ entropydiff <- entropyCAL2-CALentropyavg
 dispersion <- log(CALdagger2/CALdaggeravg)
 measure <- log(CAL2/CALavg)
 
-## validation ####
+## validation ###
 right <- (dispersion - measure)*entropyavg
 left <- entropydiff
 round(right-left, 5)
 
-## decomposition ####
+## decomposition ###
 variation <- dispersion*entropyavg
 longevity <- measure*entropyavg*-1
 
-## figures ####
+## figures ###
 
 library(RColorBrewer)
 coul <- brewer.pal(5,"Set1")
@@ -194,8 +192,7 @@ b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
              legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
-             main = "Denmark, male 1989-2017",
-             sub = "source: Author's calculation based on HMD data")
+             main = "Denmark, male 1989-2017")
 
 b <- barplot(decomp2,col = coul,border = "white",add = T)
 
@@ -203,12 +200,12 @@ lines(b,total,lwd=1.5)
 points(b,total,pch=16)
 mtext("average level", side = 2,adj = 0.4)
 
-### decomp in changes ####
+### decomp in changes ###
 
 rm(list = ls())
 source("Figures/average of CAL 1989-2017.R")
 
-## decomp of contributions ####
+## decomp of contributions ###
 
 entropydiff <- entropyCAL2-CALentropyavg
 
@@ -222,7 +219,7 @@ longevity <- -(measure*entropyavg)
 
 equation1 <- entropydiff - (variation+longevity)
 
-## decomp of changes in contributions ####
+## decomp of changes in contributions ###
 
 centropydiff <- (entropydiff[2:8]-entropydiff[1:7])/4
 
@@ -236,12 +233,12 @@ clongevity <- (longevity[2:8]-longevity[1:7])/4
 equation2 <- centropydiff - (centropyavg*entropydiffavg+entropyavgavg*(cvariation+clongevity))
 
 
-## validation ####
+## validation ###
 round(equation1,5)
 round(equation2,5)
 
 
-## figures ####
+## figures ###
 
 library(RColorBrewer)
 coul <- brewer.pal(5,"Set1")
@@ -267,8 +264,7 @@ b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
              legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
-             main = "Denmark, male 1991-2015",
-             sub = "source: Author's calculation based on HMD data")
+             main = "Denmark, male 1991-2015")
 
 b <- barplot(decomp2,col = coul,border = "white",add = T,
              ylim = myrange)
@@ -280,12 +276,12 @@ mtext("average entropy level", side = 2,adj = 0.7)
 
 ### France ####
 
-### decomp ####
+### decomp ###
 
 rm(list=ls())
 source("Figures/average of CAL 1989-2017.R")
 
-## decomp ####
+## decomp ###
 
 entropyavg <- (entropyCAL3+CALentropyavg)/2
 entropydiff <- entropyCAL3-CALentropyavg
@@ -293,16 +289,16 @@ entropydiff <- entropyCAL3-CALentropyavg
 dispersion <- log(CALdagger3/CALdaggeravg)
 measure <- log(CAL3/CALavg)
 
-## validation ####
+## validation ###
 right <- (dispersion - measure)*entropyavg
 left <- entropydiff
 round(right-left, 5)
 
-## decomposition ####
+## decomposition ###
 variation <- dispersion*entropyavg
 longevity <- (measure*entropyavg)*-1
 
-## figures ####
+## figures ###
 
 library(RColorBrewer)
 coul <- brewer.pal(5,"Set1")
@@ -324,8 +320,7 @@ b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
              legend.text = TRUE,args.legend = list(x="topright",bg="white",box.col=0),
-             main = "France, male 1989-2017",
-             sub = "source: Author's calculation based on HMD data")
+             main = "France, male 1989-2017")
 
 b <- barplot(decomp2,col = coul,border = "white",add = T)
 
@@ -333,12 +328,12 @@ lines(b,total,lwd=1.5)
 points(b,total,pch=16)
 mtext("average level", side = 2,adj = 0.4)
 
-### decomp in changes ####
+### decomp in changes ###
 
 rm(list = ls())
 source("Figures/average of CAL 1989-2017.R")
 
-## decomp of contributions ####
+## decomp of contributions ###
 
 entropydiff <- entropyCAL3-CALentropyavg
 
@@ -352,7 +347,7 @@ longevity <- (measure*entropyavg)*-1
 
 equation1 <- entropydiff - (variation-longevity)
 
-## decomp of changes in contributions ####
+## decomp of changes in contributions ###
 
 #change in entropy differences
 centropydiff_relative <- log(entropydiff[2:8]/entropydiff[1:7])/4
@@ -381,11 +376,11 @@ clongevity_derivative <- clongevity <- (longevity[2:8]-longevity[1:7])/4
 
 equation2 <- centropydiff_derivative - (centropyavg_derivative*entropydiffavg_original+entropyavgavg_original*(cvariation_derivative+clongevity_derivative))
 
-## validation ####
+## validation ###
 round(equation1,5)
 round(equation2,5)
 
-## figures ####
+## figures ###
 
 library(RColorBrewer)
 coul <- brewer.pal(5,"Set1")
@@ -410,8 +405,7 @@ b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
              legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
-             main = "France, male 1991-2015",
-             sub = "source: Author's calculation based on HMD data")
+             main = "France, male 1991-2015")
 
 b <- barplot(decomp2,col = coul,border = "white",add = T,
              ylim = myrange)
@@ -423,12 +417,12 @@ mtext("average level", side = 2,adj = 0.7)
 
 ### Britain ####
 
-### decomp ####
+### decomp ###
 
 rm(list=ls())
 source("Figures/average of CAL 1989-2017.R")
 
-## decomp ####
+## decomp ###
 
 entropyavg <- (entropyCAL4+CALentropyavg)/2
 entropydiff <- entropyCAL4-CALentropyavg
@@ -436,17 +430,16 @@ entropydiff <- entropyCAL4-CALentropyavg
 dispersion <- log(CALdagger4/CALdaggeravg)
 measure <- log(CAL4/CALavg)
 
-## validation ####
+## validation ###
 right <- (dispersion - measure)*entropyavg
 left <- entropydiff
 round(right-left, 5)
 
-## decomposition ####
+## decomposition ###
 variation <- dispersion*entropyavg
 longevity <- (measure*entropyavg)*-1
 
-## figures ####
-
+## figures ###
 library(RColorBrewer)
 coul <- brewer.pal(5,"Set1")
 
@@ -467,8 +460,7 @@ b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
              legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
-             main = "England and Wales, male 1989-2017",
-             sub = "source: Author's calculation based on HMD data")
+             main = "England and Wales, male 1989-2017")
 
 b <- barplot(decomp2,col = coul,border = "white",add = T)
 
@@ -476,12 +468,12 @@ lines(b,total,lwd=1.5)
 points(b,total,pch=16)
 mtext("average level", side = 2,adj = 0.4)
 
-### decomp in changes ####
+### decomp in changes ###
 
 rm(list = ls())
 source("Figures/average of CAL 1989-2017.R")
 
-## decomp of contributions ####
+## decomp of contributions ###
 
 entropydiff <- entropyCAL4-CALentropyavg
 
@@ -495,7 +487,7 @@ longevity <- (measure*entropyavg)*-1
 
 equation1 <- entropydiff - (variation-longevity)
 
-## decomp of changes in contributions ####
+## decomp of changes in contributions ###
 
 #change in entropy differences
 centropydiff_relative <- log(entropydiff[2:8]/entropydiff[1:7])/4
@@ -526,12 +518,11 @@ clongevity_derivative <- clongevity_original*clongevity_relative
 
 equation2 <- centropydiff_derivative - (centropyavg_derivative*entropydiffavg_original+entropyavgavg_original*(cvariation_derivative+clongevity_derivative))
 
-## validation ####
+## validation ###
 round(equation1,5)
 round(equation2,5)
 
-## figures ####
-
+## figures ###
 library(RColorBrewer)
 coul <- brewer.pal(5,"Set1")
 
@@ -555,8 +546,7 @@ b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
              legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
-             main = "England and Wales, male 1991-2015",
-             sub = "source: Author's calculation based on HMD data")
+             main = "England and Wales, male 1991-2015")
 
 b <- barplot(decomp2,col = coul,border = "white",add = T,
              ylim = myrange)
@@ -568,12 +558,12 @@ mtext("average level", side = 2,adj = 0.7)
 
 ### Norway ####
 
-### decomp ####
+### decomp ###
 
 rm(list=ls())
 source("Figures/average of CAL 1989-2017.R")
 
-## decomp ####
+## decomp ###
 
 entropyavg <- (entropyCAL5+CALentropyavg)/2
 entropydiff <- entropyCAL5-CALentropyavg
@@ -581,17 +571,16 @@ entropydiff <- entropyCAL5-CALentropyavg
 dispersion <- log(CALdagger5/CALdaggeravg)
 measure <- log(CAL5/CALavg)
 
-## validation ####
+## validation ###
 right <- (dispersion - measure)*entropyavg
 left <- entropydiff
 round(right-left, 5)
 
-## decomposition ####
+## decomposition ###
 variation <- dispersion*entropyavg
 longevity <- (measure*entropyavg)*-1
 
-## figures ####
-
+## figures ###
 library(RColorBrewer)
 coul <- brewer.pal(5,"Set1")
 
@@ -612,8 +601,7 @@ b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
              legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
-             main = "Norway, male 1989-2017",
-             sub = "source: Author's calculation based on HMD data")
+             main = "Norway, male 1989-2017")
 
 b <- barplot(decomp2,col = coul,border = "white",add = T)
 
@@ -621,8 +609,7 @@ lines(b,total,lwd=1.5)
 points(b,total,pch=16)
 mtext("average level", side = 2,adj = 0.4)
 
-### decomp in changes ####
-
+### decomp in changes ###
 rm(list = ls())
 source("Figures/average of CAL 1989-2017.R")
 
@@ -640,7 +627,7 @@ longevity <- (measure*entropyavg)*-1
 
 equation1 <- entropydiff - (variation-longevity)
 
-## decomp of changes in contributions ####
+## decomp of changes in contributions ###
 
 #change in entropy differences
 centropydiff_relative <- log(entropydiff[2:8]/entropydiff[1:7])/4
@@ -671,11 +658,11 @@ clongevity_derivative <- clongevity_original*clongevity_relative
 
 equation2 <- centropydiff_derivative - (centropyavg_derivative*entropydiffavg_original+entropyavgavg_original*(cvariation_derivative+clongevity_derivative))
 
-## validation ####
+## validation ###
 round(equation1,5)
 round(equation2,5)
 
-## figures ####
+## figures ###
 
 library(RColorBrewer)
 coul <- brewer.pal(5,"Set1")
@@ -700,8 +687,7 @@ b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
              legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
-             main = "Norway, male 1991-2015",
-             sub = "source: Author's calculation based on HMD data")
+             main = "Norway, male 1991-2015")
 
 b <- barplot(decomp2,col = coul,border = "white",add = T,
              ylim = myrange)
@@ -713,12 +699,12 @@ mtext("average level", side = 2,adj = 0.7)
 
 ### Finland ####
 
-### decomp ####
+### decomp ###
 
 rm(list=ls())
 source("Figures/average of CAL 1989-2017.R")
 
-## decomp ####
+## decomp ###
 
 entropyavg <- (entropyCAL6+CALentropyavg)/2
 entropydiff <- entropyCAL6-CALentropyavg
@@ -726,16 +712,16 @@ entropydiff <- entropyCAL6-CALentropyavg
 dispersion <- log(CALdagger6/CALdaggeravg)
 measure <- log(CAL6/CALavg)
 
-## validation ####
+## validation ###
 right <- (dispersion - measure)*entropyavg
 left <- entropydiff
 round(right-left, 5)
 
-## decomposition ####
+## decomposition ###
 variation <- dispersion*entropyavg
 longevity <- (measure*entropyavg)*-1
 
-## figures ####
+## figures ###
 
 library(RColorBrewer)
 coul <- brewer.pal(5,"Set1")
@@ -757,8 +743,7 @@ b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
              legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
-             main = "Finland, male 1989-2017",
-             sub = "source: Author's calculation based on HMD data")
+             main = "Finland, male 1989-2017")
 
 b <- barplot(decomp2,col = coul,border = "white",add = T)
 
@@ -766,12 +751,12 @@ lines(b,total,lwd=1.5)
 points(b,total,pch=16)
 mtext("average level", side = 2,adj = 0.4)
 
-### decomp in changes ####
+### decomp in changes ###
 
 rm(list = ls())
 source("Figures/average of CAL 1989-2017.R")
 
-## decomp of contributions ####
+## decomp of contributions ###
 
 entropydiff <- entropyCAL6-CALentropyavg
 
@@ -785,7 +770,7 @@ longevity <- (measure*entropyavg)*-1
 
 equation1 <- entropydiff - (variation-longevity)
 
-## decomp of changes in contributions ####
+## decomp of changes in contributions ###
 
 #change in entropy differences
 centropydiff_relative <- log(entropydiff[2:8]/entropydiff[1:7])/4
@@ -816,11 +801,11 @@ clongevity_derivative <- clongevity_original*clongevity_relative
 
 equation2 <- centropydiff_derivative - (centropyavg_derivative*entropydiffavg_original+entropyavgavg_original*(cvariation_derivative+clongevity_derivative))
 
-## validation ####
+## validation ###
 round(equation1,5)
 round(equation2,5)
 
-## figures ####
+## figures ###
 
 library(RColorBrewer)
 coul <- brewer.pal(5,"Set1")
@@ -845,8 +830,7 @@ b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
              legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
-             main = "Finland, male 1991-2015",
-             sub = "source: Author's calculation based on HMD data")
+             main = "Finland, male 1991-2015")
 
 b <- barplot(decomp2,col = coul,border = "white",add = T,
              ylim = myrange)
@@ -858,30 +842,27 @@ mtext("average level", side = 2,adj = 0.7)
 
 ### Italy ####
 
-### decomp ####
-
+### decomp ###
 rm(list=ls())
 source("Figures/average of CAL 1989-2017.R")
 
-## decomp ####
-
+## decomp ###
 entropyavg <- (entropyCAL7+CALentropyavg)/2
 entropydiff <- entropyCAL7-CALentropyavg
 
 dispersion <- log(CALdagger7/CALdaggeravg)
 measure <- log(CAL7/CALavg)
 
-## validation ####
+## validation ###
 right <- (dispersion - measure)*entropyavg
 left <- entropydiff
 round(right-left, 5)
 
-## decomposition ####
+## decomposition ###
 variation <- dispersion*entropyavg
 longevity <- (measure*entropyavg)*-1
 
-## figures ####
-
+## figures ###
 library(RColorBrewer)
 coul <- brewer.pal(5,"Set1")
 
@@ -902,8 +883,7 @@ b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
              legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
-             main = "Italy, male 1989-2017",
-             sub = "source: Author's calculation based on HMD data")
+             main = "Italy, male 1989-2017")
 
 b <- barplot(decomp2,col = coul,border = "white",add = T)
 
@@ -911,12 +891,12 @@ lines(b,total,lwd=1.5)
 points(b,total,pch=16)
 mtext("average level", side = 2,adj = 0.4)
 
-### decomp in changes ####
+### decomp in changes ###
 
 rm(list = ls())
 source("Figures/average of CAL 1989-2017.R")
 
-## decomp of contributions ####
+## decomp of contributions ###
 
 entropydiff <- entropyCAL7-CALentropyavg
 
@@ -930,7 +910,7 @@ longevity <- (measure*entropyavg)*-1
 
 equation1 <- entropydiff - (variation-longevity)
 
-## decomp of changes in contributions ####
+## decomp of changes in contributions ###
 
 #change in entropy differences
 centropydiff_relative <- log(entropydiff[2:8]/entropydiff[1:7])/4
@@ -961,11 +941,11 @@ clongevity_derivative <- clongevity_original*clongevity_relative
 
 equation2 <- centropydiff_derivative - (centropyavg_derivative*entropydiffavg_original+entropyavgavg_original*(cvariation_derivative+clongevity_derivative))
 
-## validation ####
+## validation ###
 round(equation1,5)
 round(equation2,5)
 
-## figures ####
+## figures ###
 
 library(RColorBrewer)
 coul <- brewer.pal(5,"Set1")
@@ -990,8 +970,7 @@ b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
              legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
-             main = "Italy, male 1991-2015",
-             sub = "source: Author's calculation based on HMD data")
+             main = "Italy, male 1991-2015")
 
 b <- barplot(decomp2,col = coul,border = "white",add = T,
              ylim = myrange)
@@ -1003,30 +982,28 @@ mtext("average level", side = 2,adj = 0.7)
 
 ### Scotland ####
 
-### decomp ####
+### decomp ###
 
 rm(list = ls())
 source("Figures/average of CAL 1989-2017.R")
 
-## decomp ####
-
+## decomp ###
 entropyavg <- (entropyCAL8+CALentropyavg)/2
 entropydiff <- entropyCAL8-CALentropyavg
 
 dispersion <- log(CALdagger8/CALdaggeravg)
 measure <- log(CAL8/CALavg)
 
-## validation ####
+## validation ###
 right <- (dispersion - measure)*entropyavg
 left <- entropydiff
 round(right-left, 5)
 
-## decomposition ####
+## decomposition ###
 variation <- dispersion*entropyavg
 longevity <- (measure*entropyavg)*-1
 
-## figures ####
-
+## figures ###
 library(RColorBrewer)
 coul <- brewer.pal(5,"Set1")
 
@@ -1047,8 +1024,7 @@ b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
              legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
-             main = "Scotland, male 1989-2017",
-             sub = "source: Author's calculation based on HMD data")
+             main = "Scotland, male 1989-2017")
 
 b <- barplot(decomp2,col = coul,border = "white",add = T)
 
@@ -1056,13 +1032,11 @@ lines(b,total,lwd=1.5)
 points(b,total,pch=16)
 mtext("average level", side = 2,adj = 0.4)
 
-### decomp in changes ####
-
+### decomp in changes ###
 rm(list = ls())
 source("Figures/average of CAL 1989-2017.R")
 
-## decomp of contributions ####
-
+## decomp of contributions ###
 entropydiff <- entropyCAL8-CALentropyavg
 
 entropyavg <- (entropyCAL8+CALentropyavg)/2
@@ -1075,7 +1049,7 @@ longevity <- (measure*entropyavg)*-1
 
 equation1 <- entropydiff - (variation-longevity)
 
-## decomp of changes in contributions ####
+## decomp of changes in contributions ###
 
 #change in entropy differences
 centropydiff_relative <- log(entropydiff[2:8]/entropydiff[1:7])/4
@@ -1106,12 +1080,11 @@ clongevity_derivative <- clongevity_original*clongevity_relative
 
 equation2 <- centropydiff_derivative - (centropyavg_derivative*entropydiffavg_original+entropyavgavg_original*(cvariation_derivative+clongevity_derivative))
 
-## validation ####
+## validation ###
 round(equation1,5)
 round(equation2,5)
 
-## figures ####
-
+## figures ###
 library(RColorBrewer)
 coul <- brewer.pal(5,"Set1")
 
@@ -1135,8 +1108,7 @@ b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
              legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
-             main = "Scotland, male 1991-2015",
-             sub = "source: Author's calculation based on HMD data")
+             main = "Scotland, male 1991-2015")
 
 b <- barplot(decomp2,col = coul,border = "white",add = T,
              ylim = myrange)
@@ -1148,30 +1120,27 @@ mtext("average level", side = 2,adj = 0.7)
 
 ### Netherlands ####
 
-### decomp ####
-
+### decomp ###
 rm(list = ls())
 source("Figures/average of CAL 1989-2017.R")
 
-## decomp ####
-
+## decomp ###
 entropyavg <- (entropyCAL9+CALentropyavg)/2
 entropydiff <- entropyCAL9-CALentropyavg
 
 dispersion <- log(CALdagger9/CALdaggeravg)
 measure <- log(CAL9/CALavg)
 
-## validation ####
+## validation ###
 right <- (dispersion - measure)*entropyavg
 left <- entropydiff
 round(right-left, 5)
 
-## decomposition ####
+## decomposition ###
 variation <- dispersion*entropyavg
 longevity <- (measure*entropyavg)*-1
 
-## figures ####
-
+## figures ###
 library(RColorBrewer)
 coul <- brewer.pal(5,"Set1")
 
@@ -1192,8 +1161,7 @@ b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
              legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
-             main = "Netherlands, male 1989-2017",
-             sub = "source: Author's calculation based on HMD data")
+             main = "Netherlands, male 1989-2017")
 
 b <- barplot(decomp2,col = coul,border = "white",add = T)
 
@@ -1201,12 +1169,11 @@ lines(b,total,lwd=1.5)
 points(b,total,pch=16)
 mtext("average level", side = 2,adj = 0.4)
 
-### decomp in changes ####
-
+### decomp in changes ###
 rm(list = ls())
 source("Figures/average of CAL 1989-2017.R")
 
-## decomp of contributions ####
+## decomp of contributions ###
 
 entropydiff <- entropyCAL9-CALentropyavg
 
@@ -1220,7 +1187,7 @@ longevity <- (measure*entropyavg)*-1
 
 equation1 <- entropydiff - (variation-longevity)
 
-## decomp of changes in contributions ####
+## decomp of changes in contributions ###
 
 #change in entropy differences
 centropydiff_relative <- log(entropydiff[2:8]/entropydiff[1:7])/4
@@ -1251,12 +1218,11 @@ clongevity_derivative <- clongevity_original*clongevity_relative
 
 equation2 <- centropydiff_derivative - (centropyavg_derivative*entropydiffavg_original+entropyavgavg_original*(cvariation_derivative+clongevity_derivative))
 
-## validation ####
+## validation ###
 round(equation1,5)
 round(equation2,5)
 
-## figures ####
-
+## figures ###
 library(RColorBrewer)
 coul <- brewer.pal(5,"Set1")
 
@@ -1280,8 +1246,7 @@ b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
              legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
-             main = "Netherlands, male 1991-2015",
-             sub = "source: Author's calculation based on HMD data")
+             main = "Netherlands, male 1991-2015")
 
 b <- barplot(decomp2,col = coul,border = "white",add = T,
              ylim = myrange)
