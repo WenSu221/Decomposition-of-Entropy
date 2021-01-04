@@ -9,12 +9,12 @@
 
 
 library(dplyr)
+library(ggplot2)
 library(shiny)
 
 # load data ####
-entropyCAL <- read.csv("entropyCALtable.csv")
-entropye0 <- read.csv("entropye0table.csv")
-entropyec0 <- read.csv("entropyctable.csv")
+
+data <- read.csv("entropy_table.csv")
 
 # Define UI ####
 ui <- fluidPage(
@@ -22,23 +22,32 @@ ui <- fluidPage(
                and entropy in CAL perspective"),
     sidebarLayout(
         sidebarPanel(
-            selectInput(inputId = "country",
-                label = "country in reference",
-                choices = c("SWE","DNK","FRATNP","GBRTENW","NOR",
-                            "FIN","ITA","GBRSCO","NLD")),
+            selectInput(inputId = "population",
+                label = "population in reference",
+                choices = unique(data$country)),
         ),
         mainPanel(
-            plotOutput("plot")
-        )
+            plotOutput(outputId = "plot",height = "400px",
+                       width = "500px")
+            )
     )
 )
 
-server <- function(input,output,session){
-    output$plot <- renderPlot(
-        plot(c(1878,2017),c(0,1),xlab = "Years",ylab = "Entropy index", col=0)
+server <- function(input,output){
+    
+    annotate_data <- reactive({
+        filter(data,country == input$population)
+    })
+    
+    output$plot <- renderPlot({
+        ggplot(data = annotate_data(),
+               mapping = aes(year,entropy,color = measure))+
+            geom_line()+
+            coord_cartesian(ylim = c(0,1))
         
-        )
-    }
+    }, res = 100)
+
+}
 
 # Run the application 
 shinyApp(ui = ui, server = server)
