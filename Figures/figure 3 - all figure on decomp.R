@@ -1,12 +1,11 @@
-#### ALL FIGURES ####
+#### ALL FIGURES for male ####
 
+windows(12,8)
+
+source("Figures/figure 3 - average of CAL 1989-2017.R")
 
 ### Sweden ####
 
-### decomp ###
-
-rm(list=ls())
-source("Figures/average of CAL 1989-2017.R")
 ## decomp ###
 
 entropyavg <- (entropyCAL1+CALentropyavg)/2
@@ -41,26 +40,20 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 # myrange <- range(range(total),0)*1.2
 myrange <- c(-0.025,0.035)
-
-windows(12,9)
+png("Output/SWE_change_male.png", units = "in",width = 10,height = 8,res = 300)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
-             legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
              main = "Sweden, male 1989-2017")
-
 b <- barplot(decomp2,col = coul,border = "white",add = T)
-
-lines(b,total,lwd=1.5)
-points(b,total,pch=16)
+lines(b,total,lwd=2)
+points(b,total,cex = 1.2,pch=16)
 mtext("average level", side = 2,adj = 0.4)
+dev.off()
 
 ### decomp in changes ###
 
-rm(list = ls())
-source("Figures/average of CAL 1989-2017.R")
-
-## decomp of contributions ####
+## decomp of contributions ###
 
 entropydiff <- entropyCAL1-CALentropyavg
 
@@ -130,27 +123,20 @@ decomp2[decomp2<0] <- 0
 # myrange <- range(range(total),0)*1.2
 myrange <- c(-0.0004,0.0002)
 
-windows(12,9)
+png("Output/SWE_dod_male.png", units = "in",width = 10,height = 8,res = 300)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
              legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
              main = "Sweden, male 1991-2015")
-
 b <- barplot(decomp2,col = coul,border = "white",add = T,
              ylim = myrange)
-
-lines(b,total,lwd=1.5)
-points(b,total,pch=16)
+lines(b,total,lwd=2)
+points(b,total,cex = 1.2,pch=16)
 mtext("average level", side = 2,adj = 0.7)
-
+dev.off()
 
 ### Denmark ####
-
-### decomp ###
-
-rm(list=ls())
-source("Figures/average of CAL 1989-2017.R")
 
 ## decomp ###
 
@@ -187,23 +173,18 @@ decomp2[decomp2<0] <- 0
 # myrange <- range(range(total),0)*1.2
 myrange <- c(-0.025,0.035)
 
-windows(12,9)
+png("Output/DNK_change_male.png", units = "in",width = 10,height = 8,res = 300)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
-             legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
              main = "Denmark, male 1989-2017")
-
 b <- barplot(decomp2,col = coul,border = "white",add = T)
-
-lines(b,total,lwd=1.5)
-points(b,total,pch=16)
+lines(b,total,lwd=2)
+points(b,total,cex = 1.2,pch=16)
 mtext("average level", side = 2,adj = 0.4)
+dev.off()
 
 ### decomp in changes ###
-
-rm(list = ls())
-source("Figures/average of CAL 1989-2017.R")
 
 ## decomp of contributions ###
 
@@ -259,27 +240,19 @@ decomp2[decomp2<0] <- 0
 # myrange <- range(range(total),0)*1.2
 myrange <- c(-0.0004,0.0002)
 
-windows(12,9)
+png("Output/DNK_dod_male.png", units = "in",width = 10,height = 8,res = 300)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
-             legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
              main = "Denmark, male 1991-2015")
-
 b <- barplot(decomp2,col = coul,border = "white",add = T,
              ylim = myrange)
-
-lines(b,total,lwd=1.5)
-points(b,total,pch=16)
+lines(b,total,lwd=2)
+points(b,total,cex = 1.2,pch=16)
 mtext("average entropy level", side = 2,adj = 0.7)
-
+dev.off()
 
 ### France ####
-
-### decomp ###
-
-rm(list=ls())
-source("Figures/average of CAL 1989-2017.R")
 
 ## decomp ###
 
@@ -315,23 +288,18 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.025,0.035)
 
-windows(12,9)
+png("Output/FRATNP_change_male.png", units = "in",width = 10,height = 8,res = 300)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
-             legend.text = TRUE,args.legend = list(x="topright",bg="white",box.col=0),
              main = "France, male 1989-2017")
-
 b <- barplot(decomp2,col = coul,border = "white",add = T)
-
-lines(b,total,lwd=1.5)
-points(b,total,pch=16)
+lines(b,total,lwd=2)
+points(b,total,cex = 1.2,pch=16)
 mtext("average level", side = 2,adj = 0.4)
+dev.off()
 
 ### decomp in changes ###
-
-rm(list = ls())
-source("Figures/average of CAL 1989-2017.R")
 
 ## decomp of contributions ###
 
@@ -400,28 +368,20 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.0004,0.0002)
 
-windows(12,9)
+png("Output/FRATNP_dod_male.png", units = "in",width = 10,height = 8,res = 300)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
-             legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
              main = "France, male 1991-2015")
-
 b <- barplot(decomp2,col = coul,border = "white",add = T,
              ylim = myrange)
-
-lines(b,total,lwd=1.5)
-points(b,total,pch=16)
+lines(b,total,lwd=2)
+points(b,total,cex = 1.2,pch=16)
 mtext("average level", side = 2,adj = 0.7)
-
+dev.off()
 
 ### Britain ####
 
-### decomp ###
-
-rm(list=ls())
-source("Figures/average of CAL 1989-2017.R")
-
 ## decomp ###
 
 entropyavg <- (entropyCAL4+CALentropyavg)/2
@@ -455,23 +415,18 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.025,0.035)
 
-windows(12,9)
+png("Output/GBRTENW_change_male.png", units = "in",width = 10,height = 8,res = 300)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
-             legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
              main = "England and Wales, male 1989-2017")
-
 b <- barplot(decomp2,col = coul,border = "white",add = T)
-
-lines(b,total,lwd=1.5)
-points(b,total,pch=16)
+lines(b,total,lwd=2)
+points(b,total,cex = 1.2,pch=16)
 mtext("average level", side = 2,adj = 0.4)
+dev.off()
 
 ### decomp in changes ###
-
-rm(list = ls())
-source("Figures/average of CAL 1989-2017.R")
 
 ## decomp of contributions ###
 
@@ -541,28 +496,20 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.0004,0.0002)
 
-windows(12,9)
+png("Output/GBRTENW_dod_male.png", units = "in",width = 10,height = 8,res = 300)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
-             legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
              main = "England and Wales, male 1991-2015")
-
 b <- barplot(decomp2,col = coul,border = "white",add = T,
              ylim = myrange)
-
-lines(b,total,lwd=1.5)
-points(b,total,pch=16)
+lines(b,total,lwd=2)
+points(b,total,cex = 1.2,pch=16)
 mtext("average level", side = 2,adj = 0.7)
-
+dev.off()
 
 ### Norway ####
 
-### decomp ###
-
-rm(list=ls())
-source("Figures/average of CAL 1989-2017.R")
-
 ## decomp ###
 
 entropyavg <- (entropyCAL5+CALentropyavg)/2
@@ -596,24 +543,20 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.025,0.035)
 
-windows(12,9)
+png("Output/NOR_change_male.png", units = "in",width = 10,height = 8,res = 300)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
-             legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
              main = "Norway, male 1989-2017")
-
 b <- barplot(decomp2,col = coul,border = "white",add = T)
-
-lines(b,total,lwd=1.5)
-points(b,total,pch=16)
+lines(b,total,lwd=2)
+points(b,total,cex = 1.2,pch=16)
 mtext("average level", side = 2,adj = 0.4)
+dev.off()
 
 ### decomp in changes ###
-rm(list = ls())
-source("Figures/average of CAL 1989-2017.R")
 
-## decomp of contributions ####
+## decomp of contributions ###
 
 entropydiff <- entropyCAL5-CALentropyavg
 
@@ -682,28 +625,20 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.0004,0.0002)
 
-windows(12,9)
+png("Output/NOR_dod_male.png", units = "in",width = 10,height = 8,res = 300)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
-             legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
              main = "Norway, male 1991-2015")
-
 b <- barplot(decomp2,col = coul,border = "white",add = T,
              ylim = myrange)
-
-lines(b,total,lwd=1.5)
-points(b,total,pch=16)
+lines(b,total,lwd=2)
+points(b,total,cex = 1.2,pch=16)
 mtext("average level", side = 2,adj = 0.7)
-
+dev.off()
 
 ### Finland ####
 
-### decomp ###
-
-rm(list=ls())
-source("Figures/average of CAL 1989-2017.R")
-
 ## decomp ###
 
 entropyavg <- (entropyCAL6+CALentropyavg)/2
@@ -738,23 +673,18 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.025,0.035)
 
-windows(12,9)
+png("Output/FIN_change_male.png", units = "in",width = 10,height = 8,res = 300)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
-             legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
              main = "Finland, male 1989-2017")
-
 b <- barplot(decomp2,col = coul,border = "white",add = T)
-
-lines(b,total,lwd=1.5)
-points(b,total,pch=16)
+lines(b,total,lwd=2)
+points(b,total,cex = 1.2,pch=16)
 mtext("average level", side = 2,adj = 0.4)
+dev.off()
 
 ### decomp in changes ###
-
-rm(list = ls())
-source("Figures/average of CAL 1989-2017.R")
 
 ## decomp of contributions ###
 
@@ -825,27 +755,20 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.0004,0.0002)
 
-windows(12,9)
+png("Output/FIN_dod_male.png", units = "in",width = 10,height = 8,res = 300)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
-             legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
              main = "Finland, male 1991-2015")
-
 b <- barplot(decomp2,col = coul,border = "white",add = T,
              ylim = myrange)
-
-lines(b,total,lwd=1.5)
-points(b,total,pch=16)
+lines(b,total,lwd=2)
+points(b,total,cex = 1.2,pch=16)
 mtext("average level", side = 2,adj = 0.7)
-
+dev.off()
 
 ### Italy ####
 
-### decomp ###
-rm(list=ls())
-source("Figures/average of CAL 1989-2017.R")
-
 ## decomp ###
 entropyavg <- (entropyCAL7+CALentropyavg)/2
 entropydiff <- entropyCAL7-CALentropyavg
@@ -878,23 +801,18 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.025,0.035)
 
-windows(12,9)
+png("Output/ITA_change_male.png", units = "in",width = 10,height = 8,res = 300)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
-             legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
              main = "Italy, male 1989-2017")
-
 b <- barplot(decomp2,col = coul,border = "white",add = T)
-
-lines(b,total,lwd=1.5)
-points(b,total,pch=16)
+lines(b,total,lwd=2)
+points(b,total,cex = 1.2,pch=16)
 mtext("average level", side = 2,adj = 0.4)
+dev.off()
 
 ### decomp in changes ###
-
-rm(list = ls())
-source("Figures/average of CAL 1989-2017.R")
 
 ## decomp of contributions ###
 
@@ -965,28 +883,20 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.0004,0.0002)
 
-windows(12,9)
+png("Output/ITA_dod_male.png", units = "in",width = 10,height = 8,res = 300)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
-             legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
              main = "Italy, male 1991-2015")
-
 b <- barplot(decomp2,col = coul,border = "white",add = T,
              ylim = myrange)
-
-lines(b,total,lwd=1.5)
-points(b,total,pch=16)
+lines(b,total,lwd=2)
+points(b,total,cex = 1.2,pch=16)
 mtext("average level", side = 2,adj = 0.7)
-
+dev.off()
 
 ### Scotland ####
 
-### decomp ###
-
-rm(list = ls())
-source("Figures/average of CAL 1989-2017.R")
-
 ## decomp ###
 entropyavg <- (entropyCAL8+CALentropyavg)/2
 entropydiff <- entropyCAL8-CALentropyavg
@@ -1019,22 +929,18 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.025,0.035)
 
-windows(12,9)
+png("Output/GBRSCO_change_male.png", units = "in",width = 10,height = 8,res = 300)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
-             legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
              main = "Scotland, male 1989-2017")
-
 b <- barplot(decomp2,col = coul,border = "white",add = T)
-
-lines(b,total,lwd=1.5)
-points(b,total,pch=16)
+lines(b,total,lwd=2)
+points(b,total,cex = 1.2,pch=16)
 mtext("average level", side = 2,adj = 0.4)
+dev.off()
 
 ### decomp in changes ###
-rm(list = ls())
-source("Figures/average of CAL 1989-2017.R")
 
 ## decomp of contributions ###
 entropydiff <- entropyCAL8-CALentropyavg
@@ -1103,26 +1009,19 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.0004,0.0002)
 
-windows(12,9)
+png("Output/GBRSCO_dod_male.png", units = "in",width = 10,height = 8,res = 300)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
-             legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
              main = "Scotland, male 1991-2015")
-
 b <- barplot(decomp2,col = coul,border = "white",add = T,
              ylim = myrange)
-
-lines(b,total,lwd=1.5)
-points(b,total,pch=16)
+lines(b,total,lwd=2)
+points(b,total,cex = 1.2,pch=16)
 mtext("average level", side = 2,adj = 0.7)
-
+dev.off()
 
 ### Netherlands ####
-
-### decomp ###
-rm(list = ls())
-source("Figures/average of CAL 1989-2017.R")
 
 ## decomp ###
 entropyavg <- (entropyCAL9+CALentropyavg)/2
@@ -1156,22 +1055,18 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.025,0.035)
 
-windows(12,9)
+png("Output/NLD_change_male.png", units = "in",width = 10,height = 8,res = 300)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
-             legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
              main = "Netherlands, male 1989-2017")
-
 b <- barplot(decomp2,col = coul,border = "white",add = T)
-
-lines(b,total,lwd=1.5)
-points(b,total,pch=16)
+lines(b,total,lwd=2)
+points(b,total,cex = 1.2,pch=16)
 mtext("average level", side = 2,adj = 0.4)
+dev.off()
 
 ### decomp in changes ###
-rm(list = ls())
-source("Figures/average of CAL 1989-2017.R")
 
 ## decomp of contributions ###
 
@@ -1241,16 +1136,14 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.0004,0.0002)
 
-windows(12,9)
+png("Output/NLD_dod_male.png", units = "in",width = 10,height = 8,res = 300)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
-             legend.text = TRUE,args.legend = list(x="bottomright",bg="white",box.col=0),
              main = "Netherlands, male 1991-2015")
-
 b <- barplot(decomp2,col = coul,border = "white",add = T,
              ylim = myrange)
-
-lines(b,total,lwd=1.5)
-points(b,total,pch=16)
+lines(b,total,lwd=2)
+points(b,total,cex = 1.2,pch=16)
 mtext("average level", side = 2,adj = 0.7)
+dev.off()
