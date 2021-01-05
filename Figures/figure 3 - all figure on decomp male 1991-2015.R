@@ -1,8 +1,6 @@
 #### ALL FIGURES for male ####
 
-windows(12,8)
-
-source("Figures/figure 3 - average of CAL 1989-2017.R")
+source("Figures/figure 3 - average of CAL male 1989-2017.R")
 
 ### Sweden ####
 
@@ -40,7 +38,7 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 # myrange <- range(range(total),0)*1.2
 myrange <- c(-0.025,0.035)
-png("Output/SWE_change_male.png", units = "in",width = 10,height = 8,res = 300)
+png("Output/SWE_change_male.png", units = "in",width = 10,height = 8,res = 150)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
@@ -123,7 +121,7 @@ decomp2[decomp2<0] <- 0
 # myrange <- range(range(total),0)*1.2
 myrange <- c(-0.0004,0.0002)
 
-png("Output/SWE_dod_male.png", units = "in",width = 10,height = 8,res = 300)
+png("Output/SWE_dod_male.png", units = "in",width = 10,height = 8,res = 150)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
@@ -173,7 +171,7 @@ decomp2[decomp2<0] <- 0
 # myrange <- range(range(total),0)*1.2
 myrange <- c(-0.025,0.035)
 
-png("Output/DNK_change_male.png", units = "in",width = 10,height = 8,res = 300)
+png("Output/DNK_change_male.png", units = "in",width = 10,height = 8,res = 150)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
@@ -240,7 +238,7 @@ decomp2[decomp2<0] <- 0
 # myrange <- range(range(total),0)*1.2
 myrange <- c(-0.0004,0.0002)
 
-png("Output/DNK_dod_male.png", units = "in",width = 10,height = 8,res = 300)
+png("Output/DNK_dod_male.png", units = "in",width = 10,height = 8,res = 150)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
@@ -288,7 +286,7 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.025,0.035)
 
-png("Output/FRATNP_change_male.png", units = "in",width = 10,height = 8,res = 300)
+png("Output/FRATNP_change_male.png", units = "in",width = 10,height = 8,res = 150)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
@@ -368,7 +366,7 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.0004,0.0002)
 
-png("Output/FRATNP_dod_male.png", units = "in",width = 10,height = 8,res = 300)
+png("Output/FRATNP_dod_male.png", units = "in",width = 10,height = 8,res = 150)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
@@ -415,7 +413,7 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.025,0.035)
 
-png("Output/GBRTENW_change_male.png", units = "in",width = 10,height = 8,res = 300)
+png("Output/GBRTENW_change_male.png", units = "in",width = 10,height = 8,res = 150)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
@@ -496,7 +494,7 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.0004,0.0002)
 
-png("Output/GBRTENW_dod_male.png", units = "in",width = 10,height = 8,res = 300)
+png("Output/GBRTENW_dod_male.png", units = "in",width = 10,height = 8,res = 150)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
@@ -543,7 +541,7 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.025,0.035)
 
-png("Output/NOR_change_male.png", units = "in",width = 10,height = 8,res = 300)
+png("Output/NOR_change_male.png", units = "in",width = 10,height = 8,res = 150)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
@@ -625,7 +623,7 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.0004,0.0002)
 
-png("Output/NOR_dod_male.png", units = "in",width = 10,height = 8,res = 300)
+png("Output/NOR_dod_male.png", units = "in",width = 10,height = 8,res = 150)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
@@ -673,7 +671,7 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.025,0.035)
 
-png("Output/FIN_change_male.png", units = "in",width = 10,height = 8,res = 300)
+png("Output/FIN_change_male.png", units = "in",width = 10,height = 8,res = 150)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
@@ -755,7 +753,7 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.0004,0.0002)
 
-png("Output/FIN_dod_male.png", units = "in",width = 10,height = 8,res = 300)
+png("Output/FIN_dod_male.png", units = "in",width = 10,height = 8,res = 150)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
@@ -801,7 +799,7 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.025,0.035)
 
-png("Output/ITA_change_male.png", units = "in",width = 10,height = 8,res = 300)
+png("Output/ITA_change_male.png", units = "in",width = 10,height = 8,res = 150)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
@@ -883,7 +881,7 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.0004,0.0002)
 
-png("Output/ITA_dod_male.png", units = "in",width = 10,height = 8,res = 300)
+png("Output/ITA_dod_male.png", units = "in",width = 10,height = 8,res = 150)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
@@ -929,7 +927,7 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.025,0.035)
 
-png("Output/GBRSCO_change_male.png", units = "in",width = 10,height = 8,res = 300)
+png("Output/GBRSCO_change_male.png", units = "in",width = 10,height = 8,res = 150)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
@@ -1009,7 +1007,7 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.0004,0.0002)
 
-png("Output/GBRSCO_dod_male.png", units = "in",width = 10,height = 8,res = 300)
+png("Output/GBRSCO_dod_male.png", units = "in",width = 10,height = 8,res = 150)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
@@ -1055,7 +1053,7 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.025,0.035)
 
-png("Output/NLD_change_male.png", units = "in",width = 10,height = 8,res = 300)
+png("Output/NLD_change_male.png", units = "in",width = 10,height = 8,res = 150)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "relative disparities",
@@ -1136,7 +1134,7 @@ decomp1[decomp1>0] <- 0
 decomp2[decomp2<0] <- 0
 myrange <- c(-0.0004,0.0002)
 
-png("Output/NLD_dod_male.png", units = "in",width = 10,height = 8,res = 300)
+png("Output/NLD_dod_male.png", units = "in",width = 10,height = 8,res = 150)
 b <- barplot(decomp1,col = coul,border = "white",
              ylim = myrange,
              xlab="Year",ylab = "contribution to changes in relative disparities",
