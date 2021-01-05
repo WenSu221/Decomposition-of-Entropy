@@ -331,7 +331,7 @@ write.csv(entropye0table, file = "Output/entropye0table.CSV")
 
 #### ec0 entropy ####
 
-source("Entropy calculation/entropy of ec0.R")
+source("Figures/figure 1 - entropy of ec0.R")
 
 
 #### average ####

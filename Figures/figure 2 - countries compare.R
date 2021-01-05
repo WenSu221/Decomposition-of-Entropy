@@ -217,24 +217,24 @@ CALavg <- colMeans(CALavg)
 
 Years <- seq(1989,2017,4)
 png(file = "Output/Countries Comparison log scale, male 1989-2017.png",
-    units = "in", width = 12, height = 8, res = 300)
+    units = "in", width = 12, height = 8, res = 200)
 plot(c(1989,2017),rev(c(0.12,0.24)),col = 0,
      xlab = "Years",ylab = "entropy of CAL (log scale)", 
      log = "y")
-lines(Years,entropyCAL1,col = 2,lty=5,lwd = 2)
-lines(Years,entropyCAL2,col = 3,pch=2,lty=5,lwd = 2)
-lines(Years,entropyCAL3,col = 5,lty=5,lwd = 2)
-lines(Years,entropyCAL4,col = 5,pch=3,lty=5,lwd = 2)
-lines(Years,entropyCAL5,col = 6,pch=2,lty=5,lwd = 2)
-lines(Years,entropyCAL6,col = 7,lty=6,lwd = 2)
-lines(Years,entropyCAL7,col = 8,pch=3,lty=6,lwd = 2)
-lines(Years,entropyCAL8,col = 9,lty=6,lwd = 2)
-lines(Years,entropyCAL9,col = 10,lty=6,lwd = 2)
+lines(Years,entropyCAL1,col = cols[1],lty=5,lwd = 2)
+lines(Years,entropyCAL2,col = cols[2],pch=2,lty=5,lwd = 2)
+lines(Years,entropyCAL3,col = cols[3],lty=5,lwd = 2)
+lines(Years,entropyCAL4,col = cols[4],pch=3,lty=5,lwd = 2)
+lines(Years,entropyCAL5,col = cols[5],pch=2,lty=5,lwd = 2)
+lines(Years,entropyCAL6,col = cols[6],lty=6,lwd = 2)
+lines(Years,entropyCAL7,col = cols[7],pch=3,lty=6,lwd = 2)
+lines(Years,entropyCAL8,col = cols[8],lty=6,lwd = 2)
+lines(Years,entropyCAL9,col = cols[9],lty=6,lwd = 2)
 lines(Years,CALavg,col = "grey",pch = 16,lty = 1,lwd = 2)
 title("comparison of entropy of CAL across countries, male 1989-2017")
 legend("topright",c("Sweden","Denmark","France","England and Wales",
                     "Norway","Finland","Italy","Scotland","Netherland","average"),
-       col = c(2,3,4,5,6,7,8,9,10,"grey"),lty = c(5,5,5,5,5,6,6,6,6,1),
+       col = c(cols[1:9]),lty = c(5,5,5,5,5,6,6,6,6,1),
        box.col = 0)
 dev.off()
 
@@ -259,30 +259,30 @@ png(file = "Output/Countries Comparison average benchmark, male 1989-2017.png",
 plot(c(1989,2017),c(-0.025,0.04),col = 0,
      xlab = "Years",
      ylab="differences from average level of entropy of CAL")
-lines(Years,diff1,col = 3,lty=1,lwd = 2,
+lines(Years,diff1,col = cols[1],lty=2,lwd = 2,
       cex = 1,pch = 20)
-lines(Years,diff2,col = 5,lty=1,lwd = 2,
+lines(Years,diff2,col = cols[2],lty=2,lwd = 2,
       cex = 1,pch = 20)
-lines(Years,diff3,col = 7,lty=1,lwd = 2,
+lines(Years,diff3,col = cols[3],lty=1,lwd = 2,
       cex = 1,pch = 20)
-lines(Years,diff4,col = 9,lty=1,lwd = 2,
+lines(Years,diff4,col = cols[4],lty=1,lwd = 2,
       cex = 1,pch = 20)
-lines(Years,diff5,col = 2,lty=1,lwd = 2,
+lines(Years,diff5,col = cols[5],lty=2,lwd = 2,
       cex = 1,pch = 20)
-lines(Years,diff6,col = 4,lty=1,lwd = 2,
+lines(Years,diff6,col = cols[6],lty=2,lwd = 2,
       cex = 1,pch = 20)
-lines(Years,diff7,col = 6,lty=1,lwd = 2,
+lines(Years,diff7,col = cols[7],lty=1,lwd = 2,
       cex = 1,pch = 20)
-lines(Years,diff8,col = 8,lty=1,lwd = 2,
+lines(Years,diff8,col = cols[8],lty=1,lwd = 2,
       cex = 1,pch = 20)
-lines(Years,diff9,col = 10,lty=1,lwd = 2,
+lines(Years,diff9,col = cols[9],lty=1,lwd = 2,
       cex = 1,pch = 20)
-lines(Years,rep(0,times=8),col = 1, lty = 2, lwd = 2,
+lines(Years,rep(0,times=8),col = 1, lty = 3, lwd = 2,
       cex = 1,pch = 20)
 legend("topright",c("Sweden","Denmark","France",
                     "England and Wales","Norway",
                     "Finland","Italy","Scotland","Netherland"),
-       col = c(3,5,7,9,2,4,6,8,10),lty = rep(1,times=9),box.col = 0)
+       col = c(cols[1:9]),lty = c(2,2,1,1,2,2,1,1,1),box.col = 0)
 title("Entropy of CAL compared to average level, male 1989-2017")
 mtext("average level", side = 2,adj = 0.4)
 dev.off()
