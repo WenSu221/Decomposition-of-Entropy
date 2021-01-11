@@ -46,15 +46,15 @@ CALdagfunc <-function(Mx1,Y){
 
 ### Data fitting ####
 
-A1 <- read.table("Data/SWE.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A2 <- read.table("Data/DNK.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A3 <- read.table("Data/FRATNP.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A4 <- read.table("Data/GBRTENW.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A5 <- read.table("Data/NOR.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A6 <- read.table("Data/FIN.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A7 <- read.table("Data/ITA.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A8 <- read.table("Data/GBRSCO.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A9 <- read.table("Data/NLD.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A1 <- read.table("Data/SWE.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A2 <- read.table("Data/DNK.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A3 <- read.table("Data/FRATNP.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A4 <- read.table("Data/GBRTENW.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A5 <- read.table("Data/NOR.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A6 <- read.table("Data/FIN.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A7 <- read.table("Data/ITA.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A8 <- read.table("Data/GBRSCO.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A9 <- read.table("Data/NLD.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 
 Y1 <- 1877
 Y2 <- 2017
@@ -210,7 +210,7 @@ entropyCALtable <- cbind(entropyCAL1,entropyCAL2,entropyCAL3,entropyCAL4,
 colnames(entropyCALtable) <- c("SWE","DNK","FRATNP","GBRTENW","NOR",
                                 "FIN","ITA","GBRSCO","NLD")
 row.names(entropyCALtable) <- c(seq(1989,2017,4))
-write.csv(entropyCALtable,file = "Output/entropyCALtable.csv")
+write.csv(entropyCALtable,file = "Output/entropyCALtable_female.csv")
 
 #### e0 functions ####
 
@@ -242,15 +242,15 @@ e0<-c()
 
 ### data fitting ####
 
-A1 <- read.table("Data/SWE.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A2 <- read.table("Data/DNK.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A3 <- read.table("Data/FRATNP.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A4 <- read.table("Data/GBRTENW.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A5 <- read.table("Data/NOR.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A6 <- read.table("Data/FIN.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A7 <- read.table("Data/ITA.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A8 <- read.table("Data/GBRSCO.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A9 <- read.table("Data/NLD.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A1 <- read.table("Data/SWE.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A2 <- read.table("Data/DNK.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A3 <- read.table("Data/FRATNP.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A4 <- read.table("Data/GBRTENW.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A5 <- read.table("Data/NOR.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A6 <- read.table("Data/FIN.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A7 <- read.table("Data/ITA.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A8 <- read.table("Data/GBRSCO.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A9 <- read.table("Data/NLD.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 
 
 ## e ####
@@ -327,11 +327,11 @@ entropye0table <- cbind(entropye01,entropye02,entropye03,entropye04,
 colnames(entropye0table) <- c("SWE","DNK","FRATNP","GBRTENW","NOR",
                               "FIN","ITA","GBRSCO","NLD")
 row.names(entropye0table) <- c(1878:2017)
-write.csv(entropye0table, file = "Output/entropye0table.CSV")
+write.csv(entropye0table, file = "Output/entropye0table_female.CSV")
 
 #### ec0 entropy ####
 
-source("Figures/figure 1 - entropy of ec0.R")
+source("Figures/figure 1 - entropy of ec0 female.R")
 
 
 #### average ####
@@ -354,7 +354,7 @@ CALavg <- colMeans(CALavg)
 
 ### Plot ####
 windows(12,8)
-png(file = "Output/Measures Comparison, male 1841-2017.png",
+png(file = "Output/Measures Comparison, female 1878-2017.png",
     units = "in", width = 12, height = 8, res = 300)
 years1 <- c(1878:2017)
 years2 <- c(seq(1989,2017,4))
@@ -390,7 +390,7 @@ lines(years3,entropyc7,col="plum2")
 lines(years3,entropyc8,col="plum2")
 lines(years3,entropyc9,col="plum2")
 lines(years3,cavg,col="purple",lwd = 2)
-title("Entropy Compariosn between three measures - male 1841-2017")
+title("Entropy Compariosn between three measures - female 1878-2017")
 legend("topright"
        ,c("average entropy of CAL",
           "entropy of CAL",

@@ -4,7 +4,7 @@
 
 library(RColorBrewer)
 # display.brewer.all()
-cols<-brewer.pal(n=10,name = "Paired")
+cols<-brewer.pal(n=9,name = "Set1")
 
 ### CAL function ####
 
@@ -49,15 +49,15 @@ CALdagfunc <-function(Mx1,Y){
 
 ### Data fitting ####
 
-A1 <- read.table("Data/SWE.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A2 <- read.table("Data/DNK.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A3 <- read.table("Data/FRATNP.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A4 <- read.table("Data/GBRTENW.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A5 <- read.table("Data/NOR.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A6 <- read.table("Data/FIN.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A7 <- read.table("Data/ITA.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A8 <- read.table("Data/GBRSCO.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A9 <- read.table("Data/NLD.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A1 <- read.table("Data/SWE.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A2 <- read.table("Data/DNK.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A3 <- read.table("Data/FRATNP.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A4 <- read.table("Data/GBRTENW.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A5 <- read.table("Data/NOR.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A6 <- read.table("Data/FIN.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A7 <- read.table("Data/ITA.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A8 <- read.table("Data/GBRSCO.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A9 <- read.table("Data/NLD.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 
 Y1 <- 1877
 Y2 <- 2017
@@ -216,9 +216,9 @@ CALavg <- colMeans(CALavg)
 #### Figure ####
 
 Years <- seq(1989,2017,4)
-png(file = "Output/Countries Comparison log scale, male 1989-2017.png",
-    units = "in", width = 12, height = 8, res = 200)
-plot(c(1989,2017),rev(c(0.12,0.24)),col = 0,
+png(file = "Output/Countries Comparison log scale, female 1989-2017.png",
+    units = "in", width = 6, height = 8, res = 200)
+plot(c(1989,2017),rev(c(0.11,0.24)),col = 0,
      xlab = "Years",ylab = "entropy of CAL (log scale)", 
      log = "y")
 lines(Years,entropyCAL1,col = cols[1],lty=5,lwd = 2)
@@ -231,7 +231,7 @@ lines(Years,entropyCAL7,col = cols[7],pch=3,lty=6,lwd = 2)
 lines(Years,entropyCAL8,col = cols[8],lty=6,lwd = 2)
 lines(Years,entropyCAL9,col = cols[9],lty=6,lwd = 2)
 lines(Years,CALavg,col = "grey",pch = 16,lty = 1,lwd = 2)
-title("comparison of entropy of CAL across countries, male 1989-2017")
+title("comparison of entropy of CAL across countries, female 1989-2017")
 legend("topright",c("Sweden","Denmark","France","England and Wales",
                     "Norway","Finland","Italy","Scotland","Netherland","average"),
        col = c(cols[1:9]),lty = c(5,5,5,5,5,6,6,6,6,1),
@@ -254,35 +254,46 @@ diff9 <- entropyCAL9 - CALavg
 ### Plots ####
 
 Years <- seq(1989,2017,4)
-png(file = "Output/Countries Comparison average benchmark, male 1989-2017.png",
-    units = "in", width = 12, height = 8, res = 300)
+png(file = "Output/Countries Comparison average benchmark, female 1989-2017.png",
+    units = "in", width = 7, height = 9, res = 300)
 plot(c(1989,2017),c(-0.025,0.04),col = 0,
      xlab = "Years",
      ylab="differences from average level of entropy of CAL")
-lines(Years,diff1,col = cols[1],lty=2,lwd = 2,
+lines(Years,diff1,type = "l",
+      col = "black",lty=2,lwd = 2,
       cex = 1,pch = 20)
-lines(Years,diff2,col = cols[2],lty=2,lwd = 2,
+lines(Years,diff2,type = "l",
+      col = cols[2],lty=1,lwd = 2,
       cex = 1,pch = 20)
-lines(Years,diff3,col = cols[3],lty=1,lwd = 2,
+lines(Years,diff3,type = "l",
+      col = cols[3],lty=4,lwd = 2,
       cex = 1,pch = 20)
-lines(Years,diff4,col = cols[4],lty=1,lwd = 2,
+lines(Years,diff4,type = "l",
+      col = cols[4],lty=2,lwd = 2,
       cex = 1,pch = 20)
-lines(Years,diff5,col = cols[5],lty=2,lwd = 2,
+lines(Years,diff5,type = "l",
+      col = cols[5],lty=2,lwd = 2,
       cex = 1,pch = 20)
-lines(Years,diff6,col = cols[6],lty=2,lwd = 2,
+lines(Years,diff6,type = "l",
+      col = cols[1],lty=1,lwd = 2,
       cex = 1,pch = 20)
-lines(Years,diff7,col = cols[7],lty=1,lwd = 2,
+lines(Years,diff7,type = "l",
+      col = cols[7],lty=4,lwd = 2,
       cex = 1,pch = 20)
-lines(Years,diff8,col = cols[8],lty=1,lwd = 2,
+lines(Years,diff8,type = "l",
+      col = cols[8],lty=4,lwd = 2,
       cex = 1,pch = 20)
-lines(Years,diff9,col = cols[9],lty=1,lwd = 2,
+lines(Years,diff9,type = "l",
+      col = cols[9],lty=2,lwd = 2,
       cex = 1,pch = 20)
-lines(Years,rep(0,times=8),col = 1, lty = 3, lwd = 2,
+lines(Years,rep(0,times=8),
+      col = 1, lty = 3, lwd = 2,
       cex = 1,pch = 20)
 legend("topright",c("Sweden","Denmark","France",
                     "England and Wales","Norway",
                     "Finland","Italy","Scotland","Netherland"),
-       col = c(cols[1:9]),lty = c(2,2,1,1,2,2,1,1,1),box.col = 0)
-title("Entropy of CAL compared to average level, male 1989-2017")
+       col = c("black",cols[2:5],cols[1],cols[7:9]),
+       lty = c(2,1,4,2,2,1,4,4,2,3),box.col = 0)
+title("Entropy of CAL compared to average level, female 1989-2017")
 mtext("average level", side = 2,adj = 0.4)
 dev.off()
