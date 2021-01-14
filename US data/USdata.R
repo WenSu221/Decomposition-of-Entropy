@@ -1,0 +1,66 @@
+
+D<-read.table("USData.csv",header=TRUE,fill=TRUE,skip=0,sep=",")
+
+A<-matrix(0,41,41)
+A[1,]<-D$X0[1:41]
+A[31,]<-D$X30[1:41]
+A[,1]<-D$X1900.2[1:41]
+A[,11]<-D$X1910.2[1:41]
+A[,21]<-D$X1920.2[1:41]
+A[,31]<-D$X1930.2[1:41]
+A[,41]<-D$X1940[1:41]
+
+for (x in 1:41){
+  A[x,x]<-D$X1900[x]
+}
+for (x in 1:31){
+  A[x,x+10]<-D$X1910[x]
+}
+for (x in 1:21){
+  A[x,x+20]<-D$X1920[x]
+}
+for (x in 1:11){
+  A[x,x+30]<-D$X1930[x]
+}
+
+A[is.na(A[,1])]<-0
+B<-A
+B[,19]<-0
+
+for (z in 1:31){
+N<-which(B[z,]>0)
+n<-length(N)
+for (x in 1:(n-1)){
+  B[z,N[x]:N[x+1]]<-seq(B[z,N[x]],B[z,N[x+1]],length.out=((N[x+1]-N[x])+1))
+  }
+}
+
+N<-which(A[,19]>0)
+R<-A[N,19]/B[N,19]
+RR<-rep(0,41)
+for (x in 1:3){
+  RR[N[x]:N[x+1]]<-seq(R[x],R[x+1],length.out=((N[x+1]-N[x])+1))
+}
+B[1:31,19]<-B[1:31,19]*RR[1:31]
+B[N,19]<-A[N,19]
+
+
+levels<-c(0,.001,0.002,0.004,0.008,0.015,0.15)
+WildColors<-heat.colors(length(levels))
+
+Year<-1900:1940
+Age<-0:30
+filled.contour(Year,Age,t(B[1:31,]),levels=levels,
+               col=WildColors,ylab="Age",xlab="Year",cex.lab=1.2)
+
+Age<-0:26
+plot(range(Age),range(B[1:27,]+.00000001),col=0,log="y")
+for(x in 1:40){
+lines(Age,B[1:27,x]+.00000001,col="red")
+  Sys.sleep(.5)
+lines(Age,B[1:27,x]+.00000001,col="grey")
+  }
+
+save(B[1:31,],file="USAfemalesQx.RData")
+
+     
