@@ -78,47 +78,47 @@ qx9<-matrix(1-A9$qx,111)
 ## CAL ####
 
 CAL1 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CAL1 <- c(CAL1, CALfunc(qx1,i))
 }
 
 CAL2 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CAL2 <- c(CAL2, CALfunc(qx2,i))
 }
 
 CAL3 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CAL3 <- c(CAL3, CALfunc(qx3,i))
 }
 
 CAL4 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CAL4 <- c(CAL4, CALfunc(qx4,i))
 }
 
 CAL5 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CAL5 <- c(CAL5, CALfunc(qx5,i))
 }
 
 CAL6 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CAL6 <- c(CAL6, CALfunc(qx6,i))
 }
 
 CAL7 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CAL7 <- c(CAL7, CALfunc(qx7,i))
 }
 
 CAL8 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CAL8 <- c(CAL8, CALfunc(qx8,i))
 }
 
 CAL9 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CAL9 <- c(CAL9, CALfunc(qx9,i))
 }
 ## CAL dagger ####
@@ -134,47 +134,47 @@ qx8 <- ifelse(qx8==0,1,qx8)
 qx9 <- ifelse(qx9==0,1,qx9)
 
 CALdagger1 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CALdagger1 <- c(CALdagger1, CALdagfunc(qx1,i))
 }
 
 CALdagger2 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CALdagger2 <- c(CALdagger2, CALdagfunc(qx2,i))
 }
 
 CALdagger3 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CALdagger3 <- c(CALdagger3, CALdagfunc(qx3,i))
 }
 
 CALdagger4 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CALdagger4 <- c(CALdagger4, CALdagfunc(qx4,i))
 }
 
 CALdagger5 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CALdagger5 <- c(CALdagger5, CALdagfunc(qx5,i))
 }
 
 CALdagger6 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CALdagger6 <- c(CALdagger6, CALdagfunc(qx6,i))
 }
 
 CALdagger7 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CALdagger7 <- c(CALdagger7, CALdagfunc(qx7,i))
 }
 
 CALdagger8 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CALdagger8 <- c(CALdagger8, CALdagfunc(qx8,i))
 }
 
 CALdagger9 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CALdagger9 <- c(CALdagger9, CALdagfunc(qx9,i))
 }
 

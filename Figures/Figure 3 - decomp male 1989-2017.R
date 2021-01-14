@@ -1,11 +1,11 @@
-#### ggplot2 population decomp, female####
+#### ggplot2 population decomp, male####
 
 ##packages and color
 library(ggplot2)
 
 
 ## Source
-source("Figures/figure 3 - average of CAL female 1989-2017.R")
+source("Figures/figure 3 - average of CAL male 1989-2017.R")
 
 ### Sweden ####
 ## decomp of contributions ###
@@ -156,11 +156,13 @@ cvariation_relative_FRA <- log(variation_FRA[2:15]/variation_FRA[1:14])/4
 cvariation_original_FRA <- variation_FRA[1:14]*exp(1)^(cvariation_relative_FRA)
 cvariation_derivative_FRA <- cvariation_relative_FRA*cvariation_original_FRA
 
-clongevity_derivative_FRA <- clongevity_FRA <- (longevity_FRA[2:15]-longevity_FRA[1:14])/4
+clongevity_relative_FRA <- log(longevity_FRA[2:15]/longevity_FRA[1:14])/4
+clongevity_original_FRA <- longevity_FRA[1:14]*exp(1)^(clongevity_relative_FRA)
+clongevity_derivative_FRA <- clongevity_original_FRA*clongevity_relative_FRA
 
 equation2 <- centropydiff_derivative_FRA - (centropyavg_derivative_FRA*entropydiffavg_original_FRA+
-                                          entropyavgavg_original_FRA*
-                                          (cvariation_derivative_FRA+clongevity_derivative_FRA))
+                                              entropyavgavg_original_FRA*
+                                              (cvariation_derivative_FRA+clongevity_derivative_FRA))
 
 ## validation ###
 round(equation1,5)
@@ -320,13 +322,33 @@ equation1 <- entropydiff_FIN - (dispersion_FIN-measure_FIN)*entropyavg_FIN
 
 ## decomp of changes in contributions ###
 
-centropydiff_derivative_FIN <- (entropydiff_FIN[2:15]-entropydiff_FIN[1:14])/4
-centropyavg_derivative_FIN <- (entropyavg_FIN[2:15] - entropyavg_FIN[1:14])/4
-entropydiffavg_original_FIN <- (entropydiff_FIN[1:14]+entropydiff_FIN[2:15])/2
-entropyavgavg_original_FIN <- (entropyavg_FIN[1:14]+entropyavg_FIN[2:15])/2
+#change in entropy differences
+centropydiff_relative_FIN <- log(entropydiff_FIN[2:15]/entropydiff_FIN[1:14])/4
+centropydiff_original_FIN <- entropydiff_FIN[1:14]*exp(1)^(centropydiff_relative_FIN)
+centropydiff_derivative_FIN <- centropydiff_relative_FIN*centropydiff_original_FIN
 
-cvariation_derivative_FIN <- (variation_FIN[2:15]-variation_FIN[1:14])/4
-clongevity_derivative_FIN <- (longevity_FIN[2:15]-longevity_FIN[1:14])/4
+#change in entropy average
+centropyavg_relative_FIN <- log(entropyavg_FIN[2:15]/entropyavg_FIN[1:14])/4
+centropyavg_original_FIN <- entropyavg_FIN[1:14]*exp(1)^(centropyavg_relative_FIN)
+centropyavg_derivative_FIN <- centropyavg_relative_FIN*centropyavg_original_FIN
+
+#average in entropy difference
+entropydiffavg_relative_FIN <- log(entropydiff_FIN[2:15]/entropydiff_FIN[1:14])/4
+entropydiffavg_original_FIN <- entropydiff_FIN[1:14]*exp(1)^(entropydiffavg_relative_FIN)
+
+#average in average in entropy
+entropyavgavg_relative_FIN <- log(entropyavg_FIN[2:15]/entropyavg_FIN[1:14])/4
+entropyavgavg_original_FIN <- entropyavg_FIN[1:14]*exp(1)^(entropyavgavg_relative_FIN)
+
+
+cvariation_relative_FIN <- log(variation_FIN[2:15]/variation_FIN[1:14])/4
+cvariation_original_FIN <- variation_FIN[1:14]*exp(1)^(cvariation_relative_FIN)
+cvariation_derivative_FIN <- cvariation_relative_FIN*cvariation_original_FIN
+
+clongevity_relative_FIN <- log(longevity_FIN[2:15]/longevity_FIN[1:14])/4
+clongevity_original_FIN <- longevity_FIN[1:14]*exp(1)^(clongevity_relative_FIN)
+clongevity_derivative_FIN <- clongevity_original_FIN*clongevity_relative_FIN
+
 
 equation2 <- centropydiff_derivative_FIN - (centropyavg_derivative_FIN*entropydiffavg_original_FIN+
                                               entropyavgavg_original_FIN*
@@ -454,8 +476,8 @@ clongevity_original_GBRSCO <- longevity_GBRSCO[1:14]*exp(1)^(clongevity_relative
 clongevity_derivative_GBRSCO <- clongevity_original_GBRSCO*clongevity_relative_GBRSCO
 
 equation2 <- centropydiff_derivative_GBRSCO - (centropyavg_derivative_GBRSCO*entropydiffavg_original_GBRSCO+
-                                              entropyavgavg_original_GBRSCO*
-                                              (cvariation_derivative_GBRSCO+clongevity_derivative_GBRSCO))
+                                                 entropyavgavg_original_GBRSCO*
+                                                 (cvariation_derivative_GBRSCO+clongevity_derivative_GBRSCO))
 
 ## validation ###
 round(equation1,5)
@@ -559,7 +581,7 @@ difference <- data.frame(
     dvariation_ITA,dlongevity_ITA,dtotal_ITA,
     dvariation_GBRSCO,dlongevity_GBRSCO,dtotal_GBRSCO,
     dvariation_NLD,dlongevity_NLD,dtotal_NLD
-    ))
+  ))
 colnames(difference) <- c("population","year","type","relative_disparities")
 
 
@@ -571,7 +593,7 @@ ggplot(data =difference)+
   scale_fill_manual(values = c("blue","red"))+
   theme_classic()+
   labs(x="Year",y="Relative Disparities",
-       title="decomposition of differences, female 1989-2017")
+       title="decomposition of differences, male 1989-2017")
 
 ### changes figure ####
 change <- data.frame(
@@ -599,4 +621,4 @@ ggplot(data =change)+
   scale_fill_manual(values = c("green","blue","red"))+
   theme_classic()+
   labs(x="Year",y="Relative Disparities",
-       title="decomposition of differences, female 1990-2016")
+       title="decomposition of differences, male 1990-2016")
