@@ -194,36 +194,19 @@ equation1 <- entropydiff_GBRTENW - (dispersion_GBRTENW-measure_GBRTENW)*entropya
 
 ## decomp of changes in contributions ###
 
-#change in entropy differences
-centropydiff_relative_GBRTENW <- log(entropydiff_GBRTENW[2:15]/entropydiff_GBRTENW[1:14])/4
-centropydiff_original_GBRTENW <- entropydiff_GBRTENW[1:14]*exp(1)^(centropydiff_relative_GBRTENW)
-centropydiff_derivative_GBRTENW <- centropydiff_relative_GBRTENW*centropydiff_original_GBRTENW
+centropydiff_GBRTENW <- (entropydiff_GBRTENW[2:15]-entropydiff_GBRTENW[1:14])/4
 
-#change in entropy average
-centropyavg_relative_GBRTENW <- log(entropyavg_GBRTENW[2:15]/entropyavg_GBRTENW[1:14])/4
-centropyavg_original_GBRTENW <- entropyavg_GBRTENW[1:14]*exp(1)^(centropyavg_relative_GBRTENW)
-centropyavg_derivative_GBRTENW <- centropyavg_relative_GBRTENW*centropyavg_original_GBRTENW
+centropyavg_GBRTENW <- (entropyavg_GBRTENW[2:15] - entropyavg_GBRTENW[1:14])/4
+entropydiffavg_GBRTENW <- (entropydiff_GBRTENW[1:14]+entropydiff_GBRTENW[2:15])/2
+entropyavgavg_GBRTENW <- (entropyavg_GBRTENW[1:14]+entropyavg_GBRTENW[2:15])/2
 
-#average in entropy difference
-entropydiffavg_relative_GBRTENW <- log(entropydiff_GBRTENW[2:15]/entropydiff_GBRTENW[1:14])/4
-entropydiffavg_original_GBRTENW <- entropydiff_GBRTENW[1:14]*exp(1)^(entropydiffavg_relative_GBRTENW)
-
-#average in average in entropy
-entropyavgavg_relative_GBRTENW <- log(entropyavg_GBRTENW[2:15]/entropyavg_GBRTENW[1:14])/4
-entropyavgavg_original_GBRTENW <- entropyavg_GBRTENW[1:14]*exp(1)^(entropyavgavg_relative_GBRTENW)
+cvariation_GBRTENW <- (variation_GBRTENW[2:15]-variation_GBRTENW[1:14])/4
+clongevity_GBRTENW <- (longevity_GBRTENW[2:15]-longevity_GBRTENW[1:14])/4
 
 
-cvariation_relative_GBRTENW <- log(variation_GBRTENW[2:15]/variation_GBRTENW[1:14])/4
-cvariation_original_GBRTENW <- variation_GBRTENW[1:14]*exp(1)^(cvariation_relative_GBRTENW)
-cvariation_derivative_GBRTENW <- cvariation_relative_GBRTENW*cvariation_original_GBRTENW
-
-clongevity_relative_GBRTENW <- log(longevity_GBRTENW[2:15]/longevity_GBRTENW[1:14])/4
-clongevity_original_GBRTENW <- longevity_GBRTENW[1:14]*exp(1)^(clongevity_relative_GBRTENW)
-clongevity_derivative_GBRTENW <- clongevity_original_GBRTENW*clongevity_relative_GBRTENW
-
-equation2 <- centropydiff_derivative_GBRTENW - (centropyavg_derivative_GBRTENW*entropydiffavg_original_GBRTENW+
-                                                  entropyavgavg_original_GBRTENW*
-                                                  (cvariation_derivative_GBRTENW+clongevity_derivative_GBRTENW))
+equation2 <- centropydiff_GBRTENW - (centropyavg_GBRTENW*entropydiffavg_GBRTENW+
+                                                  entropyavgavg_GBRTENW*
+                                                  (cvariation_GBRTENW+clongevity_GBRTENW))
 
 ## validation ###
 round(equation1,5)
@@ -234,9 +217,9 @@ dvariation_GBRTENW <- variation_GBRTENW
 dlongevity_GBRTENW <- longevity_GBRTENW
 dtotal_GBRTENW <- dvariation_GBRTENW + dlongevity_GBRTENW
 
-clongevity_GBRTENW <- clongevity_derivative_GBRTENW*entropyavgavg_original_GBRTENW
-cvariation_GBRTENW <- cvariation_derivative_GBRTENW*entropyavgavg_original_GBRTENW
-centropychange_GBRTENW <- centropyavg_derivative_GBRTENW*entropydiffavg_original_GBRTENW
+clongevity_GBRTENW <- clongevity_GBRTENW*entropyavgavg_GBRTENW
+cvariation_GBRTENW <- cvariation_GBRTENW*entropyavgavg_GBRTENW
+centropychange_GBRTENW <- centropyavg_GBRTENW*entropydiffavg_GBRTENW
 ctotal_GBRTENW <- cvariation_GBRTENW+clongevity_GBRTENW+centropychange_GBRTENW
 
 
@@ -472,7 +455,7 @@ centropychange_GBRSCO <- centropyavg_derivative_GBRSCO*entropydiffavg_original_G
 ctotal_GBRSCO <- cvariation_GBRSCO+clongevity_GBRSCO+centropychange_GBRSCO
 
 
-### Netherland ####
+### Netherlands ####
 ## decomp of contributions ###
 
 entropydiff_NLD <- entropyCAL9-CALentropyavg
@@ -535,21 +518,82 @@ centropychange_NLD <- centropyavg_derivative_NLD*entropydiffavg_original_NLD
 ctotal_NLD <- cvariation_NLD+clongevity_NLD+centropychange_NLD
 
 
-### formula ####
-## decomposition in differences
-total <- variation+longevity
-## decomposition in change in differences
-longevitypart <- clongevity_derivative*entropyavgavg_original
-variationpart <- cvariation_derivative*entropyavgavg_original
-entropychange <- centropyavg_derivative*entropydiffavg_original
-total <- variationpart+longevitypart+entropychange
+### Switzerland ####
+## decomp of contributions ###
+
+entropydiff_CHE <- entropyCAL10-CALentropyavg
+
+entropyavg_CHE <- (entropyCAL10+CALentropyavg)/2
+
+dispersion_CHE <- log(CALdagger10/CALdaggeravg)
+measure_CHE <- log(CAL10/CALavg)
+
+variation_CHE <- dispersion_CHE*entropyavg_CHE
+longevity_CHE <- (measure_CHE*entropyavg_CHE)*-1
+
+equation1 <- entropydiff_CHE - (dispersion_CHE - measure_CHE)*entropyavg_CHE
+
+## decomp of changes in contributions ###
+
+#change in entropy differences
+centropydiff_relative_CHE <- log(entropydiff_CHE[2:15]/entropydiff_CHE[1:14])/4
+centropydiff_original_CHE <- entropydiff_CHE[1:14]*exp(1)^(centropydiff_relative_CHE)
+centropydiff_derivative_CHE <- centropydiff_relative_CHE*centropydiff_original_CHE
+
+#change in entropy average
+centropyavg_relative_CHE <- log(entropyavg_CHE[2:15]/entropyavg_CHE[1:14])/4
+centropyavg_original_CHE <- entropyavg_CHE[1:14]*exp(1)^(centropyavg_relative_CHE)
+centropyavg_derivative_CHE <- centropyavg_relative_CHE*centropyavg_original_CHE
+
+#average in entropy difference
+entropydiffavg_relative_CHE <- log(entropydiff_CHE[2:15]/entropydiff_CHE[1:14])/4
+entropydiffavg_original_CHE <- entropydiff_CHE[1:14]*exp(1)^(entropydiffavg_relative_CHE)
+
+#average in average in entropy
+entropyavgavg_relative_CHE <- log(entropyavg_CHE[2:15]/entropyavg_CHE[1:14])/4
+entropyavgavg_original_CHE <- entropyavg_CHE[1:14]*exp(1)^(entropyavgavg_relative_CHE)
+
+
+cvariation_relative_CHE <- log(variation_CHE[2:15]/variation_CHE[1:14])/4
+cvariation_original_CHE <- variation_CHE[1:14]*exp(1)^(cvariation_relative_CHE)
+cvariation_derivative_CHE <- cvariation_relative_CHE*cvariation_original_CHE
+
+clongevity_relative_CHE <- log(longevity_CHE[2:15]/longevity_CHE[1:14])/4
+clongevity_original_CHE <- longevity_CHE[1:14]*exp(1)^(clongevity_relative_CHE)
+clongevity_derivative_CHE <- clongevity_original_CHE*clongevity_relative_CHE
+
+equation2 <- centropydiff_derivative_CHE - (centropyavg_derivative_CHE*entropydiffavg_original_CHE+
+                                              entropyavgavg_original_CHE*
+                                              (cvariation_derivative_CHE+clongevity_derivative_CHE))
+
+## validation ###
+round(equation1,5)
+round(equation2,5)
+
+## table ###
+dvariation_CHE <- variation_CHE
+dlongevity_CHE <- longevity_CHE
+dtotal_CHE <- dvariation_CHE + dlongevity_CHE
+
+clongevity_CHE <- clongevity_derivative_CHE*entropyavgavg_original_CHE
+cvariation_CHE <- cvariation_derivative_CHE*entropyavgavg_original_CHE
+centropychange_CHE <- centropyavg_derivative_CHE*entropydiffavg_original_CHE
+ctotal_CHE <- cvariation_CHE+clongevity_CHE+centropychange_CHE
+# ### formula ####
+# ## decomposition in differences
+# total <- variation+longevity
+# ## decomposition in change in differences
+# longevitypart <- clongevity_derivative*entropyavgavg_original
+# variationpart <- cvariation_derivative*entropyavgavg_original
+# entropychange <- centropyavg_derivative*entropydiffavg_original
+# total <- variationpart+longevitypart+entropychange
 
 ### differences figure ####
 difference <- data.frame(
   c(rep("SWE",45),rep("DNK",45),rep("FRA",45),rep("GBRTENW",45),rep("NOR",45),
-    rep("FIN",45),rep("ITA",45),rep("GBRSCO",45),rep("NLD",45)),
-  rep(rep(seq(1989,2017,2),3),9),
-  rep(c(rep("lifespan variation",15),rep("longevity",15),rep("total",15)),9),
+    rep("FIN",45),rep("ITA",45),rep("GBRSCO",45),rep("NLD",45),rep("CHE",45)),
+  rep(rep(seq(1989,2017,2),3),10),
+  rep(c(rep("lifespan variation",15),rep("longevity",15),rep("total",15)),10),
   c(dvariation_SWE,dlongevity_SWE,dtotal_SWE,
     dvariation_DNK,dlongevity_DNK,dtotal_DNK,
     dvariation_FRA,dlongevity_FRA,dtotal_FRA,
@@ -558,7 +602,8 @@ difference <- data.frame(
     dvariation_FIN,dlongevity_FIN,dtotal_FIN,
     dvariation_ITA,dlongevity_ITA,dtotal_ITA,
     dvariation_GBRSCO,dlongevity_GBRSCO,dtotal_GBRSCO,
-    dvariation_NLD,dlongevity_NLD,dtotal_NLD
+    dvariation_NLD,dlongevity_NLD,dtotal_NLD,
+    dvariation_CHE,dlongevity_CHE,dtotal_CHE
     ))
 colnames(difference) <- c("population","year","type","relative_disparities")
 
@@ -576,9 +621,10 @@ ggplot(data =difference)+
 ### changes figure ####
 change <- data.frame(
   c(rep("SWE",56),rep("DNK",56),rep("FRA",56),rep("GBRTENW",56),rep("NOR",56),
-    rep("FIN",56),rep("ITA",56),rep("GBRSCO",56),rep("NLD",56)),
-  rep(rep(seq(1990,2017,2),9),4),
-  rep(c(rep("lifespan variation",14),rep("longevity",14),rep("average entropy change",14),rep("total",14)),9),
+    rep("FIN",56),rep("ITA",56),rep("GBRSCO",56),rep("NLD",56),rep("CHE",56)),
+  rep(rep(seq(1990,2017,2),10),4),
+  rep(c(rep("lifespan variation",14),rep("longevity",14),rep("average entropy change",14),
+        rep("total",14)),10),
   c(cvariation_SWE,clongevity_SWE,centropychange_SWE,ctotal_SWE,
     cvariation_DNK,clongevity_DNK,centropychange_DNK,ctotal_DNK,
     cvariation_FRA,clongevity_FRA,centropychange_FRA,ctotal_FRA,
@@ -587,7 +633,8 @@ change <- data.frame(
     cvariation_FIN,clongevity_FIN,centropychange_FIN,ctotal_FIN,
     cvariation_ITA,clongevity_ITA,centropychange_ITA,ctotal_ITA,
     cvariation_GBRSCO,clongevity_GBRSCO,centropychange_GBRSCO,ctotal_GBRSCO,
-    cvariation_NLD,clongevity_NLD,centropychange_NLD,ctotal_NLD
+    cvariation_NLD,clongevity_NLD,centropychange_NLD,ctotal_NLD,
+    cvariation_CHE,clongevity_CHE,centropychange_CHE,ctotal_CHE
   ))
 colnames(change) <- c("population","year","type","relative_disparities")
 
@@ -597,6 +644,6 @@ ggplot(data =change)+
   geom_point(data = subset(change,type=="total"),mapping = aes(x=year,y=relative_disparities))+
   facet_wrap(~population)+
   scale_fill_manual(values = c("green","blue","red"))+
-  theme_classic()+
+  theme_minimal()+
   labs(x="Year",y="Relative Disparities",
        title="decomposition of differences, female 1990-2016")

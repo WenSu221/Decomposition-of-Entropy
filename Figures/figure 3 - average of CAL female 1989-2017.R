@@ -51,6 +51,7 @@ A6 <- read.table("Data/FIN.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 A7 <- read.table("Data/ITA.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 A8 <- read.table("Data/GBRSCO.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 A9 <- read.table("Data/NLD.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A10 <- read.table("Data/CHE.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 
 Y1 <- 1877
 Y2 <- 2017
@@ -64,6 +65,7 @@ A6<-A6[(A6$Year>Y1)&(A6$Year<(Y2+1)),]
 A7<-A7[(A7$Year>Y1)&(A7$Year<(Y2+1)),]
 A8<-A8[(A8$Year>Y1)&(A8$Year<(Y2+1)),]
 A9<-A9[(A9$Year>Y1)&(A9$Year<(Y2+1)),]
+A10<-A10[(A10$Year>Y1)&(A10$Year<(Y2+1)),]
 
 qx1<-matrix(1-A1$qx,111)
 qx2<-matrix(1-A2$qx,111)
@@ -74,6 +76,7 @@ qx6<-matrix(1-A6$qx,111)
 qx7<-matrix(1-A7$qx,111)
 qx8<-matrix(1-A8$qx,111)
 qx9<-matrix(1-A9$qx,111)
+qx10<-matrix(1-A10$qx,111)
 
 ## CAL ####
 
@@ -121,6 +124,12 @@ CAL9 <- c()
 for (i in seq(1989,2017,2)){
   CAL9 <- c(CAL9, CALfunc(qx9,i))
 }
+
+CAL10 <- c()
+for (i in seq(1989,2017,2)){
+  CAL10 <- c(CAL10, CALfunc(qx10,i))
+}
+
 ## CAL dagger ####
 
 qx1 <- ifelse(qx1==0,1,qx1)
@@ -132,6 +141,7 @@ qx6 <- ifelse(qx6==0,1,qx6)
 qx7 <- ifelse(qx7==0,1,qx7)
 qx8 <- ifelse(qx8==0,1,qx8)
 qx9 <- ifelse(qx9==0,1,qx9)
+qx10 <- ifelse(qx10==0,1,qx10)
 
 CALdagger1 <- c()
 for (i in seq(1989,2017,2)){
@@ -178,6 +188,11 @@ for (i in seq(1989,2017,2)){
   CALdagger9 <- c(CALdagger9, CALdagfunc(qx9,i))
 }
 
+CALdagger10 <- c()
+for (i in seq(1989,2017,2)){
+  CALdagger10 <- c(CALdagger10, CALdagfunc(qx10,i))
+}
+
 CALdagger1 <- CALdagger1*-1
 CALdagger2 <- CALdagger2*-1
 CALdagger3 <- CALdagger3*-1
@@ -187,6 +202,7 @@ CALdagger6 <- CALdagger6*-1
 CALdagger7 <- CALdagger7*-1
 CALdagger8 <- CALdagger8*-1
 CALdagger9 <- CALdagger9*-1
+CALdagger10 <- CALdagger10*-1
 
 ## entropy ####
 
@@ -199,18 +215,22 @@ entropyCAL6 <- CALdagger6/CAL6
 entropyCAL7 <- CALdagger7/CAL7
 entropyCAL8 <- CALdagger8/CAL8
 entropyCAL9 <- CALdagger9/CAL9
+entropyCAL10 <- CALdagger10/CAL10
 
 ## average ####
 
 CALentropyavg <- rbind(entropyCAL1,entropyCAL2,entropyCAL3,
                        entropyCAL4,entropyCAL5,entropyCAL6,
-                       entropyCAL7,entropyCAL8,entropyCAL9)
+                       entropyCAL7,entropyCAL8,entropyCAL9,
+                       entropyCAL10)
 CALentropyavg <- colMeans(CALentropyavg)
 
-CALavg <- rbind(CAL1,CAL2,CAL3,CAL4,CAL5,CAL6,CAL7,CAL8,CAL9)
+CALavg <- rbind(CAL1,CAL2,CAL3,CAL4,CAL5,CAL6,CAL7,CAL8,
+                CAL9,CAL10)
 CALavg <- colMeans(CALavg)
 
 CALdaggeravg <- rbind(CALdagger1,CALdagger2,CALdagger3,
                       CALdagger4,CALdagger5,CALdagger6,
-                      CALdagger7,CALdagger8,CALdagger9)
+                      CALdagger7,CALdagger8,CALdagger9,
+                      CALdagger10)
 CALdaggeravg <- colMeans(CALdaggeravg)
