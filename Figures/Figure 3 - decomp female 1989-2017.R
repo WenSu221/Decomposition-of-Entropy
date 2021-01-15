@@ -593,7 +593,7 @@ difference <- data.frame(
   c(rep("SWE",45),rep("DNK",45),rep("FRA",45),rep("GBRTENW",45),rep("NOR",45),
     rep("FIN",45),rep("ITA",45),rep("GBRSCO",45),rep("NLD",45),rep("CHE",45)),
   rep(rep(seq(1989,2017,2),3),10),
-  rep(c(rep("lifespan variation",15),rep("longevity",15),rep("total",15)),10),
+  rep(c(rep("2.lifespan variation",15),rep("1.longevity",15),rep("total",15)),10),
   c(dvariation_SWE,dlongevity_SWE,dtotal_SWE,
     dvariation_DNK,dlongevity_DNK,dtotal_DNK,
     dvariation_FRA,dlongevity_FRA,dtotal_FRA,
@@ -610,20 +610,21 @@ colnames(difference) <- c("population","year","type","relative_disparities")
 
 ggplot(data =difference)+
   geom_col(data = subset(difference,type!="total"), mapping = aes(x=year,y=relative_disparities,fill=type),position = "stack")+
-  geom_line(data = subset(difference,type=="total"),mapping = aes(x=year,y=relative_disparities),lwd=1,)+
-  geom_point(data = subset(difference,type=="total"),mapping = aes(x=year,y=relative_disparities))+
+  geom_line(data = subset(difference,type=="total"),mapping = aes(x=year,y=relative_disparities),lwd=0.5)+
+  geom_point(data = subset(difference,type=="total"),mapping = aes(x=year,y=relative_disparities),cex=0.6)+
   facet_wrap(~population)+
   scale_fill_manual(values = c("blue","red"))+
-  theme_classic()+
+  theme(legend.position = c(1,0),legend.justification = c(1,0))+
   labs(x="Year",y="Relative Disparities",
-       title="decomposition of differences, female 1989-2017")
+       title="Decomposition of differences, female 1989-2017")
+ggsave("Output/decomposition of differences, female 1989-2017.png",width = 6,height = 8,dpi = 300)
 
 ### changes figure ####
 change <- data.frame(
   c(rep("SWE",56),rep("DNK",56),rep("FRA",56),rep("GBRTENW",56),rep("NOR",56),
     rep("FIN",56),rep("ITA",56),rep("GBRSCO",56),rep("NLD",56),rep("CHE",56)),
   rep(rep(seq(1990,2017,2),10),4),
-  rep(c(rep("lifespan variation",14),rep("longevity",14),rep("average entropy change",14),
+  rep(c(rep("3.lifespan variation",14),rep("2.longevity",14),rep("1.change in average entropy",14),
         rep("total",14)),10),
   c(cvariation_SWE,clongevity_SWE,centropychange_SWE,ctotal_SWE,
     cvariation_DNK,clongevity_DNK,centropychange_DNK,ctotal_DNK,
@@ -640,10 +641,13 @@ colnames(change) <- c("population","year","type","relative_disparities")
 
 ggplot(data =change)+
   geom_col(data = subset(change,type!="total"), mapping = aes(x=year,y=relative_disparities,fill=type),position = "stack")+
-  geom_line(data = subset(change,type=="total"),mapping = aes(x=year,y=relative_disparities),lwd=1,)+
-  geom_point(data = subset(change,type=="total"),mapping = aes(x=year,y=relative_disparities))+
+  geom_line(data = subset(change,type=="total"),mapping = aes(x=year,y=relative_disparities),lwd=0.5)+
+  geom_point(data = subset(change,type=="total"),mapping = aes(x=year,y=relative_disparities),cex = 0.6)+
   facet_wrap(~population)+
-  scale_fill_manual(values = c("green","blue","red"))+
-  theme_minimal()+
-  labs(x="Year",y="Relative Disparities",
-       title="decomposition of differences, female 1990-2016")
+  scale_fill_manual(limits = rev(c("3.lifespan variation","2.longevity","1.change in average entropy")),
+                    values = rev(c("red","blue","green")))+
+  theme(legend.position = c(1,0),legend.justification = c(1,0))+
+  labs(x="Year",y="Contributions to change",
+       title="Decomposition of changes in entropy differences,
+       female 1990-2016")
+ggsave("Output/decomposition of changes in differences, female 1990-2016.png",width = 6,height = 8,dpi = 300)
