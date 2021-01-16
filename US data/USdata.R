@@ -1,5 +1,5 @@
 
-D<-read.table("USData.csv",header=TRUE,fill=TRUE,skip=0,sep=",")
+D<-read.table("US Data/USData.csv",header=TRUE,fill=TRUE,skip=0,sep=",")
 
 A<-matrix(0,41,41)
 A[1,]<-D$X0[1:41]
