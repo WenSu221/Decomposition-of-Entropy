@@ -55,6 +55,7 @@ A6 <- read.table("Data/FIN.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 A7 <- read.table("Data/ITA.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 A8 <- read.table("Data/GBRSCO.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 A9 <- read.table("Data/NLD.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A10 <- read.table("Data/CHE.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 
 Y1 <- 1877
 Y2 <- 2017
@@ -68,6 +69,7 @@ A6<-A6[(A6$Year>Y1)&(A6$Year<(Y2+1)),]
 A7<-A7[(A7$Year>Y1)&(A7$Year<(Y2+1)),]
 A8<-A8[(A8$Year>Y1)&(A8$Year<(Y2+1)),]
 A9<-A9[(A9$Year>Y1)&(A9$Year<(Y2+1)),]
+A10<-A10[(A10$Year>Y1)&(A10$Year<(Y2+1)),]
 
 qx1<-matrix(1-A1$qx,111)
 qx2<-matrix(1-A2$qx,111)
@@ -78,53 +80,60 @@ qx6<-matrix(1-A6$qx,111)
 qx7<-matrix(1-A7$qx,111)
 qx8<-matrix(1-A8$qx,111)
 qx9<-matrix(1-A9$qx,111)
+qx10<-matrix(1-A9$qx,111)
 
 ## CAL ####
 
 CAL1 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CAL1 <- c(CAL1, CALfunc(qx1,i))
 }
 
 CAL2 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CAL2 <- c(CAL2, CALfunc(qx2,i))
 }
 
 CAL3 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CAL3 <- c(CAL3, CALfunc(qx3,i))
 }
 
 CAL4 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CAL4 <- c(CAL4, CALfunc(qx4,i))
 }
 
 CAL5 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CAL5 <- c(CAL5, CALfunc(qx5,i))
 }
 
 CAL6 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CAL6 <- c(CAL6, CALfunc(qx6,i))
 }
 
 CAL7 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CAL7 <- c(CAL7, CALfunc(qx7,i))
 }
 
 CAL8 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CAL8 <- c(CAL8, CALfunc(qx8,i))
 }
 
 CAL9 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CAL9 <- c(CAL9, CALfunc(qx9,i))
 }
+
+CAL10 <- c()
+for (i in seq(1989,2017,2)){
+  CAL10 <- c(CAL10, CALfunc(qx10,i))
+}
+
 ## CAL dagger ####
 
 qx1 <- ifelse(qx1==0,1,qx1)
@@ -136,50 +145,56 @@ qx6 <- ifelse(qx6==0,1,qx6)
 qx7 <- ifelse(qx7==0,1,qx7)
 qx8 <- ifelse(qx8==0,1,qx8)
 qx9 <- ifelse(qx9==0,1,qx9)
+qx10 <- ifelse(qx10==0,1,qx10)
 
 CALdagger1 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CALdagger1 <- c(CALdagger1, CALdagfunc(qx1,i))
 }
 
 CALdagger2 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CALdagger2 <- c(CALdagger2, CALdagfunc(qx2,i))
 }
 
 CALdagger3 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CALdagger3 <- c(CALdagger3, CALdagfunc(qx3,i))
 }
 
 CALdagger4 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CALdagger4 <- c(CALdagger4, CALdagfunc(qx4,i))
 }
 
 CALdagger5 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CALdagger5 <- c(CALdagger5, CALdagfunc(qx5,i))
 }
 
 CALdagger6 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CALdagger6 <- c(CALdagger6, CALdagfunc(qx6,i))
 }
 
 CALdagger7 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CALdagger7 <- c(CALdagger7, CALdagfunc(qx7,i))
 }
 
 CALdagger8 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CALdagger8 <- c(CALdagger8, CALdagfunc(qx8,i))
 }
 
 CALdagger9 <- c()
-for (i in seq(1989,2017,4)){
+for (i in seq(1989,2017,2)){
   CALdagger9 <- c(CALdagger9, CALdagfunc(qx9,i))
+}
+
+CALdagger10 <- c()
+for (i in seq(1989,2017,2)){
+  CALdagger10 <- c(CALdagger10, CALdagfunc(qx10,i))
 }
 
 CALdagger1 <- CALdagger1*-1
@@ -191,6 +206,7 @@ CALdagger6 <- CALdagger6*-1
 CALdagger7 <- CALdagger7*-1
 CALdagger8 <- CALdagger8*-1
 CALdagger9 <- CALdagger9*-1
+CALdagger10 <- CALdagger10*-1
 
 ## entropy ####
 
@@ -203,13 +219,14 @@ entropyCAL6 <- CALdagger6/CAL6
 entropyCAL7 <- CALdagger7/CAL7
 entropyCAL8 <- CALdagger8/CAL8
 entropyCAL9 <- CALdagger9/CAL9
+entropyCAL10 <- CALdagger10/CAL10
 
 entropyCALtable <- cbind(entropyCAL1,entropyCAL2,entropyCAL3,entropyCAL4,
                          entropyCAL5,entropyCAL6,entropyCAL7,entropyCAL8,
-                         entropyCAL9)
+                         entropyCAL9,entropyCAL10)
 colnames(entropyCALtable) <- c("SWE","DNK","FRATNP","GBRTENW","NOR",
-                                "FIN","ITA","GBRSCO","NLD")
-row.names(entropyCALtable) <- c(seq(1989,2017,4))
+                                "FIN","ITA","GBRSCO","NLD","CHE")
+row.names(entropyCALtable) <- c(seq(1989,2017,2))
 write.csv(entropyCALtable,file = "Output/entropyCALtable_male.csv")
 
 #### e0 functions ####
@@ -251,7 +268,7 @@ A6 <- read.table("Data/FIN.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 A7 <- read.table("Data/ITA.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 A8 <- read.table("Data/GBRSCO.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 A9 <- read.table("Data/NLD.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-
+A10 <- read.table("Data/CHE.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 
 ## e ####
 
@@ -264,6 +281,7 @@ e06<-LE(A6,1878,2017)
 e07<-LE(A7,1878,2017)
 e08<-LE(A8,1878,2017)
 e09<-LE(A9,1878,2017)
+e10<-LE(A10,1878,2017)
 
 ## e dagger # ----
 edagger1 <- c()
@@ -311,6 +329,11 @@ for (i in seq(1878,2017,1)){
   edagger9 <- c(edagger9, LSV(A9,i))
 }
 
+edagger10 <- c()
+for (i in seq(1878,2017,1)){
+  edagger10 <- c(edagger10, LSV(A10,i))
+}
+
 entropye01 <- edagger1/e01
 entropye02 <- edagger2/e02
 entropye03 <- edagger3/e03
@@ -320,12 +343,13 @@ entropye06 <- edagger6/e06
 entropye07 <- edagger7/e07
 entropye08 <- edagger8/e08
 entropye09 <- edagger9/e09
+entropye10 <- edagger10/e10
 
 entropye0table <- cbind(entropye01,entropye02,entropye03,entropye04,
                        entropye05,entropye06,entropye07,entropye08,
-                       entropye09)
+                       entropye09,entropye10)
 colnames(entropye0table) <- c("SWE","DNK","FRATNP","GBRTENW","NOR",
-                              "FIN","ITA","GBRSCO","NLD")
+                              "FIN","ITA","GBRSCO","NLD","CHE")
 row.names(entropye0table) <- c(1878:2017)
 write.csv(entropye0table, file = "Output/entropye0table_male.CSV")
 
@@ -338,27 +362,30 @@ source("Figures/figure 1 - entropy of ec0 male.R")
 
 eavg <- rbind(entropye01,entropye02,entropye03,entropye04,
               entropye05,entropye06,entropye07,entropye08,
-              entropye09)
+              entropye09,entropye10)
 eavg <- colMeans(eavg)
 
 cavg <- rbind(entropyc1,entropyc2,entropyc3,entropyc4,
               entropyc5,entropyc6,entropyc7,entropyc8,
-              entropyc9)
+              entropyc9,entropyc10)
 cavg <- colMeans(cavg[,1:49])
 
 CALavg <- rbind(entropyCAL1,entropyCAL2,entropyCAL3,
-                 entropyCAL4,entropyCAL5,entropyCAL6,
-                 entropyCAL7,entropyCAL8,entropyCAL9)
+                entropyCAL4,entropyCAL5,entropyCAL6,
+                entropyCAL7,entropyCAL8,entropyCAL9,
+                entropyCAL10)
 CALavg <- colMeans(CALavg)
 
 
 ### Plot ####
-windows(12,8)
-png(file = "Output/Measures Comparison, male 1878-2017.png",
+png(file = "Output/Measures Comparison(regressed), male 1878-2017.png",
     units = "in", width = 12, height = 8, res = 300)
 years1 <- c(1878:2017)
-years2 <- c(seq(1989,2017,4))
+years2 <- c(seq(1989,2017,2))
 years3 <- c(1878:1926)
+# years4 <- c(1878:1950)
+# years5 <- c(1951:2018)
+# years6 <- c(seq(1989,2017,2))
 plot(range(years1),c(0,1),xlab = "Years",ylab = "Entropy index", col=0)
 lines(years2,entropyCAL1,col=cols[8])
 lines(years2,entropyCAL2,col=cols[8])
@@ -369,7 +396,9 @@ lines(years2,entropyCAL6,col=cols[8])
 lines(years2,entropyCAL7,col=cols[8])
 lines(years2,entropyCAL8,col=cols[8])
 lines(years2,entropyCAL9,col=cols[8])
+lines(years2,entropyCAL10,col=cols[8])
 lines(years2,CALavg,col="red",lwd = 2)
+# abline(lm(CALavg~years6),col = "red")
 lines(years1,entropye01,col=cols[7])
 lines(years1,entropye02,col=cols[7])
 lines(years1,entropye03,col=cols[7])
@@ -379,7 +408,10 @@ lines(years1,entropye06,col=cols[7])
 lines(years1,entropye07,col=cols[7])
 lines(years1,entropye08,col=cols[7])
 lines(years1,entropye09,col=cols[7])
+lines(years1,entropye10,col=cols[7])
 lines(years1,eavg,col=cols2[4],lwd = 2)
+# abline(lm(eavg[1:73]~years4),col = "green")
+# abline(lm(eavg[73:140]~years5),col = "green")
 lines(years3,entropyc1,col="plum2")
 lines(years3,entropyc2,col="plum2")
 lines(years3,entropyc3,col="plum2")
@@ -389,7 +421,9 @@ lines(years3,entropyc6,col="plum2")
 lines(years3,entropyc7,col="plum2")
 lines(years3,entropyc8,col="plum2")
 lines(years3,entropyc9,col="plum2")
+lines(years3,entropyc10,col="plum2")
 lines(years3,cavg,col="purple",lwd = 2)
+# abline(lm(cavg~years3),col = "purple")
 title("Entropy Compariosn between three measures - male 1878-2017")
 legend("topright"
        ,c("average entropy of CAL",
