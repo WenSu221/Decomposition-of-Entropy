@@ -249,6 +249,7 @@ diff6 <- entropyCAL6 - CALavg
 diff7 <- entropyCAL7 - CALavg
 diff8 <- entropyCAL8 - CALavg
 diff9 <- entropyCAL9 - CALavg
+diff10 <- entropyCAL10 - CALavg
 
 
 ### Plots ####
@@ -286,13 +287,17 @@ lines(Years,diff8,type = "l",
 lines(Years,diff9,type = "l",
       col = cols[9],lty=2,lwd = 2,
       cex = 1,pch = 20)
+lines(Years,diff10,type = "l",
+      col = cols[10],lty=2,lwd = 2,
+      cex = 1,pch = 20)
 lines(Years,rep(0,times=8),
       col = 1, lty = 3, lwd = 2,
       cex = 1,pch = 20)
 legend("topright",c("Sweden","Denmark","France",
                     "England and Wales","Norway",
-                    "Finland","Italy","Scotland","Netherland"),
-       col = c("black",cols[2:5],cols[1],cols[7:9]),
+                    "Finland","Italy","Scotland",
+                    "Netherland","Switzerland"),
+       col = c("black",cols[2:5],cols[1],cols[7:10]),
        lty = c(2,1,4,2,2,1,4,4,2,3),box.col = 0)
 title("Entropy of CAL compared to average level, male 1989-2017")
 mtext("average level", side = 2,adj = 0.4)

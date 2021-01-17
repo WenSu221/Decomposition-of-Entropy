@@ -232,33 +232,6 @@ CALavg <- rbind(entropyCAL1,entropyCAL2,entropyCAL3,
 CALavg <- colMeans(CALavg)
 
 
-# #### Figure ####
-# 
-# Years <- seq(1989,2017,4)
-# png(file = "Output/Countries Comparison log scale, female 1989-2017.png",
-#     units = "in", width = 6, height = 8, res = 200)
-# plot(c(1989,2017),rev(c(0.11,0.24)),col = 0,
-#      xlab = "Years",ylab = "entropy of CAL (log scale)", 
-#      log = "y")
-# lines(Years,entropyCAL1,col = cols[1],lty=5,lwd = 2)
-# lines(Years,entropyCAL2,col = cols[2],pch=2,lty=5,lwd = 2)
-# lines(Years,entropyCAL3,col = cols[3],lty=5,lwd = 2)
-# lines(Years,entropyCAL4,col = cols[4],pch=3,lty=5,lwd = 2)
-# lines(Years,entropyCAL5,col = cols[5],pch=2,lty=5,lwd = 2)
-# lines(Years,entropyCAL6,col = cols[6],lty=6,lwd = 2)
-# lines(Years,entropyCAL7,col = cols[7],pch=3,lty=6,lwd = 2)
-# lines(Years,entropyCAL8,col = cols[8],lty=6,lwd = 2)
-# lines(Years,entropyCAL9,col = cols[9],lty=6,lwd = 2)
-# lines(Years,entropyCAL10,col = cols[10],lty=6,lwd = 2)
-# lines(Years,CALavg,col = "grey",pch = 16,lty = 1,lwd = 2)
-# title("comparison of entropy of CAL across countries, female 1989-2017")
-# legend("topright",c("Sweden","Denmark","France","England and Wales",
-#                     "Norway","Finland","Italy","Scotland","Netherland",
-#                     "Switzerland", "average"),
-#        col = c(cols[1:10]),lty = c(5,5,5,5,5,6,6,6,6,6,1),
-#        box.col = 0)
-# dev.off()
-
 ### CALavg as the benchmark ####
 
 diff1 <- entropyCAL1 - CALavg
