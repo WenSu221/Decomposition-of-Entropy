@@ -13,6 +13,7 @@ A6 <- read.table("Data/FIN.mltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 A7 <- read.table("Data/ITA.mltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 A8 <- read.table("Data/GBRSCO.mltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 A9 <- read.table("Data/NLD.mltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A10 <- read.table("Data/CHE.mltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 
 Y1 <- 1877
 Y2 <- 1926
@@ -26,6 +27,7 @@ A6<-A6[(A6$Year>Y1)&(A6$Year<(Y2+1)),]
 A7<-A7[(A7$Year>Y1)&(A7$Year<(Y2+1)),]
 A8<-A8[(A8$Year>Y1)&(A8$Year<(Y2+1)),]
 A9<-A9[(A9$Year>Y1)&(A9$Year<(Y2+1)),]
+A10<-A10[(A10$Year>Y1)&(A10$Year<(Y2+1)),]
 
 ### e dagger # ----
 
@@ -75,6 +77,8 @@ ec08<-LE(A8,1878,1926)
 ec08 <- as.numeric(ec08)
 ec09<-LE(A9,1878,1926)
 ec09 <- as.numeric(ec09)
+ec10<-LE(A10,1878,1926)
+ec10 <- as.numeric(ec10)
 
 
 A1 <- as.data.frame(sapply(A1, as.numeric))
@@ -140,6 +144,13 @@ for (i in 1878:1926){
   ed9 <- c(ed9, LSV(A9,i))
 }
 
+A10 <- as.data.frame(sapply(A10, as.numeric))
+A10[is.na(A10)]<-0
+ed10 <- c()
+for (i in 1878:1926){
+  ed10 <- c(ed10, LSV(A10,i))
+}
+
 ### H # ----
 
 entropyc1 <- ed1/ec01
@@ -151,11 +162,13 @@ entropyc6 <- ed6/ec06
 entropyc7 <- ed7/ec07
 entropyc8 <- ed8/ec08
 entropyc9 <- ed9/ec09
+entropyc10 <- ed10/ec10
 
 entropyctable <- cbind(entropyc1,entropyc2,entropyc3,
                        entropyc4,entropyc5,entropyc6,
-                       entropyc7,entropyc8,entropyc9)
+                       entropyc7,entropyc8,entropyc9,
+                       entropyc10)
 colnames(entropyctable) <- c("SWE","DNK","FRATNP","GBRTENW","NOR",
-                              "FIN","ITA","GBRSCO","NLD")
+                              "FIN","ITA","GBRSCO","NLD","CHE")
 row.names(entropyctable) <- c(1878:1926)
 write.csv(entropyctable, file = "Output/entropyctable_male.CSV")
