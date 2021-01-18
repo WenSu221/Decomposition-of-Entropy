@@ -227,14 +227,12 @@ entropyCAL8 <- CALdagger8/CAL8
 entropyCAL9 <- CALdagger9/CAL9
 entropyCAL10 <- CALdagger10/CAL10
 
-entropyCAL11 <- c(rep(0,11),entropyCAL11)
 
 CALavg <- rbind(entropyCAL1,entropyCAL2,entropyCAL3,
                 entropyCAL4,entropyCAL5,entropyCAL6,
                 entropyCAL7,entropyCAL8,entropyCAL9,
-                entropyCAL10,entropyCAL11)
-CALavg <- c(colMeans(CALavg[1:10,1:11]),
-            colMeans(CALavg[1:11,12:15]))
+                entropyCAL10)
+CALavg <- colMeans(CALavg)
 
 
 ### CALavg as the benchmark ####
@@ -249,7 +247,7 @@ diff7 <- entropyCAL7 - CALavg
 diff8 <- entropyCAL8 - CALavg
 diff9 <- entropyCAL9 - CALavg
 diff10 <- entropyCAL10 - CALavg
-diff11 <- entropyCAL11[12:15] - CALavg[12:15]
+diff11 <- entropyCAL11 - CALavg[12:15]
 diff11 <- c(rep(NA,11),diff11)
 
 
