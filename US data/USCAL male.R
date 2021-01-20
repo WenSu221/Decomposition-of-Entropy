@@ -127,10 +127,6 @@ for (i in seq(2011,2017,2)){
   CALdagger11 <- c(CALdagger11, CALdagfunc(qx11,i))
 }
 
-<<<<<<< HEAD
-CALdagger11 <- -CALdagger11
-=======
 CALdagger11 <- CALdagger11*-1
 
->>>>>>> 4c897a1b7bcb0c3028546e3d50f91a455bd79888
 entropyCAL11 <- CALdagger11/CAL11

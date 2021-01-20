@@ -271,6 +271,7 @@ A7 <- read.table("Data/ITA.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 A8 <- read.table("Data/GBRSCO.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 A9 <- read.table("Data/NLD.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 A10 <- read.table("Data/CHE.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A11 <- read.table("US data/USA.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 
 ## e ####
 
@@ -284,6 +285,7 @@ e07<-LE(A7,1878,2017)
 e08<-LE(A8,1878,2017)
 e09<-LE(A9,1878,2017)
 e10<-LE(A10,1878,2017)
+e11<-LE(A11,1933,2017)
 
 ## e dagger # ----
 edagger1 <- c()
@@ -336,6 +338,11 @@ for (i in seq(1878,2017,1)){
   edagger10 <- c(edagger10, LSV(A10,i))
 }
 
+edagger11 <- c()
+for (i in seq(1933,2017,1)){
+  edagger11 <- c(edagger11, LSV(A11,i))
+}
+
 entropye01 <- edagger1/e01
 entropye02 <- edagger2/e02
 entropye03 <- edagger3/e03
@@ -346,6 +353,7 @@ entropye07 <- edagger7/e07
 entropye08 <- edagger8/e08
 entropye09 <- edagger9/e09
 entropye10 <- edagger10/e10
+entropye11 <- edagger11/e11
 
 entropye0table <- cbind(entropye01,entropye02,entropye03,entropye04,
                        entropye05,entropye06,entropye07,entropye08,
@@ -389,6 +397,7 @@ years3 <- c(1878:1926)
 # years5 <- c(1951:2018)
 # years6 <- c(seq(1989,2017,2))
 years7 <- c(seq(2011,2017,2))
+years8 <- c(1933:2017)
 plot(range(years1),c(0,1),xlab = "Years",ylab = "Entropy index", col=0)
 lines(years2,entropyCAL1,col=cols[8],lty=3)
 lines(years2,entropyCAL2,col=cols[8],lty=3)
@@ -413,10 +422,10 @@ lines(years1,entropye07,col=cols[7],lty=3)
 lines(years1,entropye08,col=cols[7],lty=3)
 lines(years1,entropye09,col=cols[7],lty=3)
 lines(years1,entropye10,col=cols[7],lty=3)
+lines(years8,entropye11,col=cols[7],lty=3)
 lines(years1,eavg,col=cols2[4],lwd = 2)
-<<<<<<< HEAD
-# abline(lm(eavg[1:73]~years4),col = "green")
-# abline(lm(eavg[73:140]~years5),col = "green")
+# abline(lm(eavg[1:73]~years4),col = "dark green")
+# abline(lm(eavg[73:140]~years5),col = " dark green")
 lines(years3,entropyc1,col="plum2",lty=3)
 lines(years3,entropyc2,col="plum2",lty=3)
 lines(years3,entropyc3,col="plum2",lty=3)
@@ -427,20 +436,6 @@ lines(years3,entropyc7,col="plum2",lty=3)
 lines(years3,entropyc8,col="plum2",lty=3)
 lines(years3,entropyc9,col="plum2",lty=3)
 lines(years3,entropyc10,col="plum2",lty=3)
-=======
-# abline(lm(eavg[1:73]~years4),col = "dark green")
-# abline(lm(eavg[73:140]~years5),col = " dark green")
-lines(years3,entropyc1,col="plum2")
-lines(years3,entropyc2,col="plum2")
-lines(years3,entropyc3,col="plum2")
-lines(years3,entropyc4,col="plum2")
-lines(years3,entropyc5,col="plum2")
-lines(years3,entropyc6,col="plum2")
-lines(years3,entropyc7,col="plum2")
-lines(years3,entropyc8,col="plum2")
-lines(years3,entropyc9,col="plum2")
-lines(years3,entropyc10,col="plum2")
->>>>>>> 4c897a1b7bcb0c3028546e3d50f91a455bd79888
 lines(years3,cavg,col="purple",lwd = 2)
 # abline(lm(cavg~years3),col = "purple")
 title("Entropy Compariosn between three measures - male 1878-2017")

@@ -61,7 +61,7 @@ filled.contour(Year,Age,t(B[1:31,]),levels=levels,
 USAmale <- rbind (B[1:31,1:32],matrix(0,80,32))
 
 ## HMD data
-A11 <- read.table("US Data/USA.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A11 <- read.table("US Data/USA.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 
 Y1 <- 1932
 Y2 <- 2017

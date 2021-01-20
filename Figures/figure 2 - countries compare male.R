@@ -253,8 +253,8 @@ diff11 <- c(rep(NA,11),diff11)
 
 Years <- seq(1989,2017,2)
 # png(file = "Output/Countries Comparison average benchmark, male 1989-2017.png",
-#     units = "in", width = 7, height = 9, res = 300)
-par(mar=c(5,5,5,10),xpd = T)
+#     units = "in", width = 8, height = 10, res = 300)
+par(mar=c(5,5,5,12),xpd = T)
 plot(c(1989,2017),c(-0.025,0.04),col = 0,
      xlab = "Years",
      ylab="differences from average level of entropy of CAL")
@@ -293,7 +293,7 @@ lines(Years,diff11,type = "l",
 lines(Years,rep(0,times=15),
       col = 1, lty = 3, lwd = 2,
       cex = 1,pch = 20)
-legend("right",inset=-0.3,c("Sweden","Denmark","France",
+legend("right",inset=-0.5,c("Sweden","Denmark","France",
                     "England and Wales","Norway",
                     "Finland","Italy","Scotland",
                     "Netherland","Switzerland","USA"),

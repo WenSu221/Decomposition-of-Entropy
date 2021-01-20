@@ -4,7 +4,7 @@ library(RColorBrewer)
 cols <- brewer.pal(n=12,name="Set3")
 cols2 <- brewer.pal(n=4,name="Paired")
 
-source("US Data/USCAL male.R")
+source("US Data/USCAL female.R")
 
 #### CAL functions ####
 CALfunc <-function(Mx1,Y){
@@ -229,8 +229,8 @@ entropyCALtable <- cbind(entropyCAL1,entropyCAL2,entropyCAL3,entropyCAL4,
                          entropyCAL9,entropyCAL10)
 colnames(entropyCALtable) <- c("SWE","DNK","FRATNP","GBRTENW","NOR",
                                 "FIN","ITA","GBRSCO","NLD","CHE")
-row.names(entropyCALtable) <- c(seq(1989,2017,4))
-write.csv(entropyCALtable,file = "Output/entropyCALtable_female.csv")
+row.names(entropyCALtable) <- c(seq(1989,2017,2))
+# write.csv(entropyCALtable,file = "Output/entropyCALtable_female.csv")
 
 #### e0 functions ####
 
@@ -272,6 +272,7 @@ A7 <- read.table("Data/ITA.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 A8 <- read.table("Data/GBRSCO.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 A9 <- read.table("Data/NLD.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 A10 <- read.table("Data/CHE.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A11 <- read.table("US data/USA.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 
 ## e ####
 
@@ -285,6 +286,7 @@ e07<-LE(A7,1878,2017)
 e08<-LE(A8,1878,2017)
 e09<-LE(A9,1878,2017)
 e10<-LE(A10,1878,2017)
+e11<-LE(A11,1933,2017)
 
 ## e dagger # ----
 edagger1 <- c()
@@ -337,6 +339,11 @@ for (i in seq(1878,2017,1)){
   edagger10 <- c(edagger10, LSV(A10,i))
 }
 
+edagger11 <- c()
+for (i in seq(1933,2017,1)){
+  edagger11 <- c(edagger11, LSV(A11,i))
+}
+
 entropye01 <- edagger1/e01
 entropye02 <- edagger2/e02
 entropye03 <- edagger3/e03
@@ -347,6 +354,7 @@ entropye07 <- edagger7/e07
 entropye08 <- edagger8/e08
 entropye09 <- edagger9/e09
 entropye10 <- edagger10/e10
+entropye11 <- edagger11/e11
 
 entropye0table <- cbind(entropye01,entropye02,entropye03,entropye04,
                        entropye05,entropye06,entropye07,entropye08,
@@ -381,8 +389,8 @@ CALavg <- colMeans(CALavg)
 
 
 ### Plot ####
-png(file = "Output/Measures Comparison, female 1878-2017.png",
-    units = "in", width = 12, height = 8, res = 300)
+# png(file = "Output/Measures Comparison, female 1878-2017.png",
+#     units = "in", width = 12, height = 8, res = 300)
 years1 <- c(1878:2017)
 years2 <- c(seq(1989,2017,2))
 years3 <- c(1878:1926)
@@ -390,6 +398,7 @@ years3 <- c(1878:1926)
 # years5 <- c(1951:2018)
 # years6 <- c(seq(1989,2017,2))
 years7 <- c(seq(2011,2017,2))
+years8 <- c(1933:2017)
 plot(range(years1),c(0,1),xlab = "Years",ylab = "Entropy index", col=0)
 lines(years2,entropyCAL1,col=cols[8],lty = 3)
 lines(years2,entropyCAL2,col=cols[8],lty = 3)
@@ -414,6 +423,7 @@ lines(years1,entropye07,col=cols[7],lty=3)
 lines(years1,entropye08,col=cols[7],lty=3)
 lines(years1,entropye09,col=cols[7],lty=3)
 lines(years1,entropye10,col=cols[7],lty=3)
+lines(years8,entropye11,col=cols[7],lty=3)
 lines(years1,eavg,col=cols2[4],lwd = 2)
 # abline(lm(eavg[1:73]~years4),col = "green")
 # abline(lm(eavg[73:140]~years5),col = "green")
@@ -441,4 +451,4 @@ legend("topright"
        lty = c(1,3,1,3,1,3),
        lwd = c(2,1,2,1,2,1),
        box.lty = 0)
-dev.off()
+# dev.off()
