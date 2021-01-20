@@ -723,8 +723,8 @@ ggplot(data =difference)+
         legend.background = element_blank())+
   labs(x="Year",y="Relative Disparities",
        title="Decomposition of differences, male 1989-2017")
-ggsave("Output/decomposition of differences, male 1989-2017.png",
-       width = 6,height = 8,dpi = 300)
+# ggsave("Output/decomposition of differences, male 1989-2017.png",
+#        width = 6,height = 8,dpi = 300)
 
 ### changes figure ####
 change <- data.frame(
@@ -759,5 +759,5 @@ ggplot(data =change)+
   labs(x="Year",y="Relative Disparities",
        title="Decomposition of changes in differences,
        male 1990-2016")
-ggsave("Output/decomposition of changes in differences, male 1990-2016.png",
-       width = 6,height = 8,dpi = 300)
+# ggsave("Output/decomposition of changes in differences, male 1990-2016.png",
+#        width = 6,height = 8,dpi = 300)
