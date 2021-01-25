@@ -377,7 +377,7 @@ CALavg <- colMeans(CALavg)
 
 
 ### Plot ####
-# png(file = "Output/Measures Comparison, male 1878-2017.png",
+# png(file = "Output/Measures Comparison (regressed), male 1878-2017.png",
 #     units = "in", width = 12, height = 8, res = 300)
 years1 <- c(1878:2017)
 years2 <- c(seq(1989,2017,2))
@@ -386,26 +386,26 @@ years6 <- c(seq(1989,2017,2))
 years7 <- c(seq(2011,2017,2))
 years8 <- c(1933:2017)
 #Linear Models
-CALlm <- lm(CALavg~c(1:15))
-CALcoefs <- coef(CALlm)
-CALslope <- round(CALcoefs[2],5)
-CALr2 <- round(summary(CALlm)$r.squared,2)
-CALeqn <- bquote("CAL:" ~~ slope == .(CALslope*100) ~~ r^2 == .(CALr2))
-
-clm <- lm(cavg~c(1:49))
-ccoefs <- coef(clm)
-cslope <- round(ccoefs[2],5)
-cr2 <- round(summary(clm)$r.squared,2)
-ceqn <- bquote("cohort:" ~~ slope == .(cslope*100) ~~ r^2 == .(cr2))
-
-elm <- lm(eavg~c(1:140))
-elm <- segmented(elm,seg.Z =~years1)
-ecoefs <- coef(elm)
-eslope1 <- round(ecoefs[2],5)
-eslope2 <- round(ecoefs[3],5)
-er2 <- round(summary(elm)$r.squared,2)
-eeqn1 <- bquote("period 1878~1959" ~~ slope == .(eslope1*100) ~~ r^2 == .(er2))
-eeqn2 <- bquote("period 1960~2017" ~~ slope == .(eslope1*100+eslope2*100) ~~ r^2 == .(er2))
+# CALlm <- lm(CALavg~c(1:15))
+# CALcoefs <- coef(CALlm)
+# CALslope <- round(CALcoefs[2],5)
+# CALr2 <- round(summary(CALlm)$r.squared,2)
+# CALeqn <- bquote("CAL:" ~~ slope == .(CALslope*100) ~~ r^2 == .(CALr2))
+# 
+# clm <- lm(cavg~c(1:49))
+# ccoefs <- coef(clm)
+# cslope <- round(ccoefs[2],5)
+# cr2 <- round(summary(clm)$r.squared,2)
+# ceqn <- bquote("cohort:" ~~ slope == .(cslope*100) ~~ r^2 == .(cr2))
+# 
+# elm <- lm(eavg~c(1:140))
+# elm <- segmented(elm,seg.Z =~years1)
+# ecoefs <- coef(elm)
+# eslope1 <- round(ecoefs[2],5)
+# eslope2 <- round(ecoefs[3],5)
+# er2 <- round(summary(elm)$r.squared,2)
+# eeqn1 <- bquote("period 1878~1959" ~~ slope == .(eslope1*100) ~~ r^2 == .(er2))
+# eeqn2 <- bquote("period 1960~2017" ~~ slope == .(eslope1*100+eslope2*100) ~~ r^2 == .(er2))
 
 plot(range(years1),c(0,1),xlab = "Years",ylab = "Entropy index", col=0)
 lines(years2,entropyCAL1,col=cols[8],lty=3)
