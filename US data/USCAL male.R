@@ -1,7 +1,7 @@
 ### US CAL male ####
 ## this script is based on 
 ## Vladimir Canudas-Romo's
-## US mortality estimation for 1900-1931
+## US mortality estimation for 1900-1932
 
 D<-read.table("US Data/USData.csv",header=TRUE,fill=TRUE,skip=0,sep=",")
 
