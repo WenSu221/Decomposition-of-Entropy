@@ -681,7 +681,6 @@ centropychange_USA <- c(rep(NA,11),centropyavg_derivative_USA*entropydiffavg_ori
 ctotal_USA <- c(cvariation_USA+clongevity_USA+centropychange_USA)
 
 # ### formula ####
-
 # ## decomposition in differences
 # total <- variation+longevity
 # ## decomposition in change in differences
