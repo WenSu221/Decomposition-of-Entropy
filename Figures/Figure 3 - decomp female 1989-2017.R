@@ -677,11 +677,12 @@ ggplot(data =difference)+
   geom_point(data = subset(difference,type=="total"),mapping = aes(x=year,y=relative_disparities),cex=0.6)+
   facet_wrap(~population)+
   scale_fill_manual(values = c("blue","red"))+
-  theme(legend.position = c(1,0),legend.justification = c(1,0),
+  theme(plot.margin = margin(t=0,r=2,b=0,l=0,"cm"),
+    legend.position = c(0.95,0.1),
         legend.background = element_blank())+
   labs(x="Year",y="Relative Disparities",
        title="Decomposition of differences, female 1989-2017")
-# ggsave("Output/decomposition of differences, female 1989-2017.png",width = 6,height = 8,dpi = 300)
+ggsave("Output/decomposition of differences, female 1989-2017.png",width = 6,height = 8,dpi = 300)
 
 ### changes figure ####
 change <- data.frame(
@@ -711,7 +712,7 @@ ggplot(data =change)+
   geom_point(data = subset(change,type=="total"),mapping = aes(x=year,y=relative_disparities),cex = 0.6)+
   facet_wrap(~population)+
   scale_fill_manual(values = rev(c("red","blue","green4")))+
-  theme(plot.margin = margin(t=2,r=2,b=0,l=0,"cm"),
+  theme(plot.margin = margin(t=0,r=2,b=0,l=0,"cm"),
         legend.position = c(0.95,0.1),
         legend.background = element_blank())+
   labs(x="Year",y="Contributions to change",
