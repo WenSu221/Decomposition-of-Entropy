@@ -651,9 +651,11 @@ ctotal_USA <- c(cvariation_USA+clongevity_USA+centropychange_USA)
 
 ### differences figure ####
 difference <- data.frame(
-  c(rep("SWE",45),rep("DNK",45),rep("FRA",45),rep("GBRTENW",45),rep("NOR",45),
-    rep("FIN",45),rep("ITA",45),rep("GBRSCO",45),rep("NLD",45),rep("CHE",45),
-    rep("USA",45)),
+  c(rep("Sweden",45),rep("Denmark",45),rep("France",45),
+    rep("England & Wales",45),rep("Norway",45),
+    rep("Finland",45),rep("Italy",45),
+    rep("Scotland",45),rep("Netherlands",45),
+    rep("Switzerland",45),rep("USA",45)),
   rep(rep(seq(1989,2017,2),3),11),
   rep(c(rep("2.lifespan variation",15),rep("1.longevity",15),rep("total",15)),11),
   c(dvariation_SWE,dlongevity_SWE,dtotal_SWE,
@@ -682,12 +684,15 @@ ggplot(data =difference)+
         legend.background = element_blank())+
   labs(x="Year",y="Relative Disparities",
        title="Decomposition of differences, female 1989-2017")
-# ggsave("Output/decomposition of differences, female 1989-2017.png",width = 6,height = 8,dpi = 300)
+ggsave("Output/decomposition of differences, female 1989-2017.png",width = 6,height = 8,dpi = 300)
 
 ### changes figure ####
 change <- data.frame(
-  c(rep("SWE",56),rep("DNK",56),rep("FRA",56),rep("GBRTENW",56),rep("NOR",56),
-    rep("FIN",56),rep("ITA",56),rep("GBRSCO",56),rep("NLD",56),rep("CHE",56),
+  c(rep("Sweden",56),rep("Denmark",56),
+    rep("France",56),rep("England & Wales",56),
+    rep("Norway",56),rep("Finland",56),
+    rep("Italy",56),rep("Scotland",56),
+    rep("Netherlands",56),rep("Switzerland",56),
     rep("USA",56)),
   rep(rep(seq(1990,2017,2),11),4),
   rep(c(rep("3.lifespan variation",14),rep("2.longevity",14),
@@ -718,4 +723,4 @@ ggplot(data =change)+
   labs(x="Year",y="Contributions to change",
        title="Decomposition of changes in entropy differences,
        female 1990-2016")
-# ggsave("Output/decomposition of changes in differences, female 1990-2016.png",width = 6,height = 8,dpi = 300)
+ggsave("Output/decomposition of changes in differences, female 1990-2016.png",width = 6,height = 8,dpi = 300)
