@@ -1,4 +1,4 @@
-### US CAL male ####
+### US CAL female ####
 ## this script is based on 
 ## Vladimir Canudas-Romo's
 ## US mortality estimation for 1900-1932
