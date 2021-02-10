@@ -380,8 +380,8 @@ CALavg <- colMeans(CALavg)
 
 
 ### Plot ####
-# png(file = "Output/Measures Comparison (regressed), female 1878-2017.png",
-#     units = "in", width = 12, height = 8, res = 300)
+png(file = "Output/Measures Comparison (regressed), female 1878-2017.png",
+    units = "in", width = 12, height = 8, res = 300)
 
 #Years
 years1 <- c(1878:2017)
@@ -391,27 +391,27 @@ years6 <- c(seq(1989,2017,2))
 years7 <- c(seq(2011,2017,2))
 years8 <- c(1933:2017)
 #Linear Models
-# 
-# CALlm <- lm(CALavg~c(1:15))
-# CALcoefs <- coef(CALlm)
-# CALslope <- round(CALcoefs[2],5)
-# CALr2 <- round(summary(CALlm)$r.squared,2)
-# CALeqn <- bquote("CAL:" ~~ slope == .(CALslope*100) ~~ r^2 == .(CALr2))
-# 
-# clm <- lm(cavg~c(1:49))
-# ccoefs <- coef(clm)
-# cslope <- round(ccoefs[2],5)
-# cr2 <- round(summary(clm)$r.squared,2)
-# ceqn <- bquote("cohort:" ~~ slope == .(cslope*100) ~~ r^2 == .(cr2))
-# 
-# elm <- lm(eavg~c(1:140))
-# elm <- segmented(elm,seg.Z =~years1)
-# ecoefs <- coef(elm)
-# eslope1 <- round(ecoefs[2],5)
-# eslope2 <- round(ecoefs[3],5)
-# er2 <- round(summary(elm)$r.squared,2)
-# eeqn1 <- bquote("period 1878~1959" ~~ slope == .(eslope1*100) ~~ r^2 == .(er2))
-# eeqn2 <- bquote("period 1960~2017" ~~ slope == .(eslope1*100+eslope2*100) ~~ r^2 == .(er2))
+
+CALlm <- lm(CALavg~c(1:15))
+CALcoefs <- coef(CALlm)
+CALslope <- round(CALcoefs[2],5)
+CALr2 <- round(summary(CALlm)$r.squared,2)
+CALeqn <- bquote("CAL:" ~~ slope == .(CALslope*100) ~~ r^2 == .(CALr2))
+
+clm <- lm(cavg~c(1:49))
+ccoefs <- coef(clm)
+cslope <- round(ccoefs[2],5)
+cr2 <- round(summary(clm)$r.squared,2)
+ceqn <- bquote("cohort:" ~~ slope == .(cslope*100) ~~ r^2 == .(cr2))
+
+elm <- lm(eavg~c(1:140))
+elm <- segmented(elm,seg.Z =~years1)
+ecoefs <- coef(elm)
+eslope1 <- round(ecoefs[2],5)
+eslope2 <- round(ecoefs[3],5)
+er2 <- round(summary(elm)$r.squared,2)
+eeqn1 <- bquote("period 1878~1959" ~~ slope == .(eslope1*100) ~~ r^2 == .(er2))
+eeqn2 <- bquote("period 1960~2017" ~~ slope == .(eslope1*100+eslope2*100) ~~ r^2 == .(er2))
 
 plot(range(years1),c(0,1),xlab = "Years",ylab = "Entropy index", col=0)
 lines(years2,entropyCAL1,col=COL[1],lty=3)
@@ -426,8 +426,8 @@ lines(years2,entropyCAL9,col=COL[1],lty=3)
 lines(years2,entropyCAL10,col=COL[1],lty=3)
 lines(years7,entropyCAL11,col=COL[1],lty=3)
 lines(years2,CALavg,col="red",lwd = 3)
-# lines(years6,predict(CALlm),col="red",lwd=2)
-# text(1995,0.25,CALeqn,cex=0.7)
+lines(years6,predict(CALlm),col="red",lwd=2)
+text(1995,0.25,CALeqn,col="red",cex=0.7)
 lines(years1,entropye01,col=COL[2],lty=3)
 lines(years1,entropye02,col=COL[2],lty=3)
 lines(years1,entropye03,col=COL[2],lty=3)
@@ -440,10 +440,10 @@ lines(years1,entropye09,col=COL[2],lty=3)
 lines(years1,entropye10,col=COL[2],lty=3)
 lines(years8,entropye11,col=COL[2],lty=3)
 lines(years1,eavg,col="forestgreen",lwd = 3)
-# lines(years1,predict(elm),col="forestgreen",lwd=2)
-# text(1950,0.11,eeqn1,cex=0.7)
-# text(1950,0.09,eeqn2,cex=0.7)
-# text(1950,0.07,"knot value: 1959.616",cex=0.7)
+lines(years1,predict(elm),col="forestgreen",lwd=2)
+text(1950,0.11,eeqn1,col="forestgreen",cex=0.7)
+text(1950,0.085,eeqn2,col="forestgreen",cex=0.7)
+text(1950,0.060,"knot value: 1959.616",col="forestgreen",cex=0.7)
 lines(years3,entropyc1,col=COL[3],lty=3)
 lines(years3,entropyc2,col=COL[3],lty=3)
 lines(years3,entropyc3,col=COL[3],lty=3)
@@ -455,8 +455,8 @@ lines(years3,entropyc8,col=COL[3],lty=3)
 lines(years3,entropyc9,col=COL[3],lty=3)
 lines(years3,entropyc10,col=COL[3],lty=3)
 lines(years3,cavg,col="purple",lwd = 3)
-# lines(years3,predict(clm),col="purple",lwd=2)
-# text(1900,0.25,ceqn,cex=0.7)
+lines(years3,predict(clm),col="purple",lwd=2)
+text(1900,0.25,ceqn,col = "purple",cex=0.7)
 title("Entropy Compariosn between three measures - female 1878-2017")
 legend("topright"
        ,c("average entropy of CAL",
@@ -469,4 +469,4 @@ legend("topright"
        lty = c(1,3,1,3,1,3),
        lwd = c(3,1,3,1,3,1),
        box.lty = 0)
-# dev.off()
+dev.off()

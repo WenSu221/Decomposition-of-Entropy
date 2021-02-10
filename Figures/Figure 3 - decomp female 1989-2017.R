@@ -656,6 +656,11 @@ difference <- data.frame(
     rep("Finland",45),rep("Italy",45),
     rep("Scotland",45),rep("Netherlands",45),
     rep("Switzerland",45),rep("USA",45)),
+  c(rep("Low-inequality",45),rep("Cross-over",45),rep("Improving",45),
+    rep("Cross-over",45),rep("Low-inequality",45),
+    rep("Cross-over",45),rep("Improving",45),
+    rep("Improving",45),rep("Low-inequality",45),
+    rep("Low-inequality",45),rep(" ",45)),
   rep(rep(seq(1989,2017,2),3),11),
   rep(c(rep("2.lifespan variation",15),rep("1.longevity",15),rep("total",15)),11),
   c(dvariation_SWE,dlongevity_SWE,dtotal_SWE,
@@ -671,20 +676,21 @@ difference <- data.frame(
     dvariation_USA,dlongevity_USA,dtotal_USA
     
   ))
-colnames(difference) <- c("population","year","type","relative_disparities")
+colnames(difference) <- c("population","country_type","year","type","relative_disparities")
 
 ggplot(data =difference)+
   geom_col(data = subset(difference,type!="total"), mapping = aes(x=year,y=relative_disparities,fill=type),position = "stack")+
   geom_line(data = subset(difference,type=="total"),mapping = aes(x=year,y=relative_disparities),lwd=0.5)+
   geom_point(data = subset(difference,type=="total"),mapping = aes(x=year,y=relative_disparities),cex=0.6)+
-  facet_wrap(~population)+
   scale_fill_manual(values = c("blue","red"))+
+  facet_wrap(~population+country_type, as.table = T)+
   theme(plot.margin = margin(t=0,r=2,b=0,l=0,"cm"),
     legend.position = c(0.95,0.1),
         legend.background = element_blank())+
   labs(x="Year",y="Relative Disparities",
+        fill="Contributions",
        title="Decomposition of differences, female 1989-2017")
-ggsave("Output/decomposition of differences, female 1989-2017.png",width = 6,height = 8,dpi = 300)
+# ggsave("Output/decomposition of differences, female 1989-2017.png",width = 6,height = 8,dpi = 300)
 
 ### changes figure ####
 change <- data.frame(
@@ -694,6 +700,11 @@ change <- data.frame(
     rep("Italy",56),rep("Scotland",56),
     rep("Netherlands",56),rep("Switzerland",56),
     rep("USA",56)),
+  c(rep("Low-inequality",56),rep("Cross-over",56),rep("Improving",56),
+    rep("Cross-over",56),rep("Low-inequality",56),
+    rep("Cross-over",56),rep("Improving",56),
+    rep("Improving",56),rep("Low-inequality",56),
+    rep("Low-inequality",56),rep(" ",56)),
   rep(rep(seq(1990,2017,2),11),4),
   rep(c(rep("3.lifespan variation",14),rep("2.longevity",14),
         rep("1.average entropy change",14),rep("total",14)),11),
@@ -709,18 +720,19 @@ change <- data.frame(
     cvariation_CHE,clongevity_CHE,centropychange_CHE,ctotal_CHE,
     cvariation_USA,clongevity_USA,centropychange_USA,ctotal_USA
   ))
-colnames(change) <- c("population","year","type","relative_disparities")
+colnames(change) <- c("population","country_type","year","type","relative_disparities")
 
 ggplot(data =change)+
   geom_col(data = subset(change,type!="total"), mapping = aes(x=year,y=relative_disparities,fill=type),position = "stack")+
   geom_line(data = subset(change,type=="total"),mapping = aes(x=year,y=relative_disparities),lwd=0.5)+
   geom_point(data = subset(change,type=="total"),mapping = aes(x=year,y=relative_disparities),cex = 0.6)+
-  facet_wrap(~population)+
+  facet_wrap(~population+country_type)+
   scale_fill_manual(values = rev(c("red","blue","green4")))+
   theme(plot.margin = margin(t=0,r=2,b=0,l=0,"cm"),
         legend.position = c(0.95,0.1),
         legend.background = element_blank())+
   labs(x="Year",y="Contributions to change",
+       fill = "Contributions",
        title="Decomposition of changes in entropy differences,
        female 1990-2016")
-ggsave("Output/decomposition of changes in differences, female 1990-2016.png",width = 6,height = 8,dpi = 300)
+# ggsave("Output/decomposition of changes in differences, female 1990-2016.png",width = 6,height = 8,dpi = 300)
