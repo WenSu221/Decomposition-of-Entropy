@@ -97,8 +97,14 @@ e_x <- function(x,mu){
   y <- c(y,exp(1)^(-mu*x))
 }
 
-value <- e_x(1:100,0.05)
+value <- e_x(1:100,0.5)
 
 plot(c(1,100),c(0,1))
 lines(c(1:100),value)
 
+y <-c()
+plot(c(1,100),c(0,1))
+for (a in seq(0,1,0.01)){
+  value <- e_x(1:100,a)
+  lines(c(1:100),value)
+}

@@ -413,7 +413,7 @@ er2 <- round(summary(elm)$r.squared,2)
 eeqn1 <- bquote("period 1878~1959" ~~ slope == .(eslope1*100) ~~ r^2 == .(er2))
 eeqn2 <- bquote("period 1960~2017" ~~ slope == .(eslope1*100+eslope2*100) ~~ r^2 == .(er2))
 
-plot(range(years1),c(0,1),xlab = "Years",ylab = "Entropy index", col=0)
+plot(range(years1),c(0,1),xlab = "Years",ylab = "Entropy", col=0)
 lines(years2,entropyCAL1,col=COL[1],lty=3)
 lines(years2,entropyCAL2,col=COL[1],lty=3)
 lines(years2,entropyCAL3,col=COL[1],lty=3)

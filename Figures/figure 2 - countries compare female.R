@@ -259,7 +259,7 @@ Years <- seq(1989,2017,2)
 par(mar = c(5,5,5,12),xpd = T)
 plot(c(1989,2017),c(-0.025,0.05),col = 0,
      xlab = "Years",
-     ylab="differences from average level of entropy of CAL")
+     ylab="differences between populations and average CAL Entropy")
 lines(Years,diff1,type = "l",
       col = "black",lty=2,lwd = 2,
       cex = 1,pch = 20)

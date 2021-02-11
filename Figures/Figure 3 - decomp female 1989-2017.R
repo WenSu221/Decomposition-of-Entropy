@@ -2,7 +2,7 @@
 
 ##packages and color
 library(ggplot2)
-
+library(dplyr)
 
 ## Source
 source("Figures/figure 3 - average of CAL female 1989-2017.R")
@@ -651,31 +651,34 @@ ctotal_USA <- c(cvariation_USA+clongevity_USA+centropychange_USA)
 
 ### differences figure ####
 difference <- data.frame(
-  c(rep("Sweden",45),rep("Denmark",45),rep("France",45),
-    rep("England & Wales",45),rep("Norway",45),
-    rep("Finland",45),rep("Italy",45),
-    rep("Scotland",45),rep("Netherlands",45),
-    rep("Switzerland",45),rep("USA",45)),
-  c(rep("Low-inequality",45),rep("Cross-over",45),rep("Improving",45),
-    rep("Cross-over",45),rep("Low-inequality",45),
-    rep("Cross-over",45),rep("Improving",45),
-    rep("Improving",45),rep("Low-inequality",45),
-    rep("Low-inequality",45),rep(" ",45)),
+  
+  c(rep("Denmark",45),rep("England & Wales",45),rep("Finland",45),
+    rep("Netherlands",45),rep("Norway",45), rep("Sweden",45),
+    rep("Switzerland",45),
+    rep("France",45),rep("Italy",45),rep("Scotland",45),rep("USA",45)),
+  
+  c(rep("Cross-over",45),rep("Cross-over",45),rep("Cross-over",45),
+    rep("Low-inequality",45),rep("Low-inequality",45),
+    rep("Low-inequality",45),rep("Low-inequality",45),
+    rep("Improving",45),rep("Improving",45),
+    rep("Improving",45),rep("",45)),
+  
   rep(rep(seq(1989,2017,2),3),11),
-  rep(c(rep("2.lifespan variation",15),rep("1.longevity",15),rep("total",15)),11),
-  c(dvariation_SWE,dlongevity_SWE,dtotal_SWE,
-    dvariation_DNK,dlongevity_DNK,dtotal_DNK,
-    dvariation_FRA,dlongevity_FRA,dtotal_FRA,
+  
+  rep(c(rep("2.Lifespan variation",15),rep("1.Longevity",15),rep("total",15)),11),
+  
+  c(dvariation_DNK,dlongevity_DNK,dtotal_DNK,
     dvariation_GBRTENW,dlongevity_GBRTENW,dtotal_GBRTENW,
-    dvariation_NOR,dlongevity_NOR,dtotal_NOR,
     dvariation_FIN,dlongevity_FIN,dtotal_FIN,
+    dvariation_NLD,dlongevity_NLD,dtotal_NLD,
+    dvariation_NOR,dlongevity_NOR,dtotal_NOR,
+    dvariation_SWE,dlongevity_SWE,dtotal_SWE,
+    dvariation_CHE,dlongevity_CHE,dtotal_CHE,
+    dvariation_FRA,dlongevity_FRA,dtotal_FRA,
     dvariation_ITA,dlongevity_ITA,dtotal_ITA,
     dvariation_GBRSCO,dlongevity_GBRSCO,dtotal_GBRSCO,
-    dvariation_NLD,dlongevity_NLD,dtotal_NLD,
-    dvariation_CHE,dlongevity_CHE,dtotal_CHE,
-    dvariation_USA,dlongevity_USA,dtotal_USA
-    
-  ))
+    dvariation_USA,dlongevity_USA,dtotal_USA))
+
 colnames(difference) <- c("population","country_type","year","type","relative_disparities")
 
 ggplot(data =difference)+
@@ -683,7 +686,7 @@ ggplot(data =difference)+
   geom_line(data = subset(difference,type=="total"),mapping = aes(x=year,y=relative_disparities),lwd=0.5)+
   geom_point(data = subset(difference,type=="total"),mapping = aes(x=year,y=relative_disparities),cex=0.6)+
   scale_fill_manual(values = c("blue","red"))+
-  facet_wrap(~population+country_type, as.table = T)+
+  facet_wrap(~population+country_type)+
   theme(plot.margin = margin(t=0,r=2,b=0,l=0,"cm"),
     legend.position = c(0.95,0.1),
         legend.background = element_blank())+
@@ -706,8 +709,8 @@ change <- data.frame(
     rep("Improving",56),rep("Low-inequality",56),
     rep("Low-inequality",56),rep(" ",56)),
   rep(rep(seq(1990,2017,2),11),4),
-  rep(c(rep("3.lifespan variation",14),rep("2.longevity",14),
-        rep("1.average entropy change",14),rep("total",14)),11),
+  rep(c(rep("3.Lifespan variation",14),rep("2.Longevity",14),
+        rep("1.Average entropy improvements",14),rep("total",14)),11),
   c(cvariation_SWE,clongevity_SWE,centropychange_SWE,ctotal_SWE,
     cvariation_DNK,clongevity_DNK,centropychange_DNK,ctotal_DNK,
     cvariation_FRA,clongevity_FRA,centropychange_FRA,ctotal_FRA,
@@ -721,6 +724,8 @@ change <- data.frame(
     cvariation_USA,clongevity_USA,centropychange_USA,ctotal_USA
   ))
 colnames(change) <- c("population","country_type","year","type","relative_disparities")
+
+change$relative_disparities <- change$relative_disparities*100
 
 ggplot(data =change)+
   geom_col(data = subset(change,type!="total"), mapping = aes(x=year,y=relative_disparities,fill=type),position = "stack")+

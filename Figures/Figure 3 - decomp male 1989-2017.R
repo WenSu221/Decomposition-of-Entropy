@@ -695,7 +695,7 @@ difference <- data.frame(
     rep("FIN",45),rep("ITA",45),rep("GBRSCO",45),rep("NLD",45),rep("CHE",45),
     rep("USA",45)),
   rep(rep(seq(1989,2017,2),3),11),
-  rep(c(rep("2.lifespan variation",15),rep("1.longevity",15),rep("total",15)),11),
+  rep(c(rep("2.Lifespan variation",15),rep("1.Longevity",15),rep("total",15)),11),
   c(dvariation_SWE,dlongevity_SWE,dtotal_SWE,
     dvariation_DNK,dlongevity_DNK,dtotal_DNK,
     dvariation_FRA,dlongevity_FRA,dtotal_FRA,
@@ -731,8 +731,8 @@ change <- data.frame(
     rep("FIN",56),rep("ITA",56),rep("GBRSCO",56),rep("NLD",56),rep("CHE",56),
     rep("USA",56)),
   rep(rep(seq(1990,2017,2),11),4),
-  rep(c(rep("3.lifespan variation",14),rep("2.longevity",14),
-        rep("1.average entropy change",14),rep("total",14)),11),
+  rep(c(rep("3.Lifespan variation",14),rep("2.Longevity",14),
+        rep("1.Average entropy imrprovements",14),rep("total",14)),11),
   c(cvariation_SWE,clongevity_SWE,centropychange_SWE,ctotal_SWE,
     cvariation_DNK,clongevity_DNK,centropychange_DNK,ctotal_DNK,
     cvariation_FRA,clongevity_FRA,centropychange_FRA,ctotal_FRA,
@@ -746,6 +746,8 @@ change <- data.frame(
     cvariation_USA,clongevity_USA,centropychange_USA,ctotal_USA
   ))
 colnames(change) <- c("population","year","type","relative_disparities")
+
+change$relative_disparities <- change$relative_disparities*100
 
 ggplot(data =change)+
   geom_col(data = subset(change,type!="total"), mapping = aes(x=year,y=relative_disparities,fill=type),position = "stack")+
