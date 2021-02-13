@@ -640,14 +640,6 @@ cvariation_USA <- c(rep(NA,11),cvariation_derivative_USA*entropyavgavg_original_
 centropychange_USA <- c(rep(NA,11),centropyavg_derivative_USA*entropydiffavg_original_USA)
 ctotal_USA <- c(cvariation_USA+clongevity_USA+centropychange_USA)
 
-# ### formula ####
-# ## decomposition in differences
-# total <- variation+longevity
-# ## decomposition in change in differences
-# longevitypart <- clongevity_derivative*entropyavgavg_original
-# variationpart <- cvariation_derivative*entropyavgavg_original
-# entropychange <- centropyavg_derivative*entropydiffavg_original
-# total <- variationpart+longevitypart+entropychange
 
 ### differences figure ####
 difference <- data.frame(
@@ -655,13 +647,13 @@ difference <- data.frame(
   c(rep("Denmark",45),rep("England & Wales",45),rep("Finland",45),
     rep("Netherlands",45),rep("Norway",45), rep("Sweden",45),
     rep("Switzerland",45),
-    rep("France",45),rep("Italy",45),rep("Scotland",45),rep("USA",45)),
+    rep("France",45),rep("Italy",45),rep("Scotland",45),rep("",45)),
   
   c(rep("Cross-over",45),rep("Cross-over",45),rep("Cross-over",45),
     rep("Low-inequality",45),rep("Low-inequality",45),
     rep("Low-inequality",45),rep("Low-inequality",45),
     rep("Improving",45),rep("Improving",45),
-    rep("Improving",45),rep("",45)),
+    rep("Improving",45),rep("USA",45)),
   
   rep(rep(seq(1989,2017,2),3),11),
   
@@ -686,7 +678,7 @@ ggplot(data =difference)+
   geom_line(data = subset(difference,type=="total"),mapping = aes(x=year,y=relative_disparities),lwd=0.5)+
   geom_point(data = subset(difference,type=="total"),mapping = aes(x=year,y=relative_disparities),cex=0.6)+
   scale_fill_manual(values = c("blue","red"))+
-  facet_wrap(~population+country_type)+
+  facet_wrap(~country_type+population)+
   theme(plot.margin = margin(t=0,r=2,b=0,l=0,"cm"),
     legend.position = c(0.95,0.1),
         legend.background = element_blank())+
@@ -702,12 +694,12 @@ change <- data.frame(
     rep("Norway",56),rep("Finland",56),
     rep("Italy",56),rep("Scotland",56),
     rep("Netherlands",56),rep("Switzerland",56),
-    rep("USA",56)),
+    rep(" ",56)),
   c(rep("Low-inequality",56),rep("Cross-over",56),rep("Improving",56),
     rep("Cross-over",56),rep("Low-inequality",56),
     rep("Cross-over",56),rep("Improving",56),
     rep("Improving",56),rep("Low-inequality",56),
-    rep("Low-inequality",56),rep(" ",56)),
+    rep("Low-inequality",56),rep("USA",56)),
   rep(rep(seq(1990,2017,2),11),4),
   rep(c(rep("3.Lifespan variation",14),rep("2.Longevity",14),
         rep("1.Average entropy improvements",14),rep("total",14)),11),
@@ -731,7 +723,7 @@ ggplot(data =change)+
   geom_col(data = subset(change,type!="total"), mapping = aes(x=year,y=relative_disparities,fill=type),position = "stack")+
   geom_line(data = subset(change,type=="total"),mapping = aes(x=year,y=relative_disparities),lwd=0.5)+
   geom_point(data = subset(change,type=="total"),mapping = aes(x=year,y=relative_disparities),cex = 0.6)+
-  facet_wrap(~population+country_type)+
+  facet_wrap(~country_type+population)+
   scale_fill_manual(values = rev(c("red","blue","green4")))+
   theme(plot.margin = margin(t=0,r=2,b=0,l=0,"cm"),
         legend.position = c(0.95,0.1),
