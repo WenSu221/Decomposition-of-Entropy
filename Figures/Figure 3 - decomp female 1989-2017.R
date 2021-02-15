@@ -644,16 +644,17 @@ ctotal_USA <- c(cvariation_USA+clongevity_USA+centropychange_USA)
 ### differences figure ####
 difference <- data.frame(
   
-  c(rep("Denmark",45),rep("England & Wales",45),rep("Finland",45),
-    rep("Netherlands",45),rep("Norway",45), rep("Sweden",45),
-    rep("Switzerland",45),
-    rep("France",45),rep("Italy",45),rep("Scotland",45),rep("",45)),
+  c(rep("Denmark",45),rep("England & Wales",45),
+    rep("Finland",45),rep("Netherlands",45),
+    rep("Norway",45), rep("Sweden",45),
+    rep("Switzerland",45),rep("France",45),
+    rep("Italy",45),rep("Scotland",45),rep("USA",45)),
   
   c(rep("Cross-over",45),rep("Cross-over",45),rep("Cross-over",45),
     rep("Low-inequality",45),rep("Low-inequality",45),
     rep("Low-inequality",45),rep("Low-inequality",45),
     rep("Improving",45),rep("Improving",45),
-    rep("Improving",45),rep("USA",45)),
+    rep("Improving",45),rep("Widening",45)),
   
   rep(rep(seq(1989,2017,2),3),11),
   
@@ -685,7 +686,7 @@ ggplot(data =difference)+
   labs(x="Year",y="Relative Disparities",
         fill="Contributions",
        title="Decomposition of differences, female 1989-2017")
-# ggsave("Output/decomposition of differences, female 1989-2017.png",width = 6,height = 8,dpi = 300)
+ggsave("Output/decomposition of differences, female 1989-2017.png",width = 6,height = 8,dpi = 300)
 
 ### changes figure ####
 change <- data.frame(
@@ -694,15 +695,19 @@ change <- data.frame(
     rep("Norway",56),rep("Finland",56),
     rep("Italy",56),rep("Scotland",56),
     rep("Netherlands",56),rep("Switzerland",56),
-    rep(" ",56)),
+    rep("USA",56)),
+  
   c(rep("Low-inequality",56),rep("Cross-over",56),rep("Improving",56),
     rep("Cross-over",56),rep("Low-inequality",56),
     rep("Cross-over",56),rep("Improving",56),
     rep("Improving",56),rep("Low-inequality",56),
-    rep("Low-inequality",56),rep("USA",56)),
+    rep("Low-inequality",56),rep("Widening",56)),
+  
   rep(rep(seq(1990,2017,2),11),4),
+  
   rep(c(rep("3.Lifespan variation",14),rep("2.Longevity",14),
         rep("1.Average entropy improvements",14),rep("total",14)),11),
+  
   c(cvariation_SWE,clongevity_SWE,centropychange_SWE,ctotal_SWE,
     cvariation_DNK,clongevity_DNK,centropychange_DNK,ctotal_DNK,
     cvariation_FRA,clongevity_FRA,centropychange_FRA,ctotal_FRA,
@@ -715,6 +720,7 @@ change <- data.frame(
     cvariation_CHE,clongevity_CHE,centropychange_CHE,ctotal_CHE,
     cvariation_USA,clongevity_USA,centropychange_USA,ctotal_USA
   ))
+
 colnames(change) <- c("population","country_type","year","type","relative_disparities")
 
 change$relative_disparities <- change$relative_disparities*100
@@ -726,10 +732,10 @@ ggplot(data =change)+
   facet_wrap(~country_type+population)+
   scale_fill_manual(values = rev(c("red","blue","green4")))+
   theme(plot.margin = margin(t=0,r=2,b=0,l=0,"cm"),
-        legend.position = c(0.95,0.1),
+        legend.position = c(1,0.1),
         legend.background = element_blank())+
   labs(x="Year",y="Contributions to change",
        fill = "Contributions",
        title="Decomposition of changes in entropy differences,
        female 1990-2016")
-# ggsave("Output/decomposition of changes in differences, female 1990-2016.png",width = 6,height = 8,dpi = 300)
+ggsave("Output/decomposition of changes in differences, female 1990-2016.png",width = 6,height = 8,dpi = 300)

@@ -686,8 +686,17 @@ difference <- data.frame(
   c(rep("SWE",45),rep("DNK",45),rep("FRA",45),rep("GBRTENW",45),rep("NOR",45),
     rep("FIN",45),rep("ITA",45),rep("GBRSCO",45),rep("NLD",45),rep("CHE",45),
     rep("USA",45)),
+  
+  c(rep("Low-inequality",45),rep("Cross-over",45),rep("Improving",45),
+    rep("Low-inequality",45),rep("Low-inequality",45),
+    rep("Improving",45),rep("Improving",45),
+    rep("widening",45),rep("Low-inequality",45),
+    rep("Low-inequality",45),rep("widening",45)),
+  
   rep(rep(seq(1989,2017,2),3),11),
+  
   rep(c(rep("2.Lifespan variation",15),rep("1.Longevity",15),rep("total",15)),11),
+  
   c(dvariation_SWE,dlongevity_SWE,dtotal_SWE,
     dvariation_DNK,dlongevity_DNK,dtotal_DNK,
     dvariation_FRA,dlongevity_FRA,dtotal_FRA,
@@ -701,30 +710,41 @@ difference <- data.frame(
     dvariation_USA,dlongevity_USA,dtotal_USA
     
   ))
-colnames(difference) <- c("population","year","type","relative_disparities")
+colnames(difference) <- c("population","country_type","year","type","relative_disparities")
 
 
 ggplot(data =difference)+
   geom_col(data = subset(difference,type!="total"), mapping = aes(x=year,y=relative_disparities,fill=type),position = "stack")+
   geom_line(data = subset(difference,type=="total"),mapping = aes(x=year,y=relative_disparities),lwd=1,)+
   geom_point(data = subset(difference,type=="total"),mapping = aes(x=year,y=relative_disparities))+
-  facet_wrap(~population)+
+  facet_wrap(~country_type+population)+
   scale_fill_manual(values = c("blue","red"))+
-  theme(legend.position = c(1,0),legend.justification = c(1,0),
+  theme(plot.margin = margin(t=0,r=2,b=0,l=0,"cm"),
+        legend.position = c(0.95,0.1),
         legend.background = element_blank())+
   labs(x="Year",y="Relative Disparities",
        title="Decomposition of differences, male 1989-2017")
-# ggsave("Output/decomposition of differences, male 1989-2017.png",
-#        width = 6,height = 8,dpi = 300)
+ggsave("Output/decomposition of differences, male 1989-2017.png",
+       width = 6,height = 8,dpi = 300)
 
 ### changes figure ####
 change <- data.frame(
   c(rep("SWE",56),rep("DNK",56),rep("FRA",56),rep("GBRTENW",56),rep("NOR",56),
     rep("FIN",56),rep("ITA",56),rep("GBRSCO",56),rep("NLD",56),rep("CHE",56),
     rep("USA",56)),
+  
+  c(rep("Low-inequality",56),rep("Cross-over",56),
+    rep("Improving",56),rep("Low-inequality",56),
+    rep("Low-inequality",56),rep("Improving",56),
+    rep("Improving",56),rep("widening",56),
+    rep("Low-inequality",56),rep("Low-inequality",56),
+    rep("widening",56)),
+  
   rep(rep(seq(1990,2017,2),11),4),
+  
   rep(c(rep("3.Lifespan variation",14),rep("2.Longevity",14),
         rep("1.Average entropy imrprovements",14),rep("total",14)),11),
+ 
   c(cvariation_SWE,clongevity_SWE,centropychange_SWE,ctotal_SWE,
     cvariation_DNK,clongevity_DNK,centropychange_DNK,ctotal_DNK,
     cvariation_FRA,clongevity_FRA,centropychange_FRA,ctotal_FRA,
@@ -737,7 +757,7 @@ change <- data.frame(
     cvariation_CHE,clongevity_CHE,centropychange_CHE,ctotal_CHE,
     cvariation_USA,clongevity_USA,centropychange_USA,ctotal_USA
   ))
-colnames(change) <- c("population","year","type","relative_disparities")
+colnames(change) <- c("population","country_type","year","type","relative_disparities")
 
 change$relative_disparities <- change$relative_disparities*100
 
@@ -745,12 +765,14 @@ ggplot(data =change)+
   geom_col(data = subset(change,type!="total"), mapping = aes(x=year,y=relative_disparities,fill=type),position = "stack")+
   geom_line(data = subset(change,type=="total"),mapping = aes(x=year,y=relative_disparities),lwd=1,)+
   geom_point(data = subset(change,type=="total"),mapping = aes(x=year,y=relative_disparities))+
-  facet_wrap(~population)+
+  facet_wrap(~country_type+population)+
   scale_fill_manual(values = c("green4","blue","red"))+
-  theme(legend.position = c(1,0),legend.justification = c(1,0),
+  theme(plot.margin = margin(t=0,r=2,b=0,l=0,"cm"),
+        legend.position = c(1,0.1),
         legend.background = element_blank())+
   labs(x="Year",y="Relative Disparities",
+       fill = "Contributions",
        title="Decomposition of changes in differences,
        male 1990-2016")
-# ggsave("Output/decomposition of changes in differences, male 1990-2016.png",
-#        width = 6,height = 8,dpi = 300)
+ggsave("Output/decomposition of changes in differences, male 1990-2016.png",
+       width = 6,height = 8,dpi = 300)
