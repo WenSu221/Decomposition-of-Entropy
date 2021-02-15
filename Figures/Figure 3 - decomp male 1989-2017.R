@@ -690,8 +690,8 @@ difference <- data.frame(
   c(rep("Low-inequality",45),rep("Cross-over",45),rep("Improving",45),
     rep("Low-inequality",45),rep("Low-inequality",45),
     rep("Improving",45),rep("Improving",45),
-    rep("widening",45),rep("Low-inequality",45),
-    rep("Low-inequality",45),rep("widening",45)),
+    rep("Widening",45),rep("Low-inequality",45),
+    rep("Low-inequality",45),rep("Widening",45)),
   
   rep(rep(seq(1989,2017,2),3),11),
   
@@ -736,9 +736,9 @@ change <- data.frame(
   c(rep("Low-inequality",56),rep("Cross-over",56),
     rep("Improving",56),rep("Low-inequality",56),
     rep("Low-inequality",56),rep("Improving",56),
-    rep("Improving",56),rep("widening",56),
+    rep("Improving",56),rep("Widening",56),
     rep("Low-inequality",56),rep("Low-inequality",56),
-    rep("widening",56)),
+    rep("Widening",56)),
   
   rep(rep(seq(1990,2017,2),11),4),
   

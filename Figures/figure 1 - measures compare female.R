@@ -465,7 +465,7 @@ legend("topright"
           "entropy of period e0",
           "average cohort e0 entropy",
           "cohort e0 entropy"),
-       col = c("red",COL[1],"green",COL[2],"purple",COL[3]),
+       col = c("red",COL[1],"forestgreen",COL[2],"purple",COL[3]),
        lty = c(1,3,1,3,1,3),
        lwd = c(3,1,3,1,3,1),
        box.lty = 0)
