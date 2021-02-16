@@ -650,11 +650,11 @@ difference <- data.frame(
     rep("Switzerland",45),rep("France",45),
     rep("Italy",45),rep("Scotland",45),rep("USA",45)),
   
-  c(rep("Cross-over",45),rep("Cross-over",45),rep("Cross-over",45),
-    rep("Low-inequality",45),rep("Low-inequality",45),
-    rep("Low-inequality",45),rep("Low-inequality",45),
-    rep("Improving",45),rep("Improving",45),
-    rep("Improving",45),rep("Widening",45)),
+  c(rep("B.Cross-over",45),rep("B.Cross-over",45),rep("B.Cross-over",45),
+    rep("A.Low-inequality",45),rep("A.Low-inequality",45),
+    rep("A.Low-inequality",45),rep("A.Low-inequality",45),
+    rep("D.Improving",45),rep("D.Improving",45),
+    rep("D.Improving",45),rep("C.Widening",45)),
   
   rep(rep(seq(1989,2017,2),3),11),
   
@@ -686,7 +686,7 @@ ggplot(data =difference)+
   labs(x="Year",y="Relative Disparities",
         fill="Contributions",
        title="Decomposition of differences, female 1989-2017")
-ggsave("Output/decomposition of differences, female 1989-2017.png",width = 6,height = 8,dpi = 300)
+ggsave("Output/decomposition of differences, female 1989-2017.pdf",width = 6,height = 8,dpi = 300)
 
 ### changes figure ####
 change <- data.frame(
@@ -697,11 +697,11 @@ change <- data.frame(
     rep("Netherlands",56),rep("Switzerland",56),
     rep("USA",56)),
   
-  c(rep("Low-inequality",56),rep("Cross-over",56),rep("Improving",56),
-    rep("Cross-over",56),rep("Low-inequality",56),
-    rep("Cross-over",56),rep("Improving",56),
-    rep("Improving",56),rep("Low-inequality",56),
-    rep("Low-inequality",56),rep("Widening",56)),
+  c(rep("A.Low-inequality",56),rep("B.Cross-over",56),rep("D.Improving",56),
+    rep("B.Cross-over",56),rep("A.Low-inequality",56),
+    rep("B.Cross-over",56),rep("D.Improving",56),
+    rep("D.Improving",56),rep("A.Low-inequality",56),
+    rep("A.Low-inequality",56),rep("C.Widening",56)),
   
   rep(rep(seq(1990,2017,2),11),4),
   
@@ -738,4 +738,4 @@ ggplot(data =change)+
        fill = "Contributions",
        title="Decomposition of changes in entropy differences,
        female 1990-2016")
-ggsave("Output/decomposition of changes in differences, female 1990-2016.png",width = 6,height = 8,dpi = 300)
+ggsave("Output/decomposition of changes in differences, female 1990-2016.pdf",width = 6,height = 8,dpi = 300)
