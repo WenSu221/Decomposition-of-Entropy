@@ -254,8 +254,8 @@ diff11 <- c(rep(NA,11),diff11)
 ### Plots ####
 
 Years <- seq(1989,2017,2)
-png(file = "Output/Countries Comparison average benchmark, female 1989-2017.png",
-    units = "in", width = 8, height = 10, res = 300)
+pdf(file = "Output/Countries Comparison average benchmark, female 1989-2017.pdf",
+    width = 8, height = 10)
 par(mar = c(5,5,5,12),xpd = T)
 plot(c(1989,2017),c(-0.025,0.05),col = 0,
      xlab = "Years",
@@ -303,6 +303,6 @@ legend("right",inset = -0.5,c("Sweden","Denmark","France",
                     "USA"),
        col = c("black",cols[2:5],cols[1],cols[7:10],"red"),
        lty = c(2,1,4,1,2,1,4,4,2,2,5),box.col = 0)
-title("Entropy of CAL compared to average level, female 1989-2017")
+title("Figure 2. Entropy of CAL compared to average level, female 1989-2017")
 mtext("average level", side = 2,adj = 0.3)
 dev.off()

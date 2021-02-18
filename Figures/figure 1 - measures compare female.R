@@ -380,7 +380,8 @@ CALavg <- colMeans(CALavg)
 
 
 ### Plot ####
-pdf(file = "Output/Measures Comparison (regressed), female 1878-2017.pdf")
+pdf(file = "Output/Measures Comparison (regressed), female 1878-2017.pdf",
+    width = 12, height = 8)
     
 #Years
 years1 <- c(1878:2017)
@@ -456,7 +457,7 @@ lines(years3,entropyc10,col=COL[3],lty=3)
 lines(years3,cavg,col="purple",lwd = 3)
 lines(years3,predict(clm),col="purple",lwd=2)
 text(1900,0.25,ceqn,col = "purple",cex=0.7)
-title("Entropy Comparison between three measures - female 1878-2017")
+title("Figure 1A. Entropy Comparison between three measures - female 1878-2017")
 legend("topright"
        ,c("average entropy of CAL",
           "entropy of CAL",

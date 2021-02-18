@@ -680,12 +680,13 @@ ggplot(data =difference)+
   geom_point(data = subset(difference,type=="total"),mapping = aes(x=year,y=relative_disparities),cex=0.6)+
   scale_fill_manual(values = c("blue","red"))+
   facet_wrap(~country_type+population)+
-  theme(plot.margin = margin(t=0,r=2,b=0,l=0,"cm"),
-    legend.position = c(0.95,0.1),
+  theme(plot.title = element_text(size = 12),
+        plot.margin = margin(t=0.5,r=2,b=0.5,l=0.5,"cm"),
+        legend.position = c(0.95,0.1),
         legend.background = element_blank())+
   labs(x="Year",y="Relative Disparities",
-        fill="Contributions",
-       title="Decomposition of differences, female 1989-2017")
+       fill="Contributions",
+       title="Figure 3. Decomposition of differences, female 1989-2017")
 ggsave("Output/decomposition of differences, female 1989-2017.pdf",width = 6,height = 8,dpi = 300)
 
 ### changes figure ####
@@ -731,11 +732,11 @@ ggplot(data =change)+
   geom_point(data = subset(change,type=="total"),mapping = aes(x=year,y=relative_disparities),cex = 0.6)+
   facet_wrap(~country_type+population)+
   scale_fill_manual(values = rev(c("red","blue","green4")))+
-  theme(plot.margin = margin(t=0,r=2,b=0,l=0,"cm"),
+  theme(plot.margin = margin(t=0.5,r=2,b=0.5,l=0.5,"cm"),
         legend.position = c(1,0.1),
         legend.background = element_blank())+
   labs(x="Year",y="Contributions to change",
        fill = "Contributions",
-       title="Decomposition of changes in entropy differences,
+       title="Figure 4. Decomposition of changes in entropy differences,
        female 1990-2016")
 ggsave("Output/decomposition of changes in differences, female 1990-2016.pdf",width = 6,height = 8,dpi = 300)
