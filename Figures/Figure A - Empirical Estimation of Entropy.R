@@ -1,6 +1,8 @@
 ### load packages ####
 library(MortalityLaws)
 
+#### Theoretical ####
+
 ### Period Life Table
 
 x <- c(0:99)
@@ -14,8 +16,6 @@ for (x in 1:100){
   lx <- c(lx,prod(Sx))
 }
 
-plot(c(0,100),c(0,1))
-lines(c(0:99),lx, col = "forestgreen")
 
 Hp <- -sum(lx[1:99]*log(lx[1:99]))/sum(lx[1:99])
 
@@ -32,27 +32,33 @@ for (x in 1:100){
   CALlx <- c(CALlx,prod(Sx))
 }
 
+Hcal <- -sum(CALlx[1:99]*log(CALlx[1:99]))/sum(CALlx[1:99])
+
 plot(c(1,100),c(0,1))
 lines(c(1:100),CALlx, col = "red4")
+lines(c(0:99),lx, col = "forestgreen")
 
-Hcal <- -sum(CALlx[1:99]*log(CALlx[1:99]))/sum(CALlx[1:99])
+#### empirical with real data ####
 
 ### Vaupel and Canudas-Romo method
 
-ineq_edag <- function(age, dx, lx, ex, ax){
-  age_length_equal <- all.equal(length(age),length(dx),
-                                length(lx),length(ex),
-                                length(ax))
-  stopifnot(age_length_equal)
-  n <- c(diff(age),1)
-  explusone <- c(ex[-1],ex[length(age)])
-  ex_average <- ex + ax / n * (explusone - ex[-length(age)])
-  rev(cumsum(rev(dx * ex_average))) / lx 
+x <- c(0:99)
+LT <- LifeTable(x,mx = rep(0.05,100))
+
+px <- 1-(LT$lt$qx)
+CALpx <- matrix(px,nrow = 100,ncol=100)
+lx <- c()
+
+for (x in 1:100){
+  Sx <- c(px[1:x])
+  lx <- c(lx,prod(Sx))
 }
 
-edagger <- ineq_edag(1:100,LT$lt$dx,LT$lt$lx,LT$lt$ex,LT$lt$ax)
-edagger <- edagger[1]
-ezero <- LT$lt$ex[1]
+lx <- c(1,lx[1:99])
+
+edagger <- sum(-(lx*log(lx)))
+
+ezero <- sum(lx)-1
 HpVC <- edagger/ezero
 
 CALfunc <-function(Mx1,YM){
@@ -108,3 +114,4 @@ for (a in seq(0,1,0.01)){
   value <- e_x(1:100,a)
   lines(c(1:100),value)
 }
+
