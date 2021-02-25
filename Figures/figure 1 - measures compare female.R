@@ -1,6 +1,7 @@
 #### The comparision of different measures ####
 
 library(RColorBrewer)
+library(latex2exp)
 library(segmented)
 COL <- adjustcolor(c("orangered","forestgreen","purple"),
                    alpha.f = 0.8)
@@ -378,19 +379,7 @@ CALavg <- rbind(entropyCAL1,entropyCAL2,entropyCAL3,
                 entropyCAL10)
 CALavg <- colMeans(CALavg)
 
-
-### Plot ####
-pdf(file = "Output/Measures Comparison (regressed), female 1878-2017.pdf",
-    width = 12, height = 8)
-    
-#Years
-years1 <- c(1878:2017)
-years2 <- c(seq(1989,2017,2))
-years3 <- c(1878:1926)
-years6 <- c(seq(1989,2017,2))
-years7 <- c(seq(2011,2017,2))
-years8 <- c(1933:2017)
-#Linear Models
+#Linear Models####
 
 CALlm <- lm(CALavg~c(1:15))
 CALcoefs <- coef(CALlm)
@@ -413,60 +402,73 @@ er2 <- round(summary(elm)$r.squared,2)
 eeqn1 <- bquote("period 1878~1959" ~~ slope == .(eslope1*100) ~~ r^2 == .(er2))
 eeqn2 <- bquote("period 1960~2017" ~~ slope == .(eslope1*100+eslope2*100) ~~ r^2 == .(er2))
 
+
+### Plot ####
+pdf(file = "Output/Measures Comparison (regressed), female 1878-2017.pdf",
+    width = 12, height = 8)
+    
+#Years
+years1 <- c(1878:2017)
+years2 <- c(seq(1989,2017,2))
+years3 <- c(1878:1926)
+years6 <- c(seq(1989,2017,2))
+years7 <- c(seq(2011,2017,2))
+years8 <- c(1933:2017)
+
 plot(range(years1),c(0,1),xlab = "Years",ylab = "Entropy", col=0)
-lines(years2,entropyCAL1,col=COL[1],lty=3)
-lines(years2,entropyCAL2,col=COL[1],lty=3)
-lines(years2,entropyCAL3,col=COL[1],lty=3)
-lines(years2,entropyCAL4,col=COL[1],lty=3)
-lines(years2,entropyCAL5,col=COL[1],lty=3)
-lines(years2,entropyCAL6,col=COL[1],lty=3)
-lines(years2,entropyCAL7,col=COL[1],lty=3)
-lines(years2,entropyCAL8,col=COL[1],lty=3)
-lines(years2,entropyCAL9,col=COL[1],lty=3)
-lines(years2,entropyCAL10,col=COL[1],lty=3)
-lines(years7,entropyCAL11,col=COL[1],lty=3)
+lines(years2,entropyCAL1,col=COL[1],lty=3,lwd=1.8)
+lines(years2,entropyCAL2,col=COL[1],lty=3,lwd=1.8)
+lines(years2,entropyCAL3,col=COL[1],lty=3,lwd=1.8)
+lines(years2,entropyCAL4,col=COL[1],lty=3,lwd=1.8)
+lines(years2,entropyCAL5,col=COL[1],lty=3,lwd=1.8)
+lines(years2,entropyCAL6,col=COL[1],lty=3,lwd=1.8)
+lines(years2,entropyCAL7,col=COL[1],lty=3,lwd=1.8)
+lines(years2,entropyCAL8,col=COL[1],lty=3,lwd=1.8)
+lines(years2,entropyCAL9,col=COL[1],lty=3,lwd=1.8)
+lines(years2,entropyCAL10,col=COL[1],lty=3,lwd=1.8)
+lines(years7,entropyCAL11,col=COL[1],lty=3,lwd=1.8)
 lines(years2,CALavg,col="red",lwd = 3)
 lines(years6,predict(CALlm),col="red",lwd=2)
 text(1995,0.25,CALeqn,col="red",cex=0.7)
-lines(years1,entropye01,col=COL[2],lty=3)
-lines(years1,entropye02,col=COL[2],lty=3)
-lines(years1,entropye03,col=COL[2],lty=3)
-lines(years1,entropye04,col=COL[2],lty=3)
-lines(years1,entropye05,col=COL[2],lty=3)
-lines(years1,entropye06,col=COL[2],lty=3)
-lines(years1,entropye07,col=COL[2],lty=3)
-lines(years1,entropye08,col=COL[2],lty=3)
-lines(years1,entropye09,col=COL[2],lty=3)
-lines(years1,entropye10,col=COL[2],lty=3)
-lines(years8,entropye11,col=COL[2],lty=3)
+lines(years1,entropye01,col=COL[2],lty=3,lwd=1.8)
+lines(years1,entropye02,col=COL[2],lty=3,lwd=1.8)
+lines(years1,entropye03,col=COL[2],lty=3,lwd=1.8)
+lines(years1,entropye04,col=COL[2],lty=3,lwd=1.8)
+lines(years1,entropye05,col=COL[2],lty=3,lwd=1.8)
+lines(years1,entropye06,col=COL[2],lty=3,lwd=1.8)
+lines(years1,entropye07,col=COL[2],lty=3,lwd=1.8)
+lines(years1,entropye08,col=COL[2],lty=3,lwd=1.8)
+lines(years1,entropye09,col=COL[2],lty=3,lwd=1.8)
+lines(years1,entropye10,col=COL[2],lty=3,lwd=1.8)
+lines(years8,entropye11,col=COL[2],lty=3,lwd=1.8)
 lines(years1,eavg,col="forestgreen",lwd = 3)
 lines(years1,predict(elm),col="forestgreen",lwd=2)
 text(1950,0.11,eeqn1,col="forestgreen",cex=0.7)
 text(1950,0.085,eeqn2,col="forestgreen",cex=0.7)
 text(1950,0.060,"knot value: 1959.616",col="forestgreen",cex=0.7)
-lines(years3,entropyc1,col=COL[3],lty=3)
-lines(years3,entropyc2,col=COL[3],lty=3)
-lines(years3,entropyc3,col=COL[3],lty=3)
-lines(years3,entropyc4,col=COL[3],lty=3)
-lines(years3,entropyc5,col=COL[3],lty=3)
-lines(years3,entropyc6,col=COL[3],lty=3)
-lines(years3,entropyc7,col=COL[3],lty=3)
-lines(years3,entropyc8,col=COL[3],lty=3)
-lines(years3,entropyc9,col=COL[3],lty=3)
+lines(years3,entropyc1,col=COL[3],lty=3,lwd=1.8)
+lines(years3,entropyc2,col=COL[3],lty=3,lwd=1.8)
+lines(years3,entropyc3,col=COL[3],lty=3,lwd=1.8)
+lines(years3,entropyc4,col=COL[3],lty=3,lwd=1.8)
+lines(years3,entropyc5,col=COL[3],lty=3,lwd=1.8)
+lines(years3,entropyc6,col=COL[3],lty=3,lwd=1.8)
+lines(years3,entropyc7,col=COL[3],lty=3,lwd=1.8)
+lines(years3,entropyc8,col=COL[3],lty=3,lwd=1.8)
+lines(years3,entropyc9,col=COL[3],lty=3,lwd=1.8)
 lines(years3,entropyc10,col=COL[3],lty=3)
 lines(years3,cavg,col="purple",lwd = 3)
 lines(years3,predict(clm),col="purple",lwd=2)
 text(1900,0.25,ceqn,col = "purple",cex=0.7)
 title("Figure 1A. Entropy Comparison between three measures - female 1878-2017")
-legend("topright"
-       ,c("average entropy of CAL",
-          "entropy of CAL",
-          "average entropy of period e0",
-          "entropy of period e0",
-          "average cohort e0 entropy",
-          "cohort e0 entropy"),
+legend("topright",
+       c(expression(paste("average"," \u210c"[CAL])),
+          expression(paste("\u210c"[CAL])),
+          expression(paste("average"," \u210c"[p])),
+          expression(paste("\u210c"[p])),
+          expression(paste("average"," \u210c"[c])),
+          expression(paste("\u210c"[c]))),
        col = c("red",COL[1],"forestgreen",COL[2],"purple",COL[3]),
        lty = c(1,3,1,3,1,3),
-       lwd = c(3,1,3,1,3,1),
+       lwd = c(3,1.8,3,1.8,3,1.8),
        box.lty = 0)
 dev.off()
