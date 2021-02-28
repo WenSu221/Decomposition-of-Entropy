@@ -381,6 +381,14 @@ CALavg <- colMeans(CALavg)
 
 #Linear Models####
 
+#Years
+years1 <- c(1878:2017)
+years2 <- c(seq(1989,2017,2))
+years3 <- c(1878:1926)
+years6 <- c(seq(1989,2017,2))
+years7 <- c(seq(2011,2017,2))
+years8 <- c(1933:2017)
+
 CALlm <- lm(CALavg~c(1:15))
 CALcoefs <- coef(CALlm)
 CALslope <- round(CALcoefs[2],5)
@@ -406,14 +414,6 @@ eeqn2 <- bquote("period 1960~2017" ~~ slope == .(eslope1*100+eslope2*100) ~~ r^2
 ### Plot ####
 pdf(file = "Output/Measures Comparison (regressed), female 1878-2017.pdf",
     width = 12, height = 8)
-    
-#Years
-years1 <- c(1878:2017)
-years2 <- c(seq(1989,2017,2))
-years3 <- c(1878:1926)
-years6 <- c(seq(1989,2017,2))
-years7 <- c(seq(2011,2017,2))
-years8 <- c(1933:2017)
 
 plot(range(years1),c(0,1),xlab = "Years",ylab = "Entropy", col=0)
 lines(years2,entropyCAL1,col=COL[1],lty=3,lwd=1.8)
@@ -461,12 +461,12 @@ lines(years3,predict(clm),col="purple",lwd=2)
 text(1900,0.25,ceqn,col = "purple",cex=0.7)
 title("Figure 1A. Entropy Comparison between three measures - female 1878-2017")
 legend("topright",
-       c(expression(paste("average"," \u210c"[CAL])),
-          expression(paste("\u210c"[CAL])),
-          expression(paste("average"," \u210c"[p])),
-          expression(paste("\u210c"[p])),
-          expression(paste("average"," \u210c"[c])),
-          expression(paste("\u210c"[c]))),
+       c(expression(paste("average"," \u210b"[CAL])),
+          expression(paste("\u210b"[CAL])),
+          expression(paste("average"," \u210b"[p])),
+          expression(paste("\u210b"[p])),
+          expression(paste("average"," \u210b"[c])),
+          expression(paste("\u210b"[c]))),
        col = c("red",COL[1],"forestgreen",COL[2],"purple",COL[3]),
        lty = c(1,3,1,3,1,3),
        lwd = c(3,1.8,3,1.8,3,1.8),
