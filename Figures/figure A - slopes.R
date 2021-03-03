@@ -1,6 +1,6 @@
 #Slopes for the validation
 
-source("Figure 3 - decomp female 1989-2017.R")
+source("Figures/Figure 3 - decomp female 1989-2017.R")
 
 Year_diff <- c(seq(1989,2017,2))
 Year_change <- c(seq(1990,2016,2))
