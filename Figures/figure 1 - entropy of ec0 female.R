@@ -171,4 +171,4 @@ entropyctable <- cbind(entropyc1,entropyc2,entropyc3,
 colnames(entropyctable) <- c("SWE","DNK","FRATNP","GBRTENW","NOR",
                               "FIN","ITA","GBRSCO","NLD","CHE")
 row.names(entropyctable) <- c(1878:1926)
-write.csv(entropyctable, file = "Output/entropyctable_female.CSV")
+# write.csv(entropyctable, file = "Output/entropyctable_female.CSV")
