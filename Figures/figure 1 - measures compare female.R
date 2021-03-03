@@ -470,6 +470,5 @@ legend("topright",
        col = c("red",COL[1],"forestgreen",COL[2],"purple",COL[3]),
        lty = c(1,3,1,3,1,3),
        lwd = c(3,1.8,3,1.8,3,1.8),
-       box.lty = 0,
-       text.font = 5)
+       box.lty = 0)
 dev.off()
