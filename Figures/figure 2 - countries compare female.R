@@ -296,13 +296,15 @@ lines(Years,diff11,type = "l",
 lines(Years,rep(0,times=15),
       col = 1, lty = 3, lwd = 2,
       cex = 1,pch = 20)
-legend("right",inset = -0.5,c("Sweden","Denmark","France",
-                    "England and Wales","Norway",
-                    "Finland","Italy","Scotland",
-                    "Netherland","Switzerland",
-                    "USA"),
-       col = c("black",cols[2:5],cols[1],cols[7:10],"red"),
-       lty = c(2,1,4,1,2,1,4,4,2,2,5),box.col = 0)
+legend("right", inset=-0.5,c("Netherlands","Norway","Sweden",
+                              "Switzerland","Denmark",
+                              "England & Wales","Finland",
+                              "USA","France","Italy",
+                              "Scotland"),
+       col=c(cols[9],cols[5],"black",cols[10],cols[2],cols[4],
+             cols[1],"red",cols[3],cols[7],cols[8]),
+       lty = c(2,2,2,2,1,1,1,5,4,4,4))
+
 title("Figure 2. Entropy of CAL compared to average level, female 1989-2017")
 mtext("average level", side = 2,adj = 0.3)
 dev.off()
