@@ -1,7 +1,6 @@
 #### The comparision of different measures ####
 
 library(RColorBrewer)
-library(latex2exp)
 library(segmented)
 COL <- adjustcolor(c("orangered","forestgreen","purple"),
                    alpha.f = 0.8)
@@ -466,7 +465,7 @@ legend("topright",
          "average cohort entropy", "cohort entropy"),
        col = c("red",COL[1],"forestgreen",COL[2],"purple",COL[3]),
        lty = c(1,3,1,3,1,3),
-       lwd = c(3,1.8,3,1.8,3,1.8),
+       lwd = c(3,2,3,2,3,2),
        box.lty = 0)
 dev.off()
 

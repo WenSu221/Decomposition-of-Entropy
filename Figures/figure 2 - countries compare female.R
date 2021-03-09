@@ -268,7 +268,7 @@ lines(Years,diff2,type = "l",
       col = cols[2],lty=1,lwd = 2,
       cex = 1,pch = 20)
 lines(Years,diff3,type = "l",
-      col = cols[3],lty=4,lwd = 2,
+      col = "darkorange4",lty=4,lwd = 2,
       cex = 1,pch = 20)
 lines(Years,diff4,type = "l",
       col = cols[4],lty=1,lwd = 2,
@@ -280,7 +280,7 @@ lines(Years,diff6,type = "l",
       col = cols[1],lty=1,lwd = 2,
       cex = 1,pch = 20)
 lines(Years,diff7,type = "l",
-      col = cols[7],lty=4,lwd = 2,
+      col = "forestgreen",lty=4,lwd = 2,
       cex = 1,pch = 20)
 lines(Years,diff8,type = "l",
       col = cols[8],lty=4,lwd = 2,
@@ -301,9 +301,11 @@ legend("right", inset=-0.5,c("Netherlands","Norway","Sweden",
                               "England & Wales","Finland",
                               "USA","France","Italy",
                               "Scotland"),
-       col=c(cols[9],cols[5],"black",cols[10],cols[2],cols[4],
-             cols[1],"red",cols[3],cols[7],cols[8]),
-       lty = c(2,2,2,2,1,1,1,5,4,4,4))
+       col=c(cols[9],cols[5],"black",cols[10],cols[2],
+             cols[4],cols[1],"red","darkorange4","forestgreen",
+             cols[8]),
+       lty = c(2,2,2,2,1,1,1,5,4,4,4),
+       box.col = 0)
 
 title("Figure 2. Entropy of CAL compared to average level, female 1989-2017")
 mtext("average level", side = 2,adj = 0.3)

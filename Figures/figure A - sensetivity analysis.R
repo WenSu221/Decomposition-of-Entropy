@@ -1,7 +1,5 @@
 #### The comparision of different measures ####
 
-source("US Data/USCAL male.R")
-
 #### CAL functions ####
 CALfunc <-function(Mx1,Y){
   CALlx1<-c()
@@ -240,3 +238,5 @@ CALavg <- rbind(entropyCAL1,entropyCAL2,entropyCAL3,
 CALavg <- colMeans(CALavg)
 
 CALqxavg <- (CALdaggerqx*-1)/CALqx
+
+CALavg - CALqxavg
