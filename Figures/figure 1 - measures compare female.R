@@ -225,14 +225,6 @@ entropyCAL8 <- CALdagger8/CAL8
 entropyCAL9 <- CALdagger9/CAL9
 entropyCAL10 <- CALdagger10/CAL10
 
-entropyCALtable <- cbind(entropyCAL1,entropyCAL2,entropyCAL3,entropyCAL4,
-                         entropyCAL5,entropyCAL6,entropyCAL7,entropyCAL8,
-                         entropyCAL9,entropyCAL10)
-colnames(entropyCALtable) <- c("SWE","DNK","FRATNP","GBRTENW","NOR",
-                                "FIN","ITA","GBRSCO","NLD","CHE")
-row.names(entropyCALtable) <- c(seq(1989,2017,2))
-# write.csv(entropyCALtable,file = "Output/entropyCALtable_female.csv")
-
 #### e0 functions ####
 
 LSV <- function(dt,Y){
@@ -347,14 +339,6 @@ entropye09 <- edagger9/e09
 entropye10 <- edagger10/e10
 entropye11 <- edagger11/e11
 
-entropye0table <- cbind(entropye01,entropye02,entropye03,entropye04,
-                       entropye05,entropye06,entropye07,entropye08,
-                       entropye09,entropye10)
-colnames(entropye0table) <- c("SWE","DNK","FRATNP","GBRTENW","NOR",
-                              "FIN","ITA","GBRSCO","NLD","CHE")
-row.names(entropye0table) <- c(1878:2017)
-# write.csv(entropye0table, file = "Output/entropye0table_female.CSV")
-
 #### ec0 entropy ####
 
 source("Figures/figure 1 - entropy of ec0 female.R")
@@ -392,13 +376,13 @@ CALlm <- lm(CALavg~c(1:15))
 CALcoefs <- coef(CALlm)
 CALslope <- round(CALcoefs[2],5)
 CALr2 <- round(summary(CALlm)$r.squared,2)
-CALeqn <- bquote("CAL:" ~~ slope == .(CALslope*100) ~~ r^2 == .(CALr2))
+CALeqn <- bquote("CAL:" ~~ slope == .(CALslope*100))
 
 clm <- lm(cavg~c(1:49))
 ccoefs <- coef(clm)
 cslope <- round(ccoefs[2],5)
 cr2 <- round(summary(clm)$r.squared,2)
-ceqn <- bquote("cohort:" ~~ slope == .(cslope*100) ~~ r^2 == .(cr2))
+ceqn <- bquote("cohort:" ~~ slope == .(cslope*100))
 
 elm <- lm(eavg~c(1:140))
 elm <- segmented(elm,seg.Z =~years1)
@@ -406,8 +390,8 @@ ecoefs <- coef(elm)
 eslope1 <- round(ecoefs[2],5)
 eslope2 <- round(ecoefs[3],5)
 er2 <- round(summary(elm)$r.squared,2)
-eeqn1 <- bquote("period 1878~1959" ~~ slope == .(eslope1*100) ~~ r^2 == .(er2))
-eeqn2 <- bquote("period 1960~2017" ~~ slope == .(eslope1*100+eslope2*100) ~~ r^2 == .(er2))
+eeqn1 <- bquote("period 1878~1959" ~~ slope == .(eslope1*100))
+eeqn2 <- bquote("period 1960~2017" ~~ slope == .(eslope1*100+eslope2*100))
 
 
 ### Plot ####
@@ -444,7 +428,7 @@ lines(years1,eavg,col="forestgreen",lwd = 2)
 lines(years1,predict(elm),col="forestgreen",lwd=3)
 text(1950,0.11,eeqn1,col="forestgreen",cex=0.7)
 text(1950,0.085,eeqn2,col="forestgreen",cex=0.7)
-text(1950,0.060,"knot value: 1959.616",col="forestgreen",cex=0.7)
+text(1950,0.060,"piecewise value: 1959.616",col="forestgreen",cex=0.7)
 lines(years3,entropyc1,col=COL[3],lty=3,lwd=2)
 lines(years3,entropyc2,col=COL[3],lty=3,lwd=2)
 lines(years3,entropyc3,col=COL[3],lty=3,lwd=2)
@@ -468,4 +452,3 @@ legend("topright",
        lwd = c(3,2,3,2,3,2),
        box.lty = 0)
 dev.off()
-

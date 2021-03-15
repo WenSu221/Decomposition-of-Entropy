@@ -163,12 +163,3 @@ entropyc7 <- ed7/ec07
 entropyc8 <- ed8/ec08
 entropyc9 <- ed9/ec09
 entropyc10 <- ed10/ec10
-
-entropyctable <- cbind(entropyc1,entropyc2,entropyc3,
-                       entropyc4,entropyc5,entropyc6,
-                       entropyc7,entropyc8,entropyc9,
-                       entropyc10)
-colnames(entropyctable) <- c("SWE","DNK","FRATNP","GBRTENW","NOR",
-                              "FIN","ITA","GBRSCO","NLD","CHE")
-row.names(entropyctable) <- c(1878:1926)
-# write.csv(entropyctable, file = "Output/entropyctable_female.CSV")

@@ -4,16 +4,16 @@
 
 
 ### Data # ----
-A1 <- read.table("Data/SWE.mltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A2 <- read.table("Data/DNK.mltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A3 <- read.table("Data/FRATNP.mltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A4 <- read.table("Data/GBRTENW.mltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A5 <- read.table("Data/NOR.mltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A6 <- read.table("Data/FIN.mltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A7 <- read.table("Data/ITA.mltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A8 <- read.table("Data/GBRSCO.mltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A9 <- read.table("Data/NLD.mltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A10 <- read.table("Data/CHE.mltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A1 <- read.table("Data/SWE.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A2 <- read.table("Data/DNK.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A3 <- read.table("Data/FRATNP.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A4 <- read.table("Data/GBRTENW.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A5 <- read.table("Data/NOR.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A6 <- read.table("Data/FIN.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A7 <- read.table("Data/ITA.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A8 <- read.table("Data/GBRSCO.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A9 <- read.table("Data/NLD.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A10 <- read.table("Data/CHE.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 
 Y1 <- 1877
 Y2 <- 1926
@@ -169,6 +169,6 @@ entropyctable <- cbind(entropyc1,entropyc2,entropyc3,
                        entropyc7,entropyc8,entropyc9,
                        entropyc10)
 colnames(entropyctable) <- c("SWE","DNK","FRATNP","GBRTENW","NOR",
-                              "FIN","ITA","GBRSCO","NLD","CHE")
+                             "FIN","ITA","GBRSCO","NLD","CHE")
 row.names(entropyctable) <- c(1878:1926)
-# write.csv(entropyctable, file = "Output/entropyctable_male.CSV")
+# write.csv(entropyctable, file = "Output/entropyctable_female.CSV")

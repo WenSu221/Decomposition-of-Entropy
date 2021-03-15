@@ -1,8 +1,4 @@
-#### ggplot2 population decomp, female####
-
-##packages and color
-library(ggplot2)
-library(dplyr)
+#### Relative rate of increase ####
 
 ## Source
 source("Figures/figure 3 - average of CAL female 1989-2017.R")
@@ -70,6 +66,12 @@ cvariation_SWE <- cvariation_derivative_SWE*entropyavgavg_original_SWE
 centropychange_SWE <- centropyavg_derivative_SWE*entropydiffavg_original_SWE
 ctotal_SWE <- cvariation_SWE+clongevity_SWE+centropychange_SWE
 
+## rate of increase ###
+# for variation
+rr.dvariation_SWE <- mean(log(dvariation_SWE[-1]/
+                           dvariation_SWE[-length(dvariation_SWE)]))
+rr.dlongevity_SWE <- mean(log(dlongevity_SWE[-1]/
+                           dlongevity_SWE[-length(dlongevity_SWE)]))
 ### Denmark ####
 
 ## decomp of contributions ###
@@ -160,8 +162,8 @@ cvariation_derivative_FRA <- cvariation_relative_FRA*cvariation_original_FRA
 clongevity_derivative_FRA <- clongevity_FRA <- (longevity_FRA[2:15]-longevity_FRA[1:14])/2
 
 equation2 <- centropydiff_derivative_FRA - (centropyavg_derivative_FRA*entropydiffavg_original_FRA+
-                                          entropyavgavg_original_FRA*
-                                          (cvariation_derivative_FRA+clongevity_derivative_FRA))
+                                              entropyavgavg_original_FRA*
+                                              (cvariation_derivative_FRA+clongevity_derivative_FRA))
 
 ## validation ###
 round(equation1,5)
@@ -206,8 +208,8 @@ clongevity_GBRTENW <- (longevity_GBRTENW[2:15]-longevity_GBRTENW[1:14])/2
 
 
 equation2 <- centropydiff_GBRTENW - (centropyavg_GBRTENW*entropydiffavg_GBRTENW+
-                                                  entropyavgavg_GBRTENW*
-                                                  (cvariation_GBRTENW+clongevity_GBRTENW))
+                                       entropyavgavg_GBRTENW*
+                                       (cvariation_GBRTENW+clongevity_GBRTENW))
 
 ## validation ###
 round(equation1,5)
@@ -438,8 +440,8 @@ clongevity_original_GBRSCO <- longevity_GBRSCO[1:14]*exp(1)^(clongevity_relative
 clongevity_derivative_GBRSCO <- clongevity_original_GBRSCO*clongevity_relative_GBRSCO
 
 equation2 <- centropydiff_derivative_GBRSCO - (centropyavg_derivative_GBRSCO*entropydiffavg_original_GBRSCO+
-                                              entropyavgavg_original_GBRSCO*
-                                              (cvariation_derivative_GBRSCO+clongevity_derivative_GBRSCO))
+                                                 entropyavgavg_original_GBRSCO*
+                                                 (cvariation_derivative_GBRSCO+clongevity_derivative_GBRSCO))
 
 ## validation ###
 round(equation1,5)

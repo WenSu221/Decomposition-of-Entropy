@@ -217,3 +217,11 @@ entropyCAL7 <- CALdagger7/CAL7
 entropyCAL8 <- CALdagger8/CAL8
 entropyCAL9 <- CALdagger9/CAL9
 entropyCAL10 <- CALdagger10/CAL10
+
+entropyCALtable <- cbind(entropyCAL1,entropyCAL2,entropyCAL3,entropyCAL4,
+                         entropyCAL5,entropyCAL6,entropyCAL7,entropyCAL8,
+                         entropyCAL9,entropyCAL10)
+colnames(entropyCALtable) <- c("SWE","DNK","FRATNP","GBRTENW","NOR",
+                               "FIN","ITA","GBRSCO","NLD","CHE")
+row.names(entropyCALtable) <- c(seq(1989,2017,2))
+# write.csv(entropyCALtable,file = "Output/entropyCALtable_female.csv")
