@@ -50,3 +50,18 @@ rr.centropychange_CHE <- mean(log(centropychange_CHE[-1]/
                                     centropychange_CHE[-length(centropychange_CHE)]))
 rr.ctotal_CHE <- mean(log(ctotal_CHE[-1]/
                             ctotal_CHE[-length(ctotal_CHE)]))
+# Norway
+rr.dvariation_NOR <- mean(log(dvariation_NOR[-1]/
+                                dvariation_NOR[-length(dvariation_NOR)]))
+rr.dlongevity_NOR <- mean(log(dlongevity_NOR[-1]/
+                                dlongevity_NOR[-length(dlongevity_NOR)]))
+rr.total_NOR <- mean(log(dtotal_NOR[-1]/
+                           dtotal_NOR[-length(dtotal_NOR)]))
+rr.cvariation_NOR <- mean(log(cvariation_NOR[-1]/
+                                cvariation_NOR[-length(cvariation_NOR)]))
+rr.clongevity_NOR <- mean(log(clongevity_NOR[-1]/
+                                clongevity_NOR[-length(clongevity_NOR)]))
+rr.centropychange_NOR <- mean(log(centropychange_NOR[-1]/
+                                    centropychange_NOR[-length(centropychange_NOR)]))
+rr.ctotal_NOR <- mean(log(ctotal_NOR[-1]/
+                            ctotal_NOR[-length(ctotal_NOR)]))
