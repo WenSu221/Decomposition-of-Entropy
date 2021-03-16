@@ -21,33 +21,32 @@ rr.centropychange_SWE <- mean(log(centropychange_SWE[-1]/
 rr.ctotal_SWE <- mean(log(ctotal_SWE[-1]/
                             ctotal_SWE[-length(ctotal_SWE)]))
 # Denmark
-rr.dvariation_DNK <- mean(log(dvariation_DNK[-1]/
-                                dvariation_DNK[-length(dvariation_DNK)]))
-rr.dlongevity_DNK <- mean(log(dlongevity_DNK[-1]/
-                                dlongevity_DNK[-length(dlongevity_DNK)]))
-rr.total_DNK <- mean(log(dtotal_DNK[-1]/
-                           dtotal_DNK[-length(dtotal_DNK)]))
-rr.cvariation_DNK <- mean(log(cvariation_DNK[-1]/
-                                cvariation_DNK[-length(cvariation_DNK)]))
-rr.clongevity_DNK <- mean(log(clongevity_DNK[-1]/
-                                clongevity_DNK[-length(clongevity_DNK)]))
-rr.centropychange_DNK <- mean(log(centropychange_DNK[-1]/
-                                    centropychange_DNK[-length(centropychange_DNK)]))
-rr.ctotal_DNK <- mean(log(ctotal_DNK[-1]/
-                            ctotal_DNK[-length(ctotal_DNK)]))
-# Finland
-rr.dvariation_FIN <- mean(log(dvariation_FIN[-1]/
-                                dvariation_FIN[-length(dvariation_FIN)]))
-rr.dlongevity_FIN <- mean(log(dlongevity_FIN[-1]/
-                                dlongevity_FIN[-length(dlongevity_FIN)]))
-rr.total_FIN <- mean(log(dtotal_FIN[-1]/
-                           dtotal_FIN[-length(dtotal_FIN)]))
-rr.cvariation_FIN <- mean(log(cvariation_FIN[-1]/
-                                cvariation_FIN[-length(cvariation_FIN)]))
-rr.clongevity_FIN <- mean(log(clongevity_FIN[-1]/
-                                clongevity_FIN[-length(clongevity_FIN)]))
-rr.centropychange_FIN <- mean(log(centropychange_FIN[-1]/
-                                    centropychange_FIN[-length(centropychange_FIN)]))
-rr.ctotal_FIN <- mean(log(ctotal_FIN[-1]/
-                            ctotal_FIN[-length(ctotal_FIN)]))
-# France
+rr.dvariation_NLD <- mean(log(dvariation_NLD[-1]/
+                                dvariation_NLD[-length(dvariation_NLD)]))
+rr.dlongevity_NLD <- mean(log(dlongevity_NLD[-1]/
+                                dlongevity_NLD[-length(dlongevity_NLD)]))
+rr.total_NLD <- mean(log(dtotal_NLD[-1]/
+                           dtotal_NLD[-length(dtotal_NLD)]))
+rr.cvariation_NLD <- mean(log(cvariation_NLD[-1]/
+                                cvariation_NLD[-length(cvariation_NLD)]))
+rr.clongevity_NLD <- mean(log(clongevity_NLD[-1]/
+                                clongevity_NLD[-length(clongevity_NLD)]))
+rr.centropychange_NLD <- mean(log(centropychange_NLD[-1]/
+                                    centropychange_NLD[-length(centropychange_NLD)]))
+rr.ctotal_NLD <- mean(log(ctotal_NLD[-1]/
+                            ctotal_NLD[-length(ctotal_NLD)]))
+# Switzerland
+rr.dvariation_CHE <- mean(log(dvariation_CHE[-1]/
+                                dvariation_CHE[-length(dvariation_CHE)]))
+rr.dlongevity_CHE <- mean(log(dlongevity_CHE[-1]/
+                                dlongevity_CHE[-length(dlongevity_CHE)]))
+rr.total_CHE <- mean(log(dtotal_CHE[-1]/
+                           dtotal_CHE[-length(dtotal_CHE)]))
+rr.cvariation_CHE <- mean(log(cvariation_CHE[-1]/
+                                cvariation_CHE[-length(cvariation_CHE)]))
+rr.clongevity_CHE <- mean(log(clongevity_CHE[-1]/
+                                clongevity_CHE[-length(clongevity_CHE)]))
+rr.centropychange_CHE <- mean(log(centropychange_CHE[-1]/
+                                    centropychange_CHE[-length(centropychange_CHE)]))
+rr.ctotal_CHE <- mean(log(ctotal_CHE[-1]/
+                            ctotal_CHE[-length(ctotal_CHE)]))
