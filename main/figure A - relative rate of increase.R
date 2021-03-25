@@ -1,7 +1,7 @@
 #### Relative rate of increase ####
 
 ## Source
-source("Figures/figure 3 - decomp female 1989-2017.R")
+source("main/figure 3 - decomp female 1989-2017.R")
 
 ## rate of increase ###
 
@@ -65,3 +65,4 @@ rr.centropychange_NOR <- mean(log(centropychange_NOR[-1]/
                                     centropychange_NOR[-length(centropychange_NOR)]))
 rr.ctotal_NOR <- mean(log(ctotal_NOR[-1]/
                             ctotal_NOR[-length(ctotal_NOR)]))
+

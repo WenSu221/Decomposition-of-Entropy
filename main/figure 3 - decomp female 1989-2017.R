@@ -5,7 +5,7 @@ library(ggplot2)
 library(dplyr)
 
 ## Source
-source("Figures/figure 3 - average of CAL female 1989-2017.R")
+source("main/figure 3 - average of CAL female 1989-2017.R")
 source("US Data/USCAL female.R")
 
 ### Sweden ####
