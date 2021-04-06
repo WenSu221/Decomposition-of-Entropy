@@ -1,7 +1,8 @@
-#### FIGURE 3 SPECIFIC DECOMPOSITION ####
-#########################################
+###
+### the figure function_female
+###
 
-source("Figures/figure 3 - decomp female 1989-2017.R")
+source("main/figure 3 - decomp female 1989-2017.R")
 
 ### differences figure ####
 difference <- data.frame(
@@ -94,8 +95,8 @@ ggplot(data =change)+
   geom_point(data = subset(change,type=="total"),mapping = aes(x=year,y=relative_disparities),cex = 0.6)+
   facet_wrap(~country_type+population)+
   scale_fill_manual(values = rev(c("red","blue","green4")))+
-  theme(plot.margin = margin(t=0.5,r=2,b=0.5,l=0.5,"cm"),
-        legend.position = c(1,0.1),
+  theme(plot.margin = margin(t=0.5,r=3,b=0.5,l=0.5,"cm"),
+        legend.position = c(1.02,0.1),
         legend.background = element_blank())+
   labs(x="Year",y="Contributions to change",
        fill = "Contributions",

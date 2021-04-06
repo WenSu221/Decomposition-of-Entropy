@@ -1,5 +1,6 @@
 #### The comparision of different measures ####
 
+library(RColorBrewer)
 library(segmented)
 COL <- adjustcolor(c("orangered","forestgreen","purple"),
                    alpha.f = 0.8)
@@ -223,14 +224,6 @@ entropyCAL8 <- CALdagger8/CAL8
 entropyCAL9 <- CALdagger9/CAL9
 entropyCAL10 <- CALdagger10/CAL10
 
-entropyCALtable <- cbind(entropyCAL1,entropyCAL2,entropyCAL3,entropyCAL4,
-                         entropyCAL5,entropyCAL6,entropyCAL7,entropyCAL8,
-                         entropyCAL9,entropyCAL10)
-colnames(entropyCALtable) <- c("SWE","DNK","FRATNP","GBRTENW","NOR",
-                                "FIN","ITA","GBRSCO","NLD","CHE")
-row.names(entropyCALtable) <- c(seq(1989,2017,2))
-# write.csv(entropyCALtable,file = "Output/entropyCALtable_male.csv")
-
 #### e0 functions ####
 
 LSV <- function(dt,Y){
@@ -344,17 +337,9 @@ entropye09 <- edagger9/e09
 entropye10 <- edagger10/e10
 entropye11 <- edagger11/e11
 
-entropye0table <- cbind(entropye01,entropye02,entropye03,entropye04,
-                       entropye05,entropye06,entropye07,entropye08,
-                       entropye09,entropye10)
-colnames(entropye0table) <- c("SWE","DNK","FRATNP","GBRTENW","NOR",
-                              "FIN","ITA","GBRSCO","NLD","CHE")
-row.names(entropye0table) <- c(1878:2017)
-# write.csv(entropye0table, file = "Output/entropye0table_male.CSV")
-
 #### ec0 entropy ####
 
-source("Figures/figure 1 - entropy of ec0 male.R")
+source("main/figure 1 - entropy of ec0 male.R")
 
 
 #### average ####
@@ -392,13 +377,13 @@ CALlm <- lm(CALavg~c(1:15))
 CALcoefs <- coef(CALlm)
 CALslope <- round(CALcoefs[2],5)
 CALr2 <- round(summary(CALlm)$r.squared,2)
-CALeqn <- bquote("CAL:" ~~ slope == .(CALslope*100))
+CALeqn <- bquote("CAL:" ~~ slope == .(CALslope))
 
 clm <- lm(cavg~c(1:49))
 ccoefs <- coef(clm)
 cslope <- round(ccoefs[2],5)
 cr2 <- round(summary(clm)$r.squared,2)
-ceqn <- bquote("cohort:" ~~ slope == .(cslope*100))
+ceqn <- bquote("cohort:" ~~ slope == .(cslope))
 
 elm <- lm(eavg~c(1:140))
 elm <- segmented(elm,seg.Z =~years1)
@@ -406,8 +391,8 @@ ecoefs <- coef(elm)
 eslope1 <- round(ecoefs[2],5)
 eslope2 <- round(ecoefs[3],5)
 er2 <- round(summary(elm)$r.squared,2)
-eeqn1 <- bquote("period 1878~1957" ~~ slope == .(eslope1*100))
-eeqn2 <- bquote("period 1958~2017" ~~ slope == .(eslope1*100+eslope2*100))
+eeqn1 <- bquote("period 1878~1957" ~~ slope == .(eslope1))
+eeqn2 <- bquote("period 1958~2017" ~~ slope == .(eslope1+eslope2))
 
 plot(range(years1),c(0,1),xlab = "Years",ylab = "Entropy", col=0)
 lines(years2,entropyCAL1,col=COL[1],lty=3,lwd=2)
@@ -421,8 +406,8 @@ lines(years2,entropyCAL8,col=COL[1],lty=3,lwd=2)
 lines(years2,entropyCAL9,col=COL[1],lty=3,lwd=2)
 lines(years2,entropyCAL10,col=COL[1],lty=3,lwd=2)
 lines(years7,entropyCAL11,col=COL[1],lty=3,lwd=2)
-lines(years2,CALavg,col="red",lwd = 2)
-lines(years6,predict(CALlm),col="red",lwd=3)
+lines(years2,CALavg,col="red",lwd = 3)
+lines(years6,predict(CALlm),col=1,lwd=1.5)
 text(1995,0.25,CALeqn,col="red",cex=0.7)
 lines(years1,entropye01,col=COL[2],lty=3,lwd=2)
 lines(years1,entropye02,col=COL[2],lty=3,lwd=2)
@@ -435,8 +420,8 @@ lines(years1,entropye08,col=COL[2],lty=3,lwd=2)
 lines(years1,entropye09,col=COL[2],lty=3,lwd=2)
 lines(years1,entropye10,col=COL[2],lty=3,lwd=2)
 lines(years8,entropye11,col=COL[2],lty=3,lwd=2)
-lines(years1,eavg,col="forestgreen",lwd = 2)
-lines(years1,predict(elm),col="forestgreen",lwd=3)
+lines(years1,eavg,col="forestgreen",lwd = 3)
+lines(years1,predict(elm),col=1,lwd=1.5)
 text(1950,0.11,eeqn1,col="forestgreen",cex=0.7)
 text(1950,0.085,eeqn2,col="forestgreen",cex=0.7)
 text(1950,0.060,"piecewise value: 1957.119",col="forestgreen",cex=0.7)
@@ -450,8 +435,8 @@ lines(years3,entropyc7,col=COL[3],lty=3,lwd=2)
 lines(years3,entropyc8,col=COL[3],lty=3,lwd=2)
 lines(years3,entropyc9,col=COL[3],lty=3,lwd=2)
 lines(years3,entropyc10,col=COL[3],lty=3,lwd=2)
-lines(years3,cavg,col="purple",lwd = 2)
-lines(years3,predict(clm),col="purple",lwd=3)
+lines(years3,cavg,col="purple",lwd = 3)
+lines(years3,predict(clm),col=1,lwd=1.5)
 text(1900,0.25,ceqn,col="purple",cex=0.7)
 title("Figure 1B. Entropy Compariosn between three measures - male 1878-2017")
 legend("topright"
@@ -460,8 +445,9 @@ legend("topright"
           "average period entropy",
           "period entropy",
           "average cohort entropy",
-          "cohort entropy"),
-       col = c("red",COL[1],"forestgreen",COL[2],"purple",COL[3]),
-       lty = c(1,3,1,3,1,3),
-       lwd = c(3,2,3,2,3,2),box.lty = 0)
+          "cohort entropy",
+          "best fitted line"),
+       col = c("red",COL[1],"forestgreen",COL[2],"purple",COL[3],"black"),
+       lty = c(1,3,1,3,1,3,1),
+       lwd = c(3,2,3,2,3,2,1.5),cex = 0.7,box.lty = 0)
 dev.off()

@@ -271,7 +271,7 @@ lines(Years,diff3,type = "l",
       col = "darkorange4",lty=4,lwd = 2,
       cex = 1,pch = 20)
 lines(Years,diff4,type = "l",
-      col = cols[4],lty=1,lwd = 2,
+      col = "lightgreen",lty=1,lwd = 2,
       cex = 1,pch = 20)
 lines(Years,diff5,type = "l",
       col = cols[5],lty=2,lwd = 2,
@@ -302,7 +302,7 @@ legend("right", inset=-0.5,c("Netherlands","Norway","Sweden",
                               "USA","France","Italy",
                               "Scotland"),
        col=c(cols[9],cols[5],"black",cols[10],cols[2],
-             cols[4],cols[1],"red","darkorange4","forestgreen",
+             "lightgreen",cols[1],"red","darkorange4","forestgreen",
              cols[8]),
        lty = c(2,2,2,2,1,1,1,5,4,4,4),
        box.col = 0)

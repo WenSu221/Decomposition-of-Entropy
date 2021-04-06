@@ -266,10 +266,10 @@ lines(Years,diff2,type = "l",
       col = cols[2],lty=1,lwd = 2,
       cex = 1,pch = 20)
 lines(Years,diff3,type = "l",
-      col = cols[3],lty=4,lwd = 2,
+      col = "darkorange4",lty=4,lwd = 2,
       cex = 1,pch = 20)
 lines(Years,diff4,type = "l",
-      col = cols[4],lty=2,lwd = 2,
+      col = "lightgreen",lty=2,lwd = 2,
       cex = 1,pch = 20)
 lines(Years,diff5,type = "l",
       col = cols[5],lty=2,lwd = 2,
@@ -278,7 +278,7 @@ lines(Years,diff6,type = "l",
       col = cols[1],lty=4,lwd = 2,
       cex = 1,pch = 20)
 lines(Years,diff7,type = "l",
-      col = cols[7],lty=4,lwd = 2,
+      col = "forestgreen",lty=4,lwd = 2,
       cex = 1,pch = 20)
 lines(Years,diff8,type = "l",
       col = cols[8],lty=5,lwd = 2,
@@ -294,12 +294,14 @@ lines(Years,diff11,type = "l",
 lines(Years,rep(0,times=15),
       col = 1, lty = 3, lwd = 2,
       cex = 1,pch = 20)
-legend("right",inset=-0.5,c("Sweden","Denmark","France",
-                    "England and Wales","Norway",
-                    "Finland","Italy","Scotland",
-                    "Netherland","Switzerland","USA"),
-       col = c("black",cols[2:5],cols[1],cols[7:10],"red"),
-       lty = c(2,1,4,2,2,4,4,5,2,2,5),box.col = 0)
+legend("right", inset=-0.5,c("England & Wales","Netherlands","Norway",
+                             "Sweden","Switzerland","Denmark",
+                             "USA","Scotland","Finland","France",
+                             "Italy"),
+       col=c("lightgreen",cols[9],cols[5],"black",cols[10],cols[2],
+             "red",cols[8],cols[1],"darkorange4","forestgreen"),
+       lty = c(2,2,2,2,2,1,5,5,4,4,4),
+       box.col = 0)
 title("Figure 2. Entropy of CAL compared to average level, male 1989-2017")
 mtext("average level", side = 2,adj = 0.3)
 dev.off()
