@@ -7,9 +7,9 @@ source("main/figure 3 - decomp male 1989-2017.R")
 
 ### differences figure ####
 difference <- data.frame(
-  c(rep("SWE",45),rep("DNK",45),rep("FRA",45),rep("GBRTENW",45),rep("NOR",45),
-    rep("FIN",45),rep("ITA",45),rep("GBRSCO",45),rep("NLD",45),rep("CHE",45),
-    rep("USA",45)),
+  c(rep("Sweden",45),rep("Denmark",45),rep("France",45),rep("England & Wales",45),rep("Norway",45),
+    rep("Finland",45),rep("Italy",45),rep("Scotland",45),rep("Netherlands",45),rep("Switzerland",45),
+    rep("United States",45)),
   
   c(rep("Low-inequality",45),rep("Cross-over",45),rep("Improving",45),
     rep("Low-inequality",45),rep("Low-inequality",45),
@@ -39,23 +39,26 @@ colnames(difference) <- c("population","country_type","year","type","relative_di
 
 ggplot(data =difference)+
   geom_col(data = subset(difference,type!="total"), mapping = aes(x=year,y=relative_disparities,fill=type),position = "stack")+
-  geom_line(data = subset(difference,type=="total"),mapping = aes(x=year,y=relative_disparities),lwd=1,)+
-  geom_point(data = subset(difference,type=="total"),mapping = aes(x=year,y=relative_disparities))+
+  geom_line(data = subset(difference,type=="total"),mapping = aes(x=year,y=relative_disparities),lwd=0.5)+
+  geom_point(data = subset(difference,type=="total"),mapping = aes(x=year,y=relative_disparities),cex=0.6)+
   facet_wrap(~country_type+population)+
   scale_fill_manual(values = c("blue","red"))+
   theme(plot.margin = margin(t=0.5,r=2,b=0.5,l=0.5,"cm"),
         legend.position = c(0.95,0.1),
-        legend.background = element_blank())+
+        legend.background = element_blank(),
+        plot.title = element_text(size = 10))+
   labs(x="Year",y="Relative Disparities",
-       title="Decomposition of differences, male 1989-2017")
+       title="Figure 3. Decomposition of the male CAL entropy gap 
+               between the average and specific populations into
+               longevity and lifespan variation. 1989-2017")
 ggsave("Output/decomposition of differences, male 1989-2017.pdf",
        width = 6,height = 8,dpi = 300)
 
 ### changes figure ####
 change <- data.frame(
-  c(rep("SWE",56),rep("DNK",56),rep("FRA",56),rep("GBRTENW",56),rep("NOR",56),
-    rep("FIN",56),rep("ITA",56),rep("GBRSCO",56),rep("NLD",56),rep("CHE",56),
-    rep("USA",56)),
+  c(rep("Sweden",56),rep("Denmark",56),rep("France",56),rep("England & Wales",56),rep("Norway",56),
+    rep("Finland",56),rep("Italy",56),rep("Scotland",56),rep("Netherlands",56),rep("Switzerland",56),
+    rep("United States",56)),
   
   c(rep("Low-inequality",56),rep("Cross-over",56),
     rep("Improving",56),rep("Low-inequality",56),
@@ -87,16 +90,19 @@ change$relative_disparities <- change$relative_disparities*100
 
 ggplot(data =change)+
   geom_col(data = subset(change,type!="total"), mapping = aes(x=year,y=relative_disparities,fill=type),position = "stack")+
-  geom_line(data = subset(change,type=="total"),mapping = aes(x=year,y=relative_disparities),lwd=1,)+
-  geom_point(data = subset(change,type=="total"),mapping = aes(x=year,y=relative_disparities))+
+  geom_line(data = subset(change,type=="total"),mapping = aes(x=year,y=relative_disparities),lwd=0.5)+
+  geom_point(data = subset(change,type=="total"),mapping = aes(x=year,y=relative_disparities),cex=0.6)+
   facet_wrap(~country_type+population)+
   scale_fill_manual(values = c("green4","blue","red"))+
   theme(plot.margin = margin(t=0.5,r=3,b=0.5,l=0.5,"cm"),
         legend.position = c(1.02,0.1),
-        legend.background = element_blank())+
+        legend.background = element_blank(),
+        plot.title = element_text(size=10))+
   labs(x="Year",y="Relative Disparities",
        fill = "Contributions",
-       title="Decomposition of changes in differences,
-       male 1990-2016")
+       title="Figure 4. Decomposition of the time changes in male CAL entropy gap 
+               between the average and specific population across time 
+               into average entropy improvements, longevity, and lifespan variation. 
+               1990-2016.")
 ggsave("Output/decomposition of changes in differences, male 1990-2016.pdf",
        width = 6,height = 8,dpi = 300)
