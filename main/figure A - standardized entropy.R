@@ -23,6 +23,7 @@ dta <- data[["data"]]
 
 table_final1 <- c()
 table_final2 <- c()
+table_total <- c()
 average_final <- c()
 
 for (x in 1950:2017){
@@ -46,10 +47,12 @@ for (x in 1950:2017){
   entropy_mean <- edagger_mean/ezero_mean
   average <- cbind(ezero_mean,edagger_mean,entropy_mean,year)
   
-  table <- cbind(ezero,edagger,entropy,time)
+  table <- cbind(x,ezero,edagger,entropy,time)
   row.names(table) <- names
   table <- as.data.frame(table)
   table <- cbind(names,table)
+  
+  table_total <- rbind(table_total,table)
   
   table_test1 <- subset(table,table$edagger<average[,2])
   table_test1 <- subset(table_test1,table_test1$entropy>average[,3])
@@ -64,33 +67,31 @@ for (x in 1950:2017){
   average_final <- rbind(average_final,average)
 }
 
-### The Outliers ####
-
-outliers1 <- subset(table_final1, table_final1$entropy > 0.215)
-outliers1 <- subset(outliers, time > 1960)
-
-outliers2 <- subset(table_final1, table_final1$edagger < 10.4)
-outliers2 <- subset(outliers2, time > 2000)
+row.names(table_total) <- c(1:length(table_total$edagger))
 
 ### Plot ####
 
-myrange1 <- range(average_final[,3])
-myrange2 <- range(c(range(table_final1$edagger),
-                    range(table_final2$edagger)))
+myrange1 <- range(table_final1$entropy)
+myrange2 <- range(table_final1$edagger)
 myyears <- c(1950,2017)
-myyears_con <- c(1950:2017)
 
-windows(10,8)
-par(mfrow = c(1,2))
+plot(myrange2,myrange1,col = 0)
+points(table_final1$edagger,table_final1$entropy,col= "darkblue")
+lines(average_final[,2],average_final[,3])
 
-plot(myyears,myrange1,col=0,xlab = "year",ylab = "entropy")
-lines(myyears_con,average_final[,3],lwd = 2)
-points(table_final1$time,table_final1$entropy,col="red")
-points(table_final2$time,table_final2$entropy,col="blue")
+myrange3 <- range(table_final2$entropy)
+myrange4 <- range(table_final2$edagger)
 
-plot(myyears,myrange2,col=0,xlab = "year",ylab = "lifespan variation")
-lines(myyears_con,average_final[,2],lwd = 2)
-points(table_final1$time,table_final1$edagger,col = "red")
-points(table_final2$time,table_final2$edagger,col = "blue")
+plot(myrange4,myrange3,col = 0)
+points(table_final2$edagger,table_final2$entropy,col= "darkblue")
+lines(average_final[,2],average_final[,3])
 
+myrange5 <- range(table_total$entropy)
+myrange6 <- range(table_total$edagger)
+points(table_total$edagger,table_total$entropy,col= "darkgrey")
+lines(average_final[,2],average_final[,3], col = "red", lwd = 2)
+points(table_final2$edagger,table_final2$entropy,col= "darkgreen", pch = 7)
+points(table_final1$edagger,table_final1$entropy,col= "darkblue")
 
+### ggplot2
+library(ggplot2)

@@ -1,5 +1,6 @@
-#Slopes for the validation
+#FACT CHECKS
 
+#### FEAMALE
 source("main/Figure 3 - decomp female 1989-2017.R")
 
 Year_diff <- c(seq(1989,2017,2))
@@ -63,3 +64,8 @@ abs(centropychange_FRA)/
   (abs(cvariation_FRA)+
      abs(clongevity_FRA)+abs(centropychange_FRA))
 ctotal_FRA
+
+
+#### MALE 
+rm(list = ls())
+source("main/Figure 3 - decomp male 1989-2017.R")
