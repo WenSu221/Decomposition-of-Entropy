@@ -68,7 +68,11 @@ for (x in 1950:2017){
 }
 
 row.names(table_total) <- c(1:length(table_total$edagger))
+row.names(table_final1) <- c(1:length(table_final1$edagger))
+row.names(table_final2) <- c(1:length(table_final2$edagger))
 
+duplicate.no <- duplicated(c(table_total$entropy,table_final1$entropy,table_final2$entropy))
+table_total <- table_total[!duplicate.no,]
 ### Plot ####
 
 myrange1 <- range(table_final1$entropy)
@@ -95,3 +99,25 @@ points(table_final1$edagger,table_final1$entropy,col= "darkblue")
 
 ### ggplot2
 library(ggplot2)
+
+table_total <- as.matrix(table_total)
+table_final1 <- as.matrix(table_final1)
+table_final2 <- as.matrix(table_final2)
+
+plotdata <- data.frame(
+  c(table_total[,2],table_final1[,2],table_final2[,2]),
+  c(rep("salv entropy",length(table_total[,4])),
+    rep("hta entropy",183),rep("lta entrpy",135)),
+  c(table_total[,4],table_final1[,4],table_final2[,4]),
+  c(table_total[,5],table_final1[,5],table_final2[,5])
+)
+
+colnames(plotdata) <- c("years","type","lifespan_inequality","entropy")
+
+plotdata$type <- factor(plotdata$type)
+plotdata$years <- as.numeric(plotdata$years)
+
+ggplot(data = plotdata,aes(lifespan_inequality,entropy,alpha = years,color = type))+
+  geom_point()+
+  geom_line(average_final,mapping = aes(edagger_mean,entropy_mean),alpha = year,color= "black")
+  scale_color_manual(values = c("red","blue","grey"))
