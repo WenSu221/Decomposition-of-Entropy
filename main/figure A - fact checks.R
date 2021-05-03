@@ -147,7 +147,7 @@ abs(dlongevity_CHE)/(abs(dvariation_CHE)+abs(dlongevity_CHE))
 abs(dvariation_GBRSCO)/(abs(dvariation_GBRSCO)+abs(dlongevity_GBRSCO))
 abs(dvariation_USA)/(abs(dvariation_USA)+abs(dlongevity_USA))
 
-### cahnge now
+### change now
 
 ### Denmark
 round(ctotal_DNK*100,4)
