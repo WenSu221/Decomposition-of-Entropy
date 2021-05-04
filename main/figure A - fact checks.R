@@ -106,7 +106,7 @@ cvariation_ITA
 abs(cvariation_USA)/
   (abs(cvariation_USA)+
      abs(clongevity_USA)+abs(centropychange_USA))
-# France & Finland Proportion
+# France & FRAland Proportion
 abs(cvariation_FRA)/
   (abs(cvariation_FRA)+
      abs(clongevity_FRA)+abs(centropychange_FRA))
@@ -150,6 +150,7 @@ abs(dvariation_USA)/(abs(dvariation_USA)+abs(dlongevity_USA))
 ### change now
 
 ### Denmark
+dtotal_DNK
 round(ctotal_DNK*100,4)
 abs(cvariation_DNK)/
   (abs(cvariation_DNK)+
@@ -160,3 +161,39 @@ abs(clongevity_DNK)/
 abs(centropychange_DNK)/
   (abs(cvariation_DNK)+
      abs(clongevity_DNK)+abs(centropychange_DNK))
+
+### Finland
+round(ctotal_FIN*100,4)
+abs(cvariation_FIN)/
+  (abs(cvariation_FIN)+
+     abs(clongevity_FIN)+abs(centropychange_FIN))
+abs(clongevity_FIN)/
+  (abs(cvariation_FIN)+
+     abs(clongevity_FIN)+abs(centropychange_FIN))
+abs(centropychange_FIN)/
+  (abs(cvariation_FIN)+
+     abs(clongevity_FIN)+abs(centropychange_FIN))
+
+### France
+round(ctotal_FRA*100,4)
+abs(cvariation_FRA)/
+  (abs(cvariation_FRA)+
+     abs(clongevity_FRA)+abs(centropychange_FRA))
+abs(clongevity_FRA)/
+  (abs(cvariation_FRA)+
+     abs(clongevity_FRA)+abs(centropychange_FRA))
+abs(centropychange_FRA)/
+  (abs(cvariation_FRA)+
+     abs(clongevity_FRA)+abs(centropychange_FRA))
+
+### Italy
+round(ctotal_ITA*100,4)
+abs(cvariation_ITA)/
+  (abs(cvariation_ITA)+
+     abs(clongevity_ITA)+abs(centropychange_ITA))
+abs(clongevity_ITA)/
+  (abs(cvariation_ITA)+
+     abs(clongevity_ITA)+abs(centropychange_ITA))
+abs(centropychange_ITA)/
+  (abs(cvariation_ITA)+
+     abs(clongevity_ITA)+abs(centropychange_ITA))

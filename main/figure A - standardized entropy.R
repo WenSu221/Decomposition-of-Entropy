@@ -108,7 +108,7 @@ ggplot(data = data.seq,aes(x = edagger,y = life.expectancy))+
   geom_text_contour(aes(z = entropy),color = "black", stroke = 0.2,stroke.color = "white")+
   scale_fill_viridis_c(option = "plasma")+
   scale_alpha_continuous(range = rev(c(0.1,0.7)))+
-  labs(x = "lifespan inequality", y = "life expectancy", title = "male entropy heatmap")+
+  labs(x = "lifespan inequality", y = "life expectancy")+
   scale_y_continuous(breaks = scales::breaks_width(5),expand = c(0,0))+
   scale_x_continuous(breaks = scales::breaks_width(1), expand = c(0,0))
 
