@@ -74,6 +74,7 @@ row.names(table_final1) <- c(1:length(table_final1$edagger))
 row.names(table_final2) <- c(1:length(table_final2$edagger))
 
 JPN <- table_total[table_total$names == "JPN",]
+colnames(JPN) <- c("names","Years","ezero","edagger","entropy","Japan")
 
 ### contour
 
@@ -96,19 +97,20 @@ data.seq <- data.frame(
   entropy.seq
 )
 
-colnames(data.seq) <- c("edagger","life.expectancy","entropy")
+colnames(data.seq) <- c("edagger","life.expectancy","Entropy")
 
 colnames(table_total) <- c("names","Years","life expectancy","lifespan variation","entropy","year")
 
 ggplot(data = data.seq,aes(x = edagger,y = life.expectancy))+
-  geom_raster(aes(fill = entropy))+
-  geom_contour(aes(z = entropy),color = "white",alpha = 0.8)+
-  geom_point(data = table_total,aes(x = `lifespan variation`,y = `life expectancy`,alpha = `Years`),color = "gray")+
-  geom_point(data = JPN,aes(x = `edagger`,y = `ezero`,alpha = `time`),color = "cyan")+
-  geom_text_contour(aes(z = entropy),color = "black", stroke = 0.2,stroke.color = "white")+
+  geom_raster(aes(fill = Entropy))+
+  geom_contour(aes(z = Entropy),color = "white",alpha = 0.8)+
+  geom_point(data = table_total,aes(x = `lifespan variation`,y = `life expectancy`,alpha = `Years`),color = "gray",size = 1)+
+  geom_point(data = JPN,aes(x = `edagger`,y = `ezero`,size = `Japan`),color = "cyan")+
+  geom_text_contour(aes(z = Entropy),color = "black", stroke = 0.2,stroke.color = "white")+
   scale_fill_viridis_c(option = "plasma")+
+  scale_size_continuous(range = rev(c(0.8,2.4)))+
   scale_alpha_continuous(range = rev(c(0.1,0.7)))+
-  labs(x = "lifespan inequality", y = "life expectancy")+
+  labs(x = "lifespan inequality", y = "life expectancy", title = "Figure 0. life table entropy surface, male 1957-2017")+
   scale_y_continuous(breaks = scales::breaks_width(5),expand = c(0,0))+
   scale_x_continuous(breaks = scales::breaks_width(1), expand = c(0,0))
 
