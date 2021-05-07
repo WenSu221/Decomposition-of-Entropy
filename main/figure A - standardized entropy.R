@@ -104,12 +104,12 @@ colnames(table_total) <- c("names","Years","life expectancy","lifespan variation
 ggplot(data = data.seq,aes(x = edagger,y = life.expectancy))+
   geom_raster(aes(fill = Entropy))+
   geom_contour(aes(z = Entropy),color = "white",alpha = 0.8)+
-  geom_point(data = table_total,aes(x = `lifespan variation`,y = `life expectancy`,alpha = `Years`),color = "gray",size = 1)+
-  geom_point(data = JPN,aes(x = `edagger`,y = `ezero`,size = `Japan`),color = "cyan")+
+  geom_point(data = table_total,aes(x = `lifespan variation`,y = `life expectancy`,color = `Years`),size = 0.8)+
+  geom_point(data = JPN,aes(x = `edagger`,y = `ezero`,size = `Japan`),color = "red")+
   geom_text_contour(aes(z = Entropy),color = "black", stroke = 0.2,stroke.color = "white")+
   scale_fill_viridis_c(option = "plasma")+
-  scale_size_continuous(range = rev(c(0.8,2.4)))+
-  scale_alpha_continuous(range = rev(c(0.1,0.7)))+
+  scale_color_viridis_c()+
+  scale_size_continuous(range = rev(c(1,4)))+
   labs(x = "lifespan inequality", y = "life expectancy", title = "Figure 0. life table entropy surface, male 1957-2017")+
   scale_y_continuous(breaks = scales::breaks_width(5),expand = c(0,0))+
   scale_x_continuous(breaks = scales::breaks_width(1), expand = c(0,0))
