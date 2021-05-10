@@ -48,7 +48,7 @@ ggplot(data =difference)+
         legend.background = element_blank(),
         plot.title = element_text(size = 10))+
   labs(x="Year",y="Relative Disparities",
-       title="Figure 3. Decomposition of the male CAL entropy gap 
+       title="Figure A2. Decomposition of the male CAL entropy gap 
                between the average and specific populations into
                longevity and lifespan variation. 1989-2017")
 ggsave("Output/decomposition of differences, male 1989-2017.pdf",
@@ -100,7 +100,7 @@ ggplot(data =change)+
         plot.title = element_text(size=10))+
   labs(x="Year",y="Relative Disparities",
        fill = "Contributions",
-       title="Figure 4. Decomposition of the time changes in male CAL entropy gap 
+       title="Figure A3. Decomposition of the time changes in male CAL entropy gap 
                between the average and specific population across time 
                into average entropy improvements, longevity, and lifespan variation. 
                1990-2016.")

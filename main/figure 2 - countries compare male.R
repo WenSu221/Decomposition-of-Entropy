@@ -302,6 +302,6 @@ legend("right", inset=-0.5,c("England & Wales","Netherlands","Norway",
              "red",cols[8],cols[1],"darkorange4","forestgreen"),
        lty = c(2,2,2,2,2,1,5,5,4,4,4),
        box.col = 0)
-title("Figure 2. Entropy of CAL compared to average level, male 1989-2017")
-mtext("average level", side = 2,adj = 0.3)
+title("Figure A1. Entropy of CAL compared to average level, male 1989-2017")
+mtext("average level", side = 2,adj = 0.4)
 dev.off()
