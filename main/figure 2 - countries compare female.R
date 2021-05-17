@@ -308,5 +308,5 @@ legend("right", inset=-0.5,c("Netherlands","Norway","Sweden",
        box.col = 0)
 
 title("Figure 2. Entropy of CAL compared to average level, female 1989-2017")
-mtext("average level", side = 2,adj = 0.3)
+mtext("average level", side = 2,adj = 0.4)
 dev.off()

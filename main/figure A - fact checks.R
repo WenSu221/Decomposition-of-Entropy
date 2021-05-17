@@ -1,6 +1,7 @@
 #FACT CHECKS
 
 #### FEAMALE ####
+rm(list = ls())
 source("main/Figure 3 - decomp female 1989-2017.R")
 
 Year_diff <- c(seq(1989,2017,2))

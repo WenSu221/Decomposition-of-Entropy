@@ -110,7 +110,7 @@ ggplot(data = data.seq,aes(x = edagger,y = life.expectancy))+
   scale_fill_viridis_c(option = "plasma")+
   scale_color_viridis_c()+
   scale_size_continuous(range = rev(c(1,4)))+
-  labs(x = "lifespan inequality", y = "life expectancy", title = "Figure 0. life table entropy surface, male 1957-2017")+
+  labs(x = "lifespan inequality", y = "life expectancy", title = "Figure 1. life table entropy surface, male 1957-2017")+
   scale_y_continuous(breaks = scales::breaks_width(5),expand = c(0,0))+
   scale_x_continuous(breaks = scales::breaks_width(1), expand = c(0,0))
 

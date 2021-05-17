@@ -11,11 +11,12 @@ difference <- data.frame(
     rep("Finland",45),rep("Italy",45),rep("Scotland",45),rep("Netherlands",45),rep("Switzerland",45),
     rep("United States",45)),
   
-  c(rep("Low-inequality",45),rep("Cross-over",45),rep("Improving",45),
-    rep("Low-inequality",45),rep("Low-inequality",45),
-    rep("Improving",45),rep("Improving",45),
-    rep("Widening",45),rep("Low-inequality",45),
-    rep("Low-inequality",45),rep("Widening",45)),
+  c(rep("A.Low-inequality",45),rep("B.Cross-over",45),
+    rep("D.Improving",45),
+    rep("B.Low-inequality",45),rep("A.Low-inequality",45),
+    rep("C.Improving",45),rep("D.Improving",45),
+    rep("D.Widening",45),rep("A.Low-inequality",45),
+    rep("A.Low-inequality",45),rep("C.Widening",45)),
   
   rep(rep(seq(1989,2017,2),3),11),
   
@@ -48,6 +49,7 @@ ggplot(data =difference)+
         legend.background = element_blank(),
         plot.title = element_text(size = 10))+
   labs(x="Year",y="Relative Disparities",
+       fill = "Contributions",
        title="Figure A2. Decomposition of the male CAL entropy gap 
                between the average and specific populations into
                longevity and lifespan variation. 1989-2017")
@@ -60,12 +62,12 @@ change <- data.frame(
     rep("Finland",56),rep("Italy",56),rep("Scotland",56),rep("Netherlands",56),rep("Switzerland",56),
     rep("United States",56)),
   
-  c(rep("Low-inequality",56),rep("Cross-over",56),
-    rep("Improving",56),rep("Low-inequality",56),
-    rep("Low-inequality",56),rep("Improving",56),
-    rep("Improving",56),rep("Widening",56),
-    rep("Low-inequality",56),rep("Low-inequality",56),
-    rep("Widening",56)),
+  c(rep("A.Low-inequality",56),rep("B.Cross-over",56),
+    rep("D.Improving",56),rep("B.Low-inequality",56),
+    rep("A.Low-inequality",56),rep("C.Improving",56),
+    rep("D.Improving",56),rep("D.Widening",56),
+    rep("A.Low-inequality",56),rep("A.Low-inequality",56),
+    rep("C.Widening",56)),
   
   rep(rep(seq(1990,2017,2),11),4),
   
