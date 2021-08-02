@@ -1,7 +1,7 @@
 #### Relative rate of increase ####
 
 ## Source
-source("main/figure 3 - decomp female 1989-2017.R")
+source("main/figure 4 - decomp female 1989-2017.R")
 
 ## rate of increase ###
 

@@ -2,7 +2,7 @@
 
 #### FEAMALE ####
 rm(list = ls())
-source("main/Figure 3 - decomp female 1989-2017.R")
+source("main/Figure 4 - decomp female 1989-2017.R")
 
 Year_diff <- c(seq(1989,2017,2))
 Year_change <- c(seq(1990,2016,2))
@@ -89,7 +89,7 @@ ctotal_FRA
 
 #### MALE ####
 rm(list = ls())
-source("main/Figure 3 - decomp male 1989-2017.R")
+source("main/Figure 4 - decomp male 1989-2017.R")
 
 ### France and Italy check
 
