@@ -63,7 +63,7 @@ A9 <- read.table("Data/NLD.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 A10 <- read.table("Data/CHE.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 
 Y1 <- 1877
-Y2 <- 2017
+Y2 <- 2018
 
 A1<-A1[(A1$Year>Y1)&(A1$Year<(Y2+1)),]
 A2<-A2[(A2$Year>Y1)&(A2$Year<(Y2+1)),]
@@ -91,52 +91,52 @@ qx10<-matrix(1-A10$qx,111)
 ## CAL ####
 
 CAL1 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CAL1 <- c(CAL1, CALfunc(qx1,i))
 }
 
 CAL2 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CAL2 <- c(CAL2, CALfunc(qx2,i))
 }
 
 CAL3 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CAL3 <- c(CAL3, CALfunc(qx3,i))
 }
 
 CAL4 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CAL4 <- c(CAL4, CALfunc(qx4,i))
 }
 
 CAL5 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CAL5 <- c(CAL5, CALfunc(qx5,i))
 }
 
 CAL6 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CAL6 <- c(CAL6, CALfunc(qx6,i))
 }
 
 CAL7 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CAL7 <- c(CAL7, CALfunc(qx7,i))
 }
 
 CAL8 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CAL8 <- c(CAL8, CALfunc(qx8,i))
 }
 
 CAL9 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CAL9 <- c(CAL9, CALfunc(qx9,i))
 }
 
 CAL10 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CAL10 <- c(CAL10, CALfunc(qx10,i))
 }
 
@@ -154,52 +154,52 @@ qx9 <- ifelse(qx9==0,1,qx9)
 qx10 <- ifelse(qx10==0,1,qx10)
 
 CALdagger1 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CALdagger1 <- c(CALdagger1, CALdagfunc(qx1,i))
 }
 
 CALdagger2 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CALdagger2 <- c(CALdagger2, CALdagfunc(qx2,i))
 }
 
 CALdagger3 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CALdagger3 <- c(CALdagger3, CALdagfunc(qx3,i))
 }
 
 CALdagger4 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CALdagger4 <- c(CALdagger4, CALdagfunc(qx4,i))
 }
 
 CALdagger5 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CALdagger5 <- c(CALdagger5, CALdagfunc(qx5,i))
 }
 
 CALdagger6 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CALdagger6 <- c(CALdagger6, CALdagfunc(qx6,i))
 }
 
 CALdagger7 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CALdagger7 <- c(CALdagger7, CALdagfunc(qx7,i))
 }
 
 CALdagger8 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CALdagger8 <- c(CALdagger8, CALdagfunc(qx8,i))
 }
 
 CALdagger9 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CALdagger9 <- c(CALdagger9, CALdagfunc(qx9,i))
 }
 
 CALdagger10 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CALdagger10 <- c(CALdagger10, CALdagfunc(qx10,i))
 }
 
@@ -247,20 +247,21 @@ diff7 <- entropyCAL7 - CALavg
 diff8 <- entropyCAL8 - CALavg
 diff9 <- entropyCAL9 - CALavg
 diff10 <- entropyCAL10 - CALavg
-diff11 <- entropyCAL11 - CALavg[12:15]
-diff11 <- c(rep(NA,11),diff11)
+diff11 <- entropyCAL11 - CALavg[23:30]
+diff11 <- c(rep(NA,22),diff11)
 
 
 ### Plots ####
 
-Years <- seq(1989,2017,2)
-pdf(file = "Output/Countries Comparison average benchmark, female 1989-2017.pdf",
-    width = 8, height = 10)
+Years <- seq(1989,2018)
+pdf(file = "Output/Countries Comparison average benchmark, female 1989-2018.pdf",
+    width = 8, height = 8)
 par(mar = c(5,5,5,12),xpd = T)
-plot(c(1989,2017),c(-0.025,0.05),col = 0,
+plot(c(1989,2018),c(-0.025,0.05),col = 0,
      xlab = "Years",
      ylab="Differences between populations and average CAL Entropy",
-     ylim = c(-0.025,0.04),ygap.axis = 0.01)
+     ylim = c(-0.025,0.04), ygap.axis = 0.01,
+     cex.lab = 1.2)
 lines(Years,diff1,type = "l",
       col = "black",lty=2,lwd = 2,
       cex = 1,pch = 20)
@@ -293,7 +294,7 @@ lines(Years,diff10,type = "l",
       cex = 1,pch = 20)
 lines(Years,diff11,type = "l",
       col = "red",lty=5,lwd = 2)
-lines(Years,rep(0,times=15),
+lines(Years,rep(0,times=30),
       col = 1, lty = 3, lwd = 2,
       cex = 1,pch = 20)
 legend("right", inset=-0.5,c("Netherlands","Norway","Sweden",
@@ -305,8 +306,9 @@ legend("right", inset=-0.5,c("Netherlands","Norway","Sweden",
              "lightgreen",cols[1],"red","darkorange4","forestgreen",
              cols[8]),
        lty = c(2,2,2,2,1,1,1,5,4,4,4),
+       lwd = c(rep(1.5,11)),
        box.col = 0)
 
-title("Figure 2. Entropy of CAL compared to average level, female 1989-2017")
-mtext("average level", side = 2,adj = 0.4)
+title("Figure 2. Entropy of CAL compared to average level, female 1989-2018")
+mtext("average level", side = 2, line = 2, adj = 0.4)
 dev.off()

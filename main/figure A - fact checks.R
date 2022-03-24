@@ -4,8 +4,8 @@
 rm(list = ls())
 source("main/Figure 4 - decomp female 1989-2017.R")
 
-Year_diff <- c(seq(1989,2017,2))
-Year_change <- c(seq(1990,2016,2))
+Year_diff <- c(seq(1989,2018))
+Year_change <- c(seq(1990,2018))
 
 # The speed of CHE and NOR
 
@@ -93,8 +93,8 @@ source("main/Figure 4 - decomp male 1989-2017.R")
 
 ### France and Italy check
 
-mean(log(dtotal_FRA[-1]/dtotal_FRA[-15]))
-mean(log(dtotal_ITA[-1]/dtotal_ITA[-15]))
+mean(log(dtotal_FRA[-1]/dtotal_FRA[-length(dtotal_FRA)]))
+mean(log(dtotal_ITA[-1]/dtotal_ITA[-length(dtotal_ITA)]))
 
 abs(dvariation_FRA)/(abs(dvariation_FRA)+abs(dlongevity_FRA))
 abs(dvariation_ITA)/(abs(dvariation_ITA)+abs(dlongevity_ITA))
@@ -104,9 +104,9 @@ dtotal_ITA
 abs(dvariation_FIN)/(abs(dvariation_FIN)+abs(dlongevity_FIN))
 
 ### Netherlands Norway, and Sweden
-mean(log(dlongevity_NLD[-1]/dlongevity_NLD[-15]))
-mean(log(dlongevity_NOR[-1]/dlongevity_NOR[-15]))
-mean(log(dlongevity_SWE[-1]/dlongevity_SWE[-15]))
+mean(log(dlongevity_NLD[-1]/dlongevity_NLD[-length(dtotal_NLD)]))
+mean(log(dlongevity_NOR[-1]/dlongevity_NOR[-length(dtotal_NOR)]))
+mean(log(dlongevity_SWE[-1]/dlongevity_SWE[-length(dtotal_SWE)]))
 
 ### Switzerland
 abs(dlongevity_CHE)/(abs(dvariation_CHE)+abs(dlongevity_CHE))
@@ -188,8 +188,8 @@ rr.ctotal_SWE <- mean(log(ctotal_SWE[-1]/
                                 ctotal_SWE[-length(ctotal_SWE)]))
 rr.ctotal_NOR <- mean(log(ctotal_NOR[-1]/
                                 ctotal_NOR[-length(ctotal_NOR)]))
-rr.cvariation_SWE <- mean(log(cvariation_SWE[-1]/
-                                cvariation_SWE[-length(cvariation_SWE)]))
+rr.cvariation_SWE <- log(cvariation_SWE[-1]/cvariation_SWE[-length(cvariation_SWE)])
+rr.cvariation_SWE <- mean(rr.cvariation_SWE[!is.nan(rr.cvariation_SWE)])
 rr.clongevity_SWE <- mean(log(clongevity_SWE[-1]/
                                 clongevity_SWE[-length(clongevity_SWE)]))
 rr.centropychange_SWE <- mean(log(centropychange_SWE[-1]/

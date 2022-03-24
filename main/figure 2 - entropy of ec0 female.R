@@ -4,19 +4,19 @@
 
 
 ### Data # ----
-A1 <- read.table("Data/SWE.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A2 <- read.table("Data/DNK.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A3 <- read.table("Data/FRATNP.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A4 <- read.table("Data/GBRTENW.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A5 <- read.table("Data/NOR.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A6 <- read.table("Data/FIN.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A7 <- read.table("Data/ITA.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A8 <- read.table("Data/GBRSCO.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A9 <- read.table("Data/NLD.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
-A10 <- read.table("Data/CHE.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1)
+A1 <- read.table("Data/SWE.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1,colClasses = "character")
+A2 <- read.table("Data/DNK.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1,colClasses = "character")
+A3 <- read.table("Data/FRATNP.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1,colClasses = "character")
+A4 <- read.table("Data/GBRTENW.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1,colClasses = "character")
+A5 <- read.table("Data/NOR.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1,colClasses = "character")
+A6 <- read.table("Data/FIN.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1,colClasses = "character")
+A7 <- read.table("Data/ITA.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1,colClasses = "character")
+A8 <- read.table("Data/GBRSCO.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1,colClasses = "character")
+A9 <- read.table("Data/NLD.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1,colClasses = "character")
+A10 <- read.table("Data/CHE.fltcoh_1x1.txt",header=TRUE,fill=TRUE,skip=1,colClasses = "character")
 
 Y1 <- 1877
-Y2 <- 1926
+Y2 <- 1927
 
 A1<-A1[(A1$Year>Y1)&(A1$Year<(Y2+1)),]
 A2<-A2[(A2$Year>Y1)&(A2$Year<(Y2+1)),]
@@ -32,7 +32,7 @@ A10<-A10[(A10$Year>Y1)&(A10$Year<(Y2+1)),]
 ### e dagger # ----
 
 LSV <- function(dt,Y){
-  Ydt<-subset(dt, Year==Y)
+  Ydt <- subset(dt, Year==Y)
   age_length_equal <- all.equal(length(Ydt$age),length(Ydt$dx),
                                 length(Ydt$lx),length(Ydt$ex),
                                 length(Ydt$ax))

@@ -7,21 +7,21 @@ source("main/figure 4 - decomp female 1989-2017.R")
 ### differences figure ####
 difference <- data.frame(
   
-  c(rep("Denmark",45),rep("England & Wales",45),
-    rep("Finland",45),rep("Netherlands",45),
-    rep("Norway",45), rep("Sweden",45),
-    rep("Switzerland",45),rep("France",45),
-    rep("Italy",45),rep("Scotland",45),rep("United States",45)),
+  c(rep("Denmark",90),rep("England & Wales",90),
+    rep("Finland",90),rep("Netherlands",90),
+    rep("Norway",90), rep("Sweden",90),
+    rep("Switzerland",90),rep("France",90),
+    rep("Italy",90),rep("Scotland",90),rep("United States",90)),
   
-  c(rep("B.Cross-over",45),rep("B.Cross-over",45),rep("B.Cross-over",45),
-    rep("A.Low-inequality",45),rep("A.Low-inequality",45),
-    rep("A.Low-inequality",45),rep("A.Low-inequality",45),
-    rep("D.Improving",45),rep("D.Improving",45),
-    rep("D.Improving",45),rep("C.Widening",45)),
+  c(rep("B.Cross-over",90),rep("B.Cross-over",90),rep("B.Cross-over",90),
+    rep("A.Low-inequality",90),rep("A.Low-inequality",90),
+    rep("A.Low-inequality",90),rep("A.Low-inequality",90),
+    rep("D.Improving",90),rep("D.Improving",90),
+    rep("D.Improving",90),rep("C.Widening",90)),
   
-  rep(rep(seq(1989,2017,2),3),11),
+  rep(rep(seq(1989,2018),3),11),
   
-  rep(c(rep("2.Lifespan variation",15),rep("1.Longevity",15),rep("total",15)),11),
+  rep(c(rep("2.Lifespan variation",30),rep("1.Longevity",30),rep("total",30)),11),
   
   c(dvariation_DNK,dlongevity_DNK,dtotal_DNK,
     dvariation_GBRTENW,dlongevity_GBRTENW,dtotal_GBRTENW,
@@ -37,42 +37,45 @@ difference <- data.frame(
 
 colnames(difference) <- c("population","country_type","year","type","relative_disparities")
 
+# difference <- difference %>% filter(population %in% c("Denmark", "Italy", "Netherlands", "United States"))
+
 ggplot(data =difference)+
   geom_col(data = subset(difference,type!="total"), mapping = aes(x=year,y=relative_disparities,fill=type),position = "stack")+
-  geom_line(data = subset(difference,type=="total"),mapping = aes(x=year,y=relative_disparities),lwd=0.5)+
-  geom_point(data = subset(difference,type=="total"),mapping = aes(x=year,y=relative_disparities),cex=0.6)+
+  geom_line(data = subset(difference,type=="total"),mapping = aes(x=year,y=relative_disparities),lwd=0.3)+
+  geom_point(data = subset(difference,type=="total"),mapping = aes(x=year,y=relative_disparities),cex=0.3)+
   scale_fill_manual(values = c("blue","red"))+
+  scale_x_continuous(breaks = seq(1995,2015,10))+
   facet_wrap(~country_type+population)+
   theme(plot.title = element_text(size = 10),
         plot.margin = margin(t=0.5,r=2,b=0.5,l=0.5,"cm"),
-        legend.position = c(0.95,0.1),
+        legend.position = "bottom",
         legend.background = element_blank())+
   labs(x="Year",y="Relative Disparities",
        fill="Contributions",
        title="Figure 3. Decomposition of the female CAL entropy gap 
                between the average and specific populations into
                longevity and lifespan variation. 1989-2017")
-ggsave("Output/decomposition of differences, female 1989-2017.pdf",width = 6,height = 8,dpi = 300)
+ggsave("Output/decomposition of differences, female 1989-2018.pdf",width = 8,height = 6,dpi = 300)
 
 ### changes figure ####
 change <- data.frame(
-  c(rep("Sweden",56),rep("Denmark",56),
-    rep("France",56),rep("England & Wales",56),
-    rep("Norway",56),rep("Finland",56),
-    rep("Italy",56),rep("Scotland",56),
-    rep("Netherlands",56),rep("Switzerland",56),
-    rep("United States",56)),
+  c(rep("Sweden",116),rep("Denmark",116),
+    rep("France",116),rep("England & Wales",116),
+    rep("Norway",116),rep("Finland",116),
+    rep("Italy",116),rep("Scotland",116),
+    rep("Netherlands",116),rep("Switzerland",116),
+    rep("United States",116)),
   
-  c(rep("A.Low-inequality",56),rep("B.Cross-over",56),rep("D.Improving",56),
-    rep("B.Cross-over",56),rep("A.Low-inequality",56),
-    rep("B.Cross-over",56),rep("D.Improving",56),
-    rep("D.Improving",56),rep("A.Low-inequality",56),
-    rep("A.Low-inequality",56),rep("C.Widening",56)),
+  c(rep("A.Low-inequality",116),rep("B.Cross-over",116),rep("D.Improving",116),
+    rep("B.Cross-over",116),rep("A.Low-inequality",116),
+    rep("B.Cross-over",116),rep("D.Improving",116),
+    rep("D.Improving",116),rep("A.Low-inequality",116),
+    rep("A.Low-inequality",116),rep("C.Widening",116)),
   
-  rep(rep(seq(1990,2017,2),11),4),
+  rep(rep(seq(1990.5,2018.5),11),4),
   
-  rep(c(rep("3.Lifespan variation",14),rep("2.Longevity",14),
-        rep("1.Average entropy improvements",14),rep("total",14)),11),
+  rep(c(rep("3.Lifespan variation",29),rep("2.Longevity",29),
+        rep("1.Average entropy improvements",29),rep("total",29)),11),
   
   c(cvariation_SWE,clongevity_SWE,centropychange_SWE,ctotal_SWE,
     cvariation_DNK,clongevity_DNK,centropychange_DNK,ctotal_DNK,
@@ -93,10 +96,11 @@ change$relative_disparities <- change$relative_disparities*100
 
 ggplot(data =change)+
   geom_col(data = subset(change,type!="total"), mapping = aes(x=year,y=relative_disparities,fill=type),position = "stack")+
-  geom_line(data = subset(change,type=="total"),mapping = aes(x=year,y=relative_disparities),lwd=0.5)+
-  geom_point(data = subset(change,type=="total"),mapping = aes(x=year,y=relative_disparities),cex = 0.6)+
+  geom_line(data = subset(change,type=="total"),mapping = aes(x=year,y=relative_disparities),lwd=0.3)+
+  geom_point(data = subset(change,type=="total"),mapping = aes(x=year,y=relative_disparities),cex = 0.3)+
   facet_wrap(~country_type+population)+
   scale_fill_manual(values = rev(c("red","blue","green4")))+
+  scale_x_continuous(breaks = seq(1995,2015,10))+
   theme(plot.margin = margin(t=0.5,r=3,b=0.5,l=0.5,"cm"),
         legend.position = c(1.02,0.1),
         legend.background = element_blank(),
@@ -108,4 +112,4 @@ ggplot(data =change)+
                between the average and specific population across time 
                into average entropy improvements, longevity, and lifespan variation. 
                1990-2016.")
-ggsave("Output/decomposition of changes in differences, female 1990-2016.pdf",width = 6,height = 8,dpi = 300)
+ggsave("Output/decomposition of changes in differences, female 1990-2018.pdf",width = 6,height = 8,dpi = 300)

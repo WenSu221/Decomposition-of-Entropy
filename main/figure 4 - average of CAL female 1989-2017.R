@@ -1,4 +1,4 @@
-#### Average of CAL female 1989-2017 ####
+#### Average of CAL female 1989-2018 ####
 
 #### CAL functions ####
 CALfunc <-function(Mx1,Y){
@@ -54,7 +54,7 @@ A9 <- read.table("Data/NLD.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 A10 <- read.table("Data/CHE.fltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 
 Y1 <- 1877
-Y2 <- 2017
+Y2 <- 2018
 
 A1<-A1[(A1$Year>Y1)&(A1$Year<(Y2+1)),]
 A2<-A2[(A2$Year>Y1)&(A2$Year<(Y2+1)),]
@@ -81,52 +81,52 @@ qx10<-matrix(1-A10$qx,111)
 ## CAL ####
 
 CAL1 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CAL1 <- c(CAL1, CALfunc(qx1,i))
 }
 
 CAL2 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CAL2 <- c(CAL2, CALfunc(qx2,i))
 }
 
 CAL3 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CAL3 <- c(CAL3, CALfunc(qx3,i))
 }
 
 CAL4 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CAL4 <- c(CAL4, CALfunc(qx4,i))
 }
 
 CAL5 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CAL5 <- c(CAL5, CALfunc(qx5,i))
 }
 
 CAL6 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CAL6 <- c(CAL6, CALfunc(qx6,i))
 }
 
 CAL7 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CAL7 <- c(CAL7, CALfunc(qx7,i))
 }
 
 CAL8 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CAL8 <- c(CAL8, CALfunc(qx8,i))
 }
 
 CAL9 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CAL9 <- c(CAL9, CALfunc(qx9,i))
 }
 
 CAL10 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CAL10 <- c(CAL10, CALfunc(qx10,i))
 }
 
@@ -144,52 +144,52 @@ qx9 <- ifelse(qx9==0,1,qx9)
 qx10 <- ifelse(qx10==0,1,qx10)
 
 CALdagger1 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CALdagger1 <- c(CALdagger1, CALdagfunc(qx1,i))
 }
 
 CALdagger2 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CALdagger2 <- c(CALdagger2, CALdagfunc(qx2,i))
 }
 
 CALdagger3 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CALdagger3 <- c(CALdagger3, CALdagfunc(qx3,i))
 }
 
 CALdagger4 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CALdagger4 <- c(CALdagger4, CALdagfunc(qx4,i))
 }
 
 CALdagger5 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CALdagger5 <- c(CALdagger5, CALdagfunc(qx5,i))
 }
 
 CALdagger6 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CALdagger6 <- c(CALdagger6, CALdagfunc(qx6,i))
 }
 
 CALdagger7 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CALdagger7 <- c(CALdagger7, CALdagfunc(qx7,i))
 }
 
 CALdagger8 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CALdagger8 <- c(CALdagger8, CALdagfunc(qx8,i))
 }
 
 CALdagger9 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CALdagger9 <- c(CALdagger9, CALdagfunc(qx9,i))
 }
 
 CALdagger10 <- c()
-for (i in seq(1989,2017,2)){
+for (i in seq(1989,2018)){
   CALdagger10 <- c(CALdagger10, CALdagfunc(qx10,i))
 }
 

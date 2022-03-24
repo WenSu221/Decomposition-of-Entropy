@@ -66,7 +66,7 @@ USAmale <- rbind (B[1:31,1:32],matrix(0,80,32))
 A11 <- read.table("US Data/USA.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 
 Y1 <- 1932
-Y2 <- 2017
+Y2 <- 2018
 
 A11<-A11[(A11$Year>Y1)&(A11$Year<(Y2+1)),]
 
@@ -97,7 +97,7 @@ CALfunc <-function(Mx1,Y){
 }
 
 CAL11 <- c()
-for (i in seq(2011,2017,2)){
+for (i in seq(2011,2018)){
   CAL11 <- c(CAL11, CALfunc(qx11,i))
 }
 
@@ -123,7 +123,7 @@ CALdagfunc <-function(Mx1,Y){
 qx11 <- ifelse(qx11==0,1,qx11)
 
 CALdagger11 <- c()
-for (i in seq(2011,2017,2)){
+for (i in seq(2011,2018)){
   CALdagger11 <- c(CALdagger11, CALdagfunc(qx11,i))
 }
 
