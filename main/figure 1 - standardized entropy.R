@@ -112,7 +112,7 @@ ggplot(data = data.seq,aes(x = edagger,y = life.expectancy))+
 
 ggarrange(g1,g2,nrow = 2)
 
-ggsave("Output/Entropy Surface 1957-2017.pdf", 
+ggsave("Output/Entropy Surface 1957-2018.pdf", 
        width = 8, height = 8, dpi = 300)  
 
 match <- table_total %>% mutate(round = round(entropy,2)) %>% filter(round == 0.18)

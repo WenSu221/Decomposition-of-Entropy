@@ -55,7 +55,7 @@ ggplot(data =difference)+
        title="Figure 3. Decomposition of the female CAL entropy gap 
                between the average and specific populations into
                longevity and lifespan variation. 1989-2017")
-ggsave("Output/decomposition of differences, female 1989-2018.pdf",width = 8,height = 6,dpi = 300)
+ggsave("Output/decomposition of differences, female 1989-2018.pdf",width = 6,height = 8,dpi = 300)
 
 ### changes figure ####
 change <- data.frame(

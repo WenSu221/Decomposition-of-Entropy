@@ -253,12 +253,12 @@ diff11 <- c(rep(NA,22),diff11)
 
 Years <- seq(1989,2018)
 pdf(file = "Output/Countries Comparison average benchmark, male 1989-2018.pdf",
-    width = 8, height = 10)
+    width = 8, height = 8)
 par(mar=c(5,5,5,12),xpd = T)
-plot(c(1989,2018),c(-0.025,0.04),col = 0,
+plot(c(1989,2018),c(0.025,0.05),col = 0,
      xlab = "Years",
      ylab="Differences between populations and average CAL Entropy",
-     ylim = c(-0.025,0.04),ygap.axis = 0.01)
+     ylim = c(-0.025,0.04))
 lines(Years,diff1,type = "l",
       col = "black",lty=2,lwd = 2,
       cex = 1,pch = 20)
@@ -302,6 +302,6 @@ legend("right", inset=-0.5,c("England & Wales","Netherlands","Norway",
              "red",cols[8],cols[1],"darkorange4","forestgreen"),
        lty = c(2,2,2,2,2,1,5,5,4,4,4),
        box.col = 0)
-title("Figure A1. Entropy of CAL compared to average level, male 1989-2018")
+title("Figure A1A. Entropy of CAL compared to average level, male 1989-2018")
 mtext("average level", side = 2,adj = 0.4)
 dev.off()

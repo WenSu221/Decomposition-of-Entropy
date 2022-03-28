@@ -43,37 +43,40 @@ dlongevity_FRA
 Year_diff
 
 # THe Scottish proportion of contribution
-dlongevity_GBRSCO/
-  (dlongevity_GBRSCO+dvariation_GBRSCO)
+quantile(dlongevity_GBRSCO/
+  (dlongevity_GBRSCO+dvariation_GBRSCO))
+
+quantile(dvariation_GBRSCO/
+           (dlongevity_GBRSCO+dvariation_GBRSCO))
 
 # Italy approaching average
-dlongevity_ITA/
-  (dlongevity_ITA+dvariation_ITA)
+quantile(dlongevity_ITA/
+  (dlongevity_ITA+dvariation_ITA))
 
 # low-inequality change in contribution shares
-abs(cvariation_NLD)/abs(ctotal_NLD)
-abs(cvariation_NOR)/abs(ctotal_NOR)
-abs(cvariation_SWE)/abs(ctotal_SWE)
-abs(cvariation_CHE)/abs(ctotal_CHE)
+quantile(abs(cvariation_NLD)/abs(ctotal_NLD))
+quantile(abs(cvariation_NOR)/abs(ctotal_NOR))
+quantile(abs(cvariation_SWE)/abs(ctotal_SWE))
+quantile(abs(cvariation_CHE)/abs(ctotal_CHE))
 
 # Denmark change in diff
-abs(cvariation_DNK)/
+quantile(abs(cvariation_DNK)/
   (abs(cvariation_DNK)+
-                       abs(clongevity_DNK)+abs(centropychange_DNK))
-abs(clongevity_DNK)/
+                       abs(clongevity_DNK)+abs(centropychange_DNK)))
+quantile(abs(clongevity_DNK)/
   (abs(cvariation_DNK)+
-                       abs(clongevity_DNK)+abs(centropychange_DNK))
+                       abs(clongevity_DNK)+abs(centropychange_DNK)))
 
 # Italy proportion in changes
-(abs(clongevity_ITA)+abs(centropychange_ITA))/
+quantile((abs(clongevity_ITA)+abs(centropychange_ITA))/
   (abs(cvariation_ITA)+
-                       abs(clongevity_ITA)+abs(centropychange_ITA))
+                       abs(clongevity_ITA)+abs(centropychange_ITA)))
 cvariation_ITA
 
 # US proportion to changes
-abs(cvariation_USA)/
+quantile(abs(cvariation_USA)/
   (abs(cvariation_USA)+
-     abs(clongevity_USA)+abs(centropychange_USA))
+     abs(clongevity_USA)+abs(centropychange_USA)),na.rm=T)
 # France & FRAland Proportion
 abs(cvariation_FRA)/
   (abs(cvariation_FRA)+

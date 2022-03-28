@@ -223,6 +223,7 @@ CALentropyavg <- rbind(entropyCAL1,entropyCAL2,entropyCAL3,
                        entropyCAL4,entropyCAL5,entropyCAL6,
                        entropyCAL7,entropyCAL8,entropyCAL9,
                        entropyCAL10)
+apply(CALentropyavg,2,sd)
 CALentropyavg <- colMeans(CALentropyavg)
 
 CALavg <- rbind(CAL1,CAL2,CAL3,CAL4,CAL5,CAL6,CAL7,CAL8,

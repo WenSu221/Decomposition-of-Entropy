@@ -257,10 +257,10 @@ Years <- seq(1989,2018)
 pdf(file = "Output/Countries Comparison average benchmark, relative scale, female 1989-2018.pdf",
     width = 8, height = 8)
 par(mar = c(5,5,5,12),xpd = T)
-plot(c(1989,2018),c(0.5,1.5),col = 0,
+plot(c(1989,2018),c(0.8,1.2),col = 0,
      xlab = "Years",
      ylab="Differences between populations and average CAL Entropy",
-     ylim = c(0.5,1.5), ygap.axis = 0.1,
+     ylim = c(0.8,1.2), ygap.axis = 0.1,
      cex.lab = 1.2)
 lines(Years,diff1,type = "l",
       col = "black",lty=2,lwd = 2,
@@ -309,6 +309,6 @@ legend("right", inset=-0.5,c("Netherlands","Norway","Sweden",
        lwd = c(rep(1.5,11)),
        box.col = 0)
 
-title("Figure 2. Entropy of CAL compared to average level, female 1989-2018")
+title("Figure A1B. Entropy of CAL compared to average level (ratio), female 1989-2018")
 mtext("average level", side = 2, line = 2, adj = 0.4)
 dev.off()
