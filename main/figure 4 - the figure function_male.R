@@ -53,8 +53,8 @@ ggplot(data =difference)+
        fill = "Contributions",
        title="Figure A2. Decomposition of the male CAL entropy gap 
                between the average and specific populations into
-               longevity and lifespan variation. 1989-2017")
-ggsave("Output/decomposition of differences, male 1989-2017.pdf",
+               longevity and lifespan variation. 1989-2018")
+ggsave("Output/decomposition of differences, male 1989-2018.pdf",
        width = 6,height = 8,dpi = 300)
 
 ### changes figure ####
@@ -70,7 +70,7 @@ change <- data.frame(
     rep("A.Low-inequality",116),rep("A.Low-inequality",116),
     rep("C.Widening",116)),
   
-  rep(rep(seq(1990.5,2018.5),11),4),
+  rep(rep(seq(1989.5,2017.5),11),4),
   
   rep(c(rep("3.Lifespan variation",29),rep("2.Longevity",29),
         rep("1.Average entropy imrprovements",29),rep("total",29)),11),
@@ -107,6 +107,6 @@ ggplot(data =change)+
        title="Figure A3. Decomposition of the time changes in male CAL entropy gap 
                between the average and specific population across time 
                into average entropy improvements, longevity, and lifespan variation. 
-               1990-2016.")
+               1990-2018.")
 ggsave("Output/decomposition of changes in differences, male 1990-2018.pdf",
        width = 6,height = 8,dpi = 300)

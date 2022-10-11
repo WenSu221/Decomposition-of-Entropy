@@ -52,9 +52,9 @@ ggplot(data =difference)+
         legend.background = element_blank())+
   labs(x="Year",y="Relative Disparities",
        fill="Contributions",
-       title="Figure 3. Decomposition of the female CAL entropy gap 
+       title="Figure 4. Decomposition of the female CAL entropy gap 
                between the average and specific populations into
-               longevity and lifespan variation. 1989-2017")
+               longevity and lifespan variation. 1989-2018")
 ggsave("Output/decomposition of differences, female 1989-2018.pdf",width = 6,height = 8,dpi = 300)
 
 ### changes figure ####
@@ -72,7 +72,7 @@ change <- data.frame(
     rep("D.Improving",116),rep("A.Low-inequality",116),
     rep("A.Low-inequality",116),rep("C.Widening",116)),
   
-  rep(rep(seq(1990.5,2018.5),11),4),
+  rep(rep(seq(1989.5,2017.5),11),4),
   
   rep(c(rep("3.Lifespan variation",29),rep("2.Longevity",29),
         rep("1.Average entropy improvements",29),rep("total",29)),11),
@@ -108,8 +108,8 @@ ggplot(data =change)+
         )+
   labs(x="Year",y="Contributions to change",
        fill = "Contributions",
-       title="Figure 4. Decomposition of the time changes in female CAL entropy gap 
+       title="Figure 5. Decomposition of the time changes in female CAL entropy gap 
                between the average and specific population across time 
                into average entropy improvements, longevity, and lifespan variation. 
-               1990-2016.")
+               1990-2018.")
 ggsave("Output/decomposition of changes in differences, female 1990-2018.pdf",width = 6,height = 8,dpi = 300)

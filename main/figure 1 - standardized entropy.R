@@ -36,29 +36,36 @@ for (x in 1957:2018){
   ezero <- filter(test,Age==0)
   ezero <- as.numeric(ezero$ex)
   
+  ezero <- tibble(names,ezero)
+  
   test <- group_by(test,country)
+  
+  # this separate individual tibbles
   test <- group_split(test)
   
-  edagger <- as.numeric(sapply(test,FUN = LSV))
- 
-  entropy <- as.numeric(edagger/ezero)
+  names <- c()
   
-  table <- cbind(names,ezero,edagger,entropy,year)
-
-  table <- as.data.frame(table)
+  for(i in 1:length(test)){
+    id <- unique(test[[i]][["country"]])
+    names <- c(names,id)
+    }
+  
+  edagger <- as.numeric(sapply(test,FUN = LSV))
+  
+  edagger <- tibble(names,edagger)
+  
+  table <- merge(edagger,ezero)
+ 
+  table$entropy <- as.numeric(table$edagger)/
+    as.numeric(table$ezero)
+  
+  table$year <- rep(year,dim(table)[1])
   
   table_total <- rbind(table_total,table)
-
 }
 
-row.names(table_total) <- c(1:length(table_total$edagger))
-table_total$ezero <- as.numeric(as.character((table_total$ezero)))
-table_total$edagger <- as.numeric(as.character((table_total$edagger)))
-table_total$entropy <- as.numeric(as.character((table_total$entropy)))
-table_total$year <- as.numeric(as.character((table_total$year)))
-
-JPN <- table_total[table_total$names == "JPN",]
-names(JPN) <- c("JPN","ezero","edagger","entropy","Years")
+EXP <- table_total[table_total$names == "SWE",]
+names(EXP) <- c("SWE","edagger","ezero","entropy","Years")
 
 ### contour
 
@@ -83,7 +90,7 @@ data.seq <- data.frame(
 
 colnames(data.seq) <- c("edagger","life.expectancy","Entropy")
 
-colnames(table_total) <- c("names","life expectancy","lifespan variation","entropy","Years")
+colnames(table_total) <- c("names","lifespan variation","life expectancy","entropy","Years")
 
 g1 <- 
   ggplot(data = data.seq,aes(x = edagger,y = life.expectancy))+
@@ -94,7 +101,7 @@ g1 <-
   scale_fill_viridis_c(option = "plasma")+
   scale_color_viridis_c(breaks = scales::breaks_width(10),expand = c(0,0))+
   labs(x = paste0("lifespan variation"), 
-       y = paste0("life expectancy"), title = "Figure 1A. life table entropy surface, male 1957-2017")+
+       y = paste0("life expectancy"), title = "Figure 1A. life table entropy surface, male 1957-2018")+
   scale_y_continuous(breaks = scales::breaks_width(5),expand = c(0,0))+
   scale_x_continuous(breaks = scales::breaks_width(1), expand = c(0,0))
 
@@ -102,17 +109,23 @@ g2 <-
 ggplot(data = data.seq,aes(x = edagger,y = life.expectancy))+
   geom_raster(aes(fill = Entropy))+
   geom_contour(aes(z = Entropy),color = "white",alpha = 0.8)+
-  geom_point(data = JPN,aes(x = `edagger`,y = `ezero`,color = `Years`))+
+  geom_point(data = EXP,aes(x = `edagger`,y = `ezero`,color = `Years`))+
   geom_text_contour(aes(z = Entropy),color = "black",size=2.5, stroke = 0.2,stroke.color = "white")+
   scale_fill_viridis_c(option = "plasma")+
   scale_color_viridis_c(breaks = scales::breaks_width(10),expand = c(0,0))+
-  labs(x = "lifespan variation", y = "life expectancy", title = "Figure 1B. life table entropy surface, Japanese male 1957-2017")+
+  labs(x = "lifespan variation", y = "life expectancy", title = "Figure 1B. life table entropy surface, Japanese male 1957-2018")+
   scale_y_continuous(breaks = scales::breaks_width(5),expand = c(0,0))+
   scale_x_continuous(breaks = scales::breaks_width(1), expand = c(0,0))
 
 ggarrange(g1,g2,nrow = 2)
 
-ggsave("Output/Entropy Surface 1957-2018.pdf", 
-       width = 8, height = 8, dpi = 300)  
+ggsave("Output/Entropy Surface 1957-2018_correct.pdf",
+       width = 8, height = 8, dpi = 300)
 
-match <- table_total %>% mutate(round = round(entropy,2)) %>% filter(round == 0.18)
+cand1 <- filter(table_total,`lifespan variation`>13)
+cand2 <- filter(table_total,`lifespan variation`<11)
+
+cand1$`life expectancy` <- trunc(cand1$`life expectancy`)
+cand2$`life expectancy` <- trunc(cand2$`life expectancy`)
+
+cand <- merge(cand1,cand2,by=c("life expectancy"))

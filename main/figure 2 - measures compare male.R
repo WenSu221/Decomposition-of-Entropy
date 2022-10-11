@@ -438,7 +438,7 @@ lines(years3,entropyc10,col=COL[3],lty=3,lwd=2)
 lines(years3,cavg,col="purple",lwd = 3)
 lines(years3,predict(clm),col=1,lwd=1.5)
 text(1900,0.25,ceqn,col="purple",cex=1.1)
-title("Figure 1B. Time trends in period, cohort, and CAL entropy for male in selected populations, 1878-2018")
+title("Figure 2B. Time trends in period, cohort, and CAL entropy for male in selected populations, 1878-2018")
 legend("topright"
        ,c("average CAL entropy",
           "CAL entropy",
