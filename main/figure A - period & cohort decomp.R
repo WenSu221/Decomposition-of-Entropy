@@ -44,8 +44,8 @@ A8 <- read.table("Data/GBRSCO.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 A9 <- read.table("Data/NLD.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 A10 <- read.table("Data/CHE.mltper_1x1.txt",header=TRUE,fill=TRUE,skip=1)
 
-Y1 <- 1901
-Y2 <- 2013
+Y1 <- 1879
+Y2 <- 1990
 
 A1<-A1[(A1$Year>Y1)&(A1$Year<(Y2+1)),]
 A2<-A2[(A2$Year>Y1)&(A2$Year<(Y2+1)),]
@@ -72,12 +72,12 @@ qx10<-1-A10$qx
 avg <- colMeans(rbind(qx1,qx2,qx3,qx4,qx5,
                       qx6,qx7,qx8,qx9,qx10))
 
-HCAL1 <- CALentropy(avg,2013)
-HCAL2 <- CALentropy(qx1,2013)
+HCAL1 <- CALentropy(avg,Y2)
+HCAL2 <- CALentropy(qx7,Y2)
 round(HCAL2-HCAL1,5)
 
-# direction is 2-1 so FRATNP-SWE
-results <- stepwise_replacement(CALentropy,avg,qx1,Y=Y2)
+# direction is 2-1 so ITA - AVG
+results <- stepwise_replacement(CALentropy,avg,qx7,Y=Y2)
 
 results <- fifelse(results==0,NaN,results)
 results <- matrix(results,nrow=111)
@@ -102,15 +102,17 @@ customAxis <- function() {
   axis(4, at=y, labels=levels) 
 } 
 
-pdf("Output/Period & Cohort Decomposition, SWE, 2013.pdf",
+pdf("Output/Age & Cohort Decomposition, ITA-AVG, 1990.pdf",
     width = 8,height = 6)
 
 filled.contour(x=seq(Y1+1,Y2,1),y=c(0:110),z=t(results),
                levels = levels,col = WildColors,
                key.axes = customAxis(),
                xlab="Year",ylab="Age")
-title(main="Period & Cohort Decomposition, SWE male, 2013",
-      sub = paste("SWE - AVG difference: ", round(HCAL2-HCAL1,5), sep=""),
-      font.main=4)
+title(main="Age- & Cohort- Decomposition, \n ITA male-Average, 1990",
+      sub = paste("ITA - AVG difference: ", round(HCAL2-HCAL1,5), sep=""),
+      font.main=2)
 
 dev.off()
+
+write.table(results,"Data/ITA age-cohort decomp 1990.txt")

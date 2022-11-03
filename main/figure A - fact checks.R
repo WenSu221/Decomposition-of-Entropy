@@ -1,6 +1,12 @@
 #FACT CHECKS
 
 #### FEAMALE ####
+
+if(!require(zoo)){
+  install.packages("zoo")
+  library(zoo)}else{
+    library(zoo)}
+
 rm(list = ls())
 source("main/Figure 4 - decomp female 1989-2017.R")
 
@@ -39,54 +45,57 @@ rr.total_NOR <- mean(log(dtotal_NOR[-1]/
                            dtotal_NOR[-length(dtotal_NOR)]))
 
 # France's changing time
+names(dlongevity_FRA) <- Year_diff
 dlongevity_FRA
-Year_diff
 
 # THe Scottish proportion of contribution
-quantile(dlongevity_GBRSCO/
-  (dlongevity_GBRSCO+dvariation_GBRSCO))
+rollmean(abs(dlongevity_GBRSCO)/
+        (abs(dlongevity_GBRSCO)+abs(dvariation_GBRSCO)),5)
 
-quantile(dvariation_GBRSCO/
-           (dlongevity_GBRSCO+dvariation_GBRSCO))
+rollmean(abs(dvariation_GBRSCO)/
+        (abs(dlongevity_GBRSCO)+abs(dvariation_GBRSCO)),5)
+
+# and France
+
+rollmean(abs(dvariation_FRA)/
+           (abs(dlongevity_FRA)+abs(dvariation_FRA)),5)
 
 # Italy approaching average
-quantile(dlongevity_ITA/
-  (dlongevity_ITA+dvariation_ITA))
+rollmean(abs(dlongevity_ITA)/
+        (abs(dlongevity_ITA)+abs(dvariation_ITA)),5)
 
 # low-inequality change in contribution shares
-quantile(abs(cvariation_NLD)/abs(ctotal_NLD))
-quantile(abs(cvariation_NOR)/abs(ctotal_NOR))
-quantile(abs(cvariation_SWE)/abs(ctotal_SWE))
-quantile(abs(cvariation_CHE)/abs(ctotal_CHE))
+
+rollmean(abs(cvariation_NLD)/abs(ctotal_NLD),5)
+rollmean(abs(cvariation_NOR)/abs(ctotal_NOR),5)
+rollmean(abs(cvariation_SWE)/abs(ctotal_SWE),5)
+rollmean(abs(cvariation_CHE)/abs(ctotal_CHE),5)
 
 # Denmark change in diff
-quantile(abs(cvariation_DNK)/
-  (abs(cvariation_DNK)+
-                       abs(clongevity_DNK)+abs(centropychange_DNK)))
-quantile(abs(clongevity_DNK)/
-  (abs(cvariation_DNK)+
-                       abs(clongevity_DNK)+abs(centropychange_DNK)))
+rollmean(abs(cvariation_DNK)/
+  (abs(cvariation_DNK)+abs(clongevity_DNK)+abs(centropychange_DNK)),5)
+rollmean(abs(clongevity_DNK)/
+  (abs(cvariation_DNK)+abs(clongevity_DNK)+abs(centropychange_DNK)),5)
 
 # Italy proportion in changes
-quantile((abs(clongevity_ITA)+abs(centropychange_ITA))/
-  (abs(cvariation_ITA)+
-                       abs(clongevity_ITA)+abs(centropychange_ITA)))
+rollmean((abs(clongevity_ITA)+abs(centropychange_ITA))/
+  (abs(cvariation_ITA)+abs(clongevity_ITA)+abs(centropychange_ITA)),5)
 cvariation_ITA
 
 # US proportion to changes
-quantile(abs(cvariation_USA)/
-  (abs(cvariation_USA)+
-     abs(clongevity_USA)+abs(centropychange_USA)),na.rm=T)
-# France & FRAland Proportion
-abs(cvariation_FRA)/
-  (abs(cvariation_FRA)+
-     abs(clongevity_FRA)+abs(centropychange_FRA))
-abs(clongevity_FRA)/
-  (abs(cvariation_FRA)+
-     abs(clongevity_FRA)+abs(centropychange_FRA))
-abs(centropychange_FRA)/
-  (abs(cvariation_FRA)+
-     abs(clongevity_FRA)+abs(centropychange_FRA))
+rollmean(abs(cvariation_USA)/
+  (abs(cvariation_USA)+abs(clongevity_USA)+abs(centropychange_USA)),na.rm=T,5)
+
+# France Proportion
+rollmean(abs(cvariation_FRA)/
+  (abs(cvariation_FRA)+abs(clongevity_FRA)+abs(centropychange_FRA)),5)
+
+rollmean(abs(clongevity_FRA)/
+  (abs(cvariation_FRA)+abs(clongevity_FRA)+abs(centropychange_FRA)),5)
+
+rollmean(abs(centropychange_FRA)/
+  (abs(cvariation_FRA)+abs(clongevity_FRA)+abs(centropychange_FRA)),5)
+
 ctotal_FRA
 
 

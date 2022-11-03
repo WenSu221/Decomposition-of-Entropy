@@ -122,10 +122,24 @@ ggarrange(g1,g2,nrow = 2)
 ggsave("Output/Entropy Surface 1957-2018_correct.pdf",
        width = 8, height = 8, dpi = 300)
 
-cand1 <- filter(table_total,`lifespan variation`>13)
-cand2 <- filter(table_total,`lifespan variation`<11)
 
-cand1$`life expectancy` <- trunc(cand1$`life expectancy`)
-cand2$`life expectancy` <- trunc(cand2$`life expectancy`)
+cand <- table_total
+# 
+# cand$entropy <- round(cand$entropy,2)
+# 
+# cand$`life expectancy` <- round(cand$`life expectancy`,0)
+# cand$`lifespan variation` <- round(cand$`lifespan variation`,0)
 
-cand <- merge(cand1,cand2,by=c("life expectancy"))
+cand1 <- cand %>% filter(`life expectancy`>75,
+                         `lifespan variation`>12.4)
+
+cand2 <- cand %>% filter(`life expectancy`>70,
+                         `life expectancy`<75,
+                         `lifespan variation`>11.5,
+                         `lifespan variation`<12.4,
+                         entropy<0.17,
+                         entropy>0.165)
+
+cand1 <- arrange(cand1,`life expectancy`)
+
+cand2 <- arrange(cand2,`lifespan variation`)
