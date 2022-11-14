@@ -12,11 +12,11 @@ difference <- data.frame(
     rep("United States",90)),
   
   c(rep("A.Low-inequality",90),rep("B.Cross-over",90),
-    rep("D.Improving",90),
-    rep("B.Low-inequality",90),rep("A.Low-inequality",90),
-    rep("C.Improving",90),rep("D.Improving",90),
+    rep("C.Improving",90),
+    rep("A.Low-inequality",90),rep("A.Low-inequality",90),
+    rep("C.Improving",90),rep("C.Improving",90),
     rep("D.Widening",90),rep("A.Low-inequality",90),
-    rep("A.Low-inequality",90),rep("C.Widening",90)),
+    rep("A.Low-inequality",90),rep("D.Widening",90)),
   
   rep(rep(seq(1989,2018),3),11),
   
@@ -64,16 +64,16 @@ change <- data.frame(
     rep("United States",116)),
   
   c(rep("A.Low-inequality",116),rep("B.Cross-over",116),
-    rep("D.Improving",116),rep("B.Low-inequality",116),
+    rep("C.Improving",116),rep("A.Low-inequality",116),
     rep("A.Low-inequality",116),rep("C.Improving",116),
-    rep("D.Improving",116),rep("D.Widening",116),
+    rep("C.Improving",116),rep("D.Widening",116),
     rep("A.Low-inequality",116),rep("A.Low-inequality",116),
-    rep("C.Widening",116)),
+    rep("D.Widening",116)),
   
   rep(rep(seq(1989.5,2017.5),11),4),
   
   rep(c(rep("3.Lifespan variation",29),rep("2.Longevity",29),
-        rep("1.Average entropy imrprovements",29),rep("total",29)),11),
+        rep("1.Benchmark Average Entropy",29),rep("total",29)),11),
   
   c(cvariation_SWE,clongevity_SWE,centropychange_SWE,ctotal_SWE,
     cvariation_DNK,clongevity_DNK,centropychange_DNK,ctotal_DNK,
@@ -106,7 +106,7 @@ ggplot(data =change)+
        fill = "Contributions",
        title="Figure A3. Decomposition of the time changes in male CAL entropy gap 
                between the average and specific population across time 
-               into average entropy improvements, longevity, and lifespan variation. 
+               into benchmark average entropy, longevity, and lifespan variation. 
                1990-2018.")
 ggsave("Output/decomposition of changes in differences, male 1990-2018.pdf",
        width = 6,height = 8,dpi = 300)

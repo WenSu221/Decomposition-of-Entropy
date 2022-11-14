@@ -291,7 +291,7 @@ lines(Years,diff10,type = "l",
       cex = 1,pch = 20)
 lines(Years,diff11,type = "l",
       col = "red",lty=5,lwd=2)
-lines(Years,rep(0,times=15),
+lines(Years,rep(0,times=30),
       col = 1, lty = 3, lwd = 2,
       cex = 1,pch = 20)
 legend("right", inset=-0.5,c("England & Wales","Netherlands","Norway",
@@ -302,6 +302,6 @@ legend("right", inset=-0.5,c("England & Wales","Netherlands","Norway",
              "red",cols[8],cols[1],"darkorange4","forestgreen"),
        lty = c(2,2,2,2,2,1,5,5,4,4,4),
        box.col = 0)
-title("Figure A1A. Entropy of CAL compared to average level, male 1989-2018")
+title("Figure A1. Differences between CAL entropy of individual countries \n and the average Western European, males 1989-2018")
 mtext("average level", side = 2,adj = 0.4)
 dev.off()

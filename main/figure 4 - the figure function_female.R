@@ -75,7 +75,7 @@ change <- data.frame(
   rep(rep(seq(1989.5,2017.5),11),4),
   
   rep(c(rep("3.Lifespan variation",29),rep("2.Longevity",29),
-        rep("1.Average entropy improvements",29),rep("total",29)),11),
+        rep("1.Benchmark average entropy",29),rep("total",29)),11),
   
   c(cvariation_SWE,clongevity_SWE,centropychange_SWE,ctotal_SWE,
     cvariation_DNK,clongevity_DNK,centropychange_DNK,ctotal_DNK,
@@ -110,6 +110,6 @@ ggplot(data =change)+
        fill = "Contributions",
        title="Figure 5. Decomposition of the time changes in female CAL entropy gap 
                between the average and specific population across time 
-               into average entropy improvements, longevity, and lifespan variation. 
+               into benchmark average entropy, longevity, and lifespan variation. 
                1990-2018.")
 ggsave("Output/decomposition of changes in differences, female 1990-2018.pdf",width = 6,height = 8,dpi = 300)
