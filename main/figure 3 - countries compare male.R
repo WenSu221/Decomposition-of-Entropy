@@ -303,5 +303,5 @@ legend("right", inset=-0.5,c("England & Wales","Netherlands","Norway",
        lty = c(2,2,2,2,2,1,5,5,4,4,4),
        box.col = 0)
 title("Figure A1. Differences between CAL entropy of individual countries \n and the average Western European, males 1989-2018")
-mtext("average level", side = 2,adj = 0.4)
+mtext("average level", side = 2,line=2, adj = 0.4)
 dev.off()
