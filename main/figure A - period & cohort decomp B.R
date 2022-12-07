@@ -3,10 +3,23 @@
 ### 
 ###
 
-
 library(DemoDecomp)
 library(data.table)
 library(RColorBrewer)
+
+Confunc <-function(Mx){
+  Con<-c()
+  YM<-111
+  for (x in 1:111){
+    px1<-c()
+    for (z in 1:x){
+      px1<-c(px1,Mx[z,YM-x+z])
+      lx1<-sum(px1)
+    }
+    Con<-c(Con,lx1)
+  }
+  return(Con)
+}
 
 ### Data fitting ####
 
@@ -64,3 +77,11 @@ title(main="Age- & Cohort- Decomposition across time, \n ITA male - Average, 199
 
 dev.off()
 
+test1 <- Confunc(data1)
+test2 <- Confunc(data2)
+plot(test1,col=0,ylab="Contribution",xlab="Age")
+lines(test1,lwd=2)
+lines(test2,col="blue",lwd=2)
+abline(h=0,lty=2)
+title("Cohorts' contributions to differences in CAL-entropy gap,
+      Italy - Average, 1879-1990")
