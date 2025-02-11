@@ -369,7 +369,7 @@ years1 <- c(1878:2018)
 years2 <- c(seq(1989,2018,2))
 years3 <- c(1878:1926)
 years6 <- c(seq(1989,2018,2))
-years7 <- c(seq(2011,2018,2))
+years7 <- c(seq(2011,2018,1))
 years8 <- c(1933:2018)
 
 CALlm <- lm(CALavg~c(1:15))
@@ -395,8 +395,8 @@ eeqn2 <- bquote("period 1960~2018" ~~ slope == .(eslope1+eslope2)~~"%")
 
 
 ### Plot ####
-pdf(file = "Output/Measures Comparison (regressed), female 1878-2018.pdf",
-    width = 11, height = 8)
+png(file = "Output/Measures Comparison (regressed), female 1878-2018.png",
+    width = 11, height = 8,units = "in",res=300)
 
 plot(range(years1),c(0,1),xlab = "Years",ylab = "Entropy", col=0)
 lines(years2,entropyCAL1,col=COL[1],lty=3,lwd=2)

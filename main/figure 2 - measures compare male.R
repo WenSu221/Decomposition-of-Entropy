@@ -362,8 +362,8 @@ CALavg <- colMeans(CALavg)
 
 
 ### Plot ####
-pdf(file = "Output/Measures Comparison (regressed), male 1878-2018.pdf",
-    width = 11, height = 8)
+png(file = "Output/Measures Comparison (regressed), male 1878-2018.png",
+    width = 11, height = 8,units="in",res=300)
 
 years1 <- c(1878:2018)
 years2 <- c(seq(1989,2018,2))

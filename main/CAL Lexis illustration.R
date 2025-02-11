@@ -8,7 +8,7 @@ library(latex2exp)
 years <- c(1907:2018)
 age <- c(0:110)
 
-pdf('Figure 1.pdf',width = 8, height = 8)
+png('Figure 1.png',width = 8,height = 8,units = "in",res=300)
 
 plot(x = c(1905,2025), y=c(0,110),col = 0,
      xlab = 'Year', ylab = 'Age',
@@ -29,7 +29,7 @@ segments(x0=1907,x1=2018,y0=0,y1=110,
          col='navy',lty=2,lwd=4)
 # text(1940,55,expression(symbol("\110")['0,c'](1907)),
 #      col='orange',cex=1.2)
-text(1940,45,expression("Chohort Entropy (1907)"),
+text(1940,45,expression("Cohort Entropy (1907)"),
      col='navy',cex=0.9,srt = 45)
 
 segments(x0=2018,x1=2018,y0=0,y1=110,
